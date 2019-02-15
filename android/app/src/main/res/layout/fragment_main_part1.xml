@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/base_layout_color"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:background="@color/main_color"
+                android:layout_height="@dimen/header_height">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="5dp"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_margin="10dp"
+                        android:src="@mipmap/fragment_main_part1_zonghe"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+                    <TextView
+                        android:text="综合素质"
+                        android:textColor="@color/white"
+                        android:layout_marginLeft="2dp"
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/header_title_textsize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <View
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:id="@+id/student_bar"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+                        <TextView
+                            android:text="分类"
+                            android:textSize="@dimen/fontsize_15"
+                            android:textColor="@color/base_font_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/mine_match"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_match" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的比赛"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/base_line_color"
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/mine_cert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_cert" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="我的证书"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/mine_activity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="20dp"
+                            android:src="@mipmap/fragment_main_part1_activity" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="集体活动"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/base_line_color"
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/mine_moral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="20dp"
+                            android:src="@mipmap/fragment_main_part1_all" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="德育考核"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+                        <TextView
+                            android:text="综合素质"
+                            android:textSize="@dimen/fontsize_15"
+                            android:textColor="@color/base_font_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/what_is_report1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="什么是综合素质报告？"
+                        android:textColor="@color/main_color"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/mine_report"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_report"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+                        <TextView
+                            android:text="点击查看我的综合素质报告"
+                            android:textSize="@dimen/fontsize_15"
+                            android:textColor="@color/base_font_color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/manager_bar"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="分类管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/manager_match"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_match" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="比赛管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/base_line_color"
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/manager_cert"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_cert" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="证书管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/manager_activity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="20dp"
+                            android:src="@mipmap/fragment_main_part1_activity" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="活动管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                    <View
+                        android:background="@color/base_line_color"
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/manager_moral"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="20dp"
+                            android:src="@mipmap/fragment_main_part1_all" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="德育管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="综合素质管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/what_is_report2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="15dp"
+                        android:text="什么是综合素质报告？"
+                        android:textColor="@color/main_color"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/manager_report"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_report"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="学生综合素质管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="其他"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/manager_teacher"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_teacher"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="教师管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/manager_school"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_school"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="学校管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:id="@+id/manager_class"
+                        android:background="@drawable/common_button_selected"
+                        android:gravity="left|center_vertical"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_class"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="班级管理"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
