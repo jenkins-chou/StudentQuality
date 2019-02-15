@@ -16,7 +16,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.common.ComprehensiveReportIsWhatActivity"></activity>
+        <activity android:name=".activity.common.ComprehensiveReportIsWhatActivity" />
+        <activity android:name=".activity.student.MineMatchActivity" />
+        <activity android:name=".activity.student.MineCertActivity" />
+        <activity android:name=".activity.student.MineActivityActivity" />
+        <activity android:name=".activity.student.MineReportActivity" />
+        <activity android:name=".activity.student.MineMoralActivity" />
+        <activity android:name=".activity.student.MineCourseActivity" />
+        <activity android:name=".activity.teacher.TeachScoreOperateActivity" />
+        <activity android:name=".activity.manager.ManagerActiActivity" />
+        <activity android:name=".activity.manager.ManagerCertActivity" />
+        <activity android:name=".activity.manager.ManagerCourseActivity" />
+        <activity android:name=".activity.manager.ManagerMatchActivity" />
+        <activity android:name=".activity.manager.ManagerMoralActivity" />
+        <activity android:name=".activity.manager.ManagerReportActivity" />
+        <activity android:name=".activity.manager.ManagerSchoolActivity" />
+        <activity android:name=".activity.manager.ManagerClassActivity" />
+        <activity android:name=".activity.manager.ManagerTeacherActivity"></activity>
     </application>
 
 </manifest>

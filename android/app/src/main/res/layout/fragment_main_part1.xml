@@ -5,6 +5,39 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:background="@color/main_color"
+        android:layout_height="@dimen/header_height">
+        <LinearLayout
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_margin="10dp"
+                android:src="@mipmap/fragment_main_part1_zonghe"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:text="综合素质"
+                android:textColor="@color/white"
+                android:layout_marginLeft="2dp"
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/header_title_textsize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:layout_alignParentBottom="true"
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+    </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -12,39 +45,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <RelativeLayout
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:background="@color/main_color"
-                android:layout_height="@dimen/header_height">
-                <LinearLayout
-                    android:layout_centerVertical="true"
-                    android:gravity="center"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="5dp"
-                    android:orientation="horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_margin="10dp"
-                        android:src="@mipmap/fragment_main_part1_zonghe"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp" />
-                    <TextView
-                        android:text="综合素质"
-                        android:textColor="@color/white"
-                        android:layout_marginLeft="2dp"
-                        android:layout_centerVertical="true"
-                        android:textSize="@dimen/header_title_textsize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <View
-                    android:layout_alignParentBottom="true"
-                    android:background="@color/base_line_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"/>
-            </RelativeLayout>
+
             <LinearLayout
                 android:id="@+id/student_bar"
                 android:orientation="vertical"

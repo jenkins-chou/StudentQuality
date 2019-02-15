@@ -4,24 +4,28 @@
     android:layout_width="match_parent"
     android:background="@color/white"
     android:layout_height="@dimen/header_height">
+
     <LinearLayout
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="10dp"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_alignParentLeft="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal">
+
         <ImageView
-            android:src="@mipmap/arrow_left_blue"
             android:layout_width="25dp"
-            android:layout_height="25dp" />
+            android:layout_height="25dp"
+            android:src="@mipmap/arrow_left_blue" />
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="返回"
             android:textColor="@color/main_color"
-            android:textSize="@dimen/header_back_textsize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="@dimen/header_back_textsize" />
     </LinearLayout>
 
     <TextView
