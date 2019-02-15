@@ -11,6 +11,14 @@ import android.view.ViewGroup;
 
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.ComprehensiveReportIsWhatActivity;
+import com.jenking.spandroid.activity.manager.ManagerActiActivity;
+import com.jenking.spandroid.activity.manager.ManagerCertActivity;
+import com.jenking.spandroid.activity.manager.ManagerClassActivity;
+import com.jenking.spandroid.activity.manager.ManagerMatchActivity;
+import com.jenking.spandroid.activity.manager.ManagerMoralActivity;
+import com.jenking.spandroid.activity.manager.ManagerReportActivity;
+import com.jenking.spandroid.activity.manager.ManagerSchoolActivity;
+import com.jenking.spandroid.activity.manager.ManagerTeacherActivity;
 import com.jenking.spandroid.activity.student.MineActivityActivity;
 import com.jenking.spandroid.activity.student.MineCertActivity;
 import com.jenking.spandroid.activity.student.MineMatchActivity;
@@ -24,6 +32,8 @@ import butterknife.Unbinder;
 public class MainFragment1 extends Fragment {
 
     private Unbinder unbinder;
+
+    //-------------------------------------学生区域
     @OnClick(R.id.mine_match)
     void mine_match(){
         Intent intent = new Intent(getContext(),MineMatchActivity.class);
@@ -56,6 +66,53 @@ public class MainFragment1 extends Fragment {
         Intent intent = new Intent(getContext(),ComprehensiveReportIsWhatActivity.class);
         startActivity(intent);
     }
+
+
+    //------------------------------------------管理员区域
+
+    @OnClick(R.id.manager_match)
+    void manager_match(){
+        Intent intent = new Intent(getContext(),ManagerMatchActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.manager_cert)
+    void manager_cert(){
+        Intent intent = new Intent(getContext(),ManagerCertActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.manager_activity)
+    void manager_activity(){
+        Intent intent = new Intent(getContext(),ManagerActiActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.manager_moral)
+    void manager_moral(){
+        Intent intent = new Intent(getContext(),ManagerMoralActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.manager_report)
+    void manager_report(){
+        Intent intent = new Intent(getContext(),ManagerReportActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.manager_teacher)
+    void manager_teacher(){
+        Intent intent = new Intent(getContext(),ManagerTeacherActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.manager_school)
+    void manager_school(){
+        Intent intent = new Intent(getContext(),ManagerSchoolActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.manager_class)
+    void manager_class(){
+        Intent intent = new Intent(getContext(),ManagerClassActivity.class);
+        startActivity(intent);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

@@ -3,6 +3,7 @@
     package="com.jenking.spandroid">
 
     <application
+        android:name=".app.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -32,7 +33,14 @@
         <activity android:name=".activity.manager.ManagerReportActivity" />
         <activity android:name=".activity.manager.ManagerSchoolActivity" />
         <activity android:name=".activity.manager.ManagerClassActivity" />
-        <activity android:name=".activity.manager.ManagerTeacherActivity"></activity>
+        <activity android:name=".activity.manager.ManagerTeacherActivity" />
+        <activity android:name=".activity.student.MineCourseObligatoryActivity" />
+        <activity android:name=".activity.student.MineCourseElectiveActivity" />
+        <activity android:name=".activity.manager.ManagerCourseSelectedActivity" />
+        <activity android:name=".activity.common.CourseListActivity" />
+        <activity android:name=".activity.manager.ManagerScoreActivity" />
+        <activity android:name=".activity.common.LoginActivity" />
+        <activity android:name=".activity.common.RegisterActivity"></activity>
     </application>
 
 </manifest>

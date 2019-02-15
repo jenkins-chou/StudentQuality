@@ -16,7 +16,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MineCourseActivity extends BaseActivity {
+//我的必修课程
+public class MineCourseObligatoryActivity extends BaseActivity {
     @OnClick(R.id.back)
     void back(){
         finish();
@@ -27,11 +28,10 @@ public class MineCourseActivity extends BaseActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine_class);
+        setContentView(R.layout.activity_mine_course_obligatory);
     }
 
     @Override

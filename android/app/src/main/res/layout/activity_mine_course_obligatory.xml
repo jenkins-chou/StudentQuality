@@ -36,7 +36,7 @@
         </LinearLayout>
 
         <TextView
-            android:text="我的全部课程"
+            android:text="我的必修课程"
             android:textColor="@color/white"
             android:layout_centerInParent="true"
             android:textSize="@dimen/header_title_textsize"

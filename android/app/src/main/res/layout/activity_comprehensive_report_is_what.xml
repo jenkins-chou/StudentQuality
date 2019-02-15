@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".activity.common.ComprehensiveReportIsWhatActivity">
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -56,4 +57,11 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
+    <TextView
+        android:text="@string/what_is_moral_report"
+        android:layout_margin="25dp"
+        android:textColor="@color/base_font_color"
+        android:lineSpacingMultiplier="1.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>

@@ -7,8 +7,7 @@ import android.os.Build;
 import android.os.Looper;
 import android.util.Log;
 
-import com.jenking.xiaoyunhui.app.MyApp;
-import com.jenking.xiaoyunhui.presenters.AppPresenter;
+import com.jenking.spandroid.app.MyApp;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -120,19 +119,19 @@ public class GlobalExcaption implements Thread.UncaughtExceptionHandler {
         }
 
         PackageInfo info = DeviceUtil.getAppInfo(MyApp.appOS);
-        AppPresenter appPresenter = new AppPresenter(MyApp.appOS);
-        Map<String,String> params = new HashMap<>();
-        params.put("create_time",StringUtil.getStrTime(StringUtil.getTime(),"yyyy年MM月dd日 HH:mm:ss"));
-        params.put("device","123333");
-        params.put("version_code",info.versionCode+"");
-        params.put("version_name",info.versionName+"");
-        params.put("package_name",info.packageName+"");
-        params.put("brand", Build.BRAND);
-        params.put("model", Build.MODEL);
-        params.put("sdk", Build.VERSION.SDK );
-        params.put("device_release", Build.VERSION.RELEASE);
-        params.put("operate_error",log_value.toString());
-        appPresenter.addError(params);
+//        AppPresenter appPresenter = new AppPresenter(MyApp.appOS);
+//        Map<String,String> params = new HashMap<>();
+//        params.put("create_time",StringUtil.getStrTime(StringUtil.getTime(),"yyyy年MM月dd日 HH:mm:ss"));
+//        params.put("device","123333");
+//        params.put("version_code",info.versionCode+"");
+//        params.put("version_name",info.versionName+"");
+//        params.put("package_name",info.packageName+"");
+//        params.put("brand", Build.BRAND);
+//        params.put("model", Build.MODEL);
+//        params.put("sdk", Build.VERSION.SDK );
+//        params.put("device_release", Build.VERSION.RELEASE);
+//        params.put("operate_error",log_value.toString());
+//        appPresenter.addError(params);
         return true;
     }
 

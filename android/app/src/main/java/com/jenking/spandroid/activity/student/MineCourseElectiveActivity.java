@@ -1,5 +1,6 @@
 package com.jenking.spandroid.activity.student;
 
+import android.os.BaseBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +17,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MineCourseActivity extends BaseActivity {
+//我的选修课程
+public class MineCourseElectiveActivity extends BaseActivity {
+
     @OnClick(R.id.back)
     void back(){
         finish();
@@ -27,11 +30,10 @@ public class MineCourseActivity extends BaseActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine_class);
+        setContentView(R.layout.activity_mine_course_elective);
     }
 
     @Override
