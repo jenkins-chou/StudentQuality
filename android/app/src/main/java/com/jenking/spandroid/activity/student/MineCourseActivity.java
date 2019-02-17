@@ -1,14 +1,18 @@
 package com.jenking.spandroid.activity.student;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
+import com.github.library.listener.OnRecyclerItemClickListener;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
+import com.jenking.spandroid.activity.common.CourseDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +54,14 @@ public class MineCourseActivity extends BaseActivity {
             }
         };
         baseRecyclerAdapter.openLoadAnimation(false);
+        baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MineCourseActivity.this,CourseDetailActivity.class);
+                intent.putExtra("course_id","");
+                startActivity(intent);
+            }
+        });
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
     }

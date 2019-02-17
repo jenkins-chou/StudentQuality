@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="学生德育考核管理"
+            android:text="班级列表"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 
@@ -108,47 +108,9 @@
                 android:textSize="@dimen/fontsize_15" />
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:background="@color/base_line_color"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
-    <LinearLayout
-        android:background="@color/white"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:id="@+id/select_class"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/common_button_selected"
-            android:gravity="left|center_vertical"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_margin="15dp"
-                android:src="@mipmap/fragment_main_part1_class" />
-
-            <TextView
-                android:id="@+id/class_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="选择班级"
-                android:textColor="@color/base_font_color"
-                android:textSize="@dimen/fontsize_15" />
-        </LinearLayout>
-    </LinearLayout>
     <android.support.v7.widget.RecyclerView
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/recyclerView"
-        android:layout_below="@+id/header"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

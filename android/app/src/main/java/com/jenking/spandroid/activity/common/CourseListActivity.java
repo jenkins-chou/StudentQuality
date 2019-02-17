@@ -13,6 +13,7 @@ public class CourseListActivity extends BaseActivity {
     void back(){
         finish();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

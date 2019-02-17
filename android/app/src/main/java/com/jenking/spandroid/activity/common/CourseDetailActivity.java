@@ -1,14 +1,13 @@
-package com.jenking.spandroid.activity.student;
+package com.jenking.spandroid.activity.common;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.jenking.spandroid.R;
-import com.jenking.spandroid.activity.common.BaseActivity;
 
 import butterknife.OnClick;
 
-public class MineReportActivity extends BaseActivity {
+public class CourseDetailActivity extends BaseActivity {
 
     @OnClick(R.id.back)
     void back(){
@@ -18,6 +17,6 @@ public class MineReportActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mine_report);
+        setContentView(R.layout.activity_course_detail);
     }
 }
