@@ -11,18 +11,27 @@ import android.view.ViewGroup;
 
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.LoginActivity;
+import com.jenking.spandroid.activity.common.UserInfoActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
 public class MainFragment3 extends Fragment {
+
     private Unbinder unbinder;
     @OnClick({R.id.user_header})
     void user_header(){
         Intent intent = new Intent(getContext(),LoginActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.user_info)
+    void user_info(){
+        Intent intent = new Intent(getContext(),UserInfoActivity.class);
+        startActivity(intent);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

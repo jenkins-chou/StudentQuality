@@ -37,6 +37,7 @@ public class ManagerClassActivity extends BaseActivity {
         Intent intent = new Intent(this,SchoolListActivity.class);
         startActivity(intent);
     }
+
     @OnClick(R.id.select_college)
     void select_college(){
         Intent intent = new Intent(this,CollegeListActivity.class);

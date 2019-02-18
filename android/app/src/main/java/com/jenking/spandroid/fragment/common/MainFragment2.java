@@ -12,11 +12,13 @@ import android.view.ViewGroup;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.CourseListActivity;
 import com.jenking.spandroid.activity.manager.ManagerCourseActivity;
+import com.jenking.spandroid.activity.manager.ManagerCourseArrangeActivity;
 import com.jenking.spandroid.activity.manager.ManagerCourseSelectedActivity;
 import com.jenking.spandroid.activity.manager.ManagerScoreActivity;
 import com.jenking.spandroid.activity.student.MineCourseActivity;
 import com.jenking.spandroid.activity.student.MineCourseElectiveActivity;
 import com.jenking.spandroid.activity.student.MineCourseObligatoryActivity;
+import com.jenking.spandroid.activity.teacher.TeacherCourseArrangeActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,6 +87,18 @@ public class MainFragment2 extends Fragment {
     @OnClick(R.id.manager_score)
     void manager_score(){
         Intent intent = new Intent(getContext(),ManagerScoreActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.manager_course_arrange)
+    void manager_course_arrange(){
+        Intent intent = new Intent(getContext(),ManagerCourseArrangeActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.teacher_course_arrange)
+    void teacher_course_arrange(){
+        Intent intent = new Intent(getContext(),TeacherCourseArrangeActivity.class);
         startActivity(intent);
     }
 

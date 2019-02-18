@@ -45,7 +45,10 @@
         <activity android:name=".activity.manager.ManagerCollegeActivity" />
         <activity android:name=".activity.common.SchoolListActivity" />
         <activity android:name=".activity.common.CollegeListActivity" />
-        <activity android:name=".activity.common.ClassListActivity"></activity>
+        <activity android:name=".activity.common.ClassListActivity" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeActivity" />
+        <activity android:name=".activity.teacher.TeacherCourseArrangeActivity" />
+        <activity android:name=".activity.common.UserInfoActivity"></activity>
     </application>
 
 </manifest>
