@@ -9,7 +9,7 @@ var path = require('path');
 var uploadController = require("./controller/upload")
 var errorController = require("./controller/operate_record")
 
-var schoolController = require("./controller/operate_record")
+var schoolController = require("./controller/school")
 
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
