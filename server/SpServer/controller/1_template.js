@@ -6,8 +6,8 @@ var connectDB = require('../tool/connectDB');
 connectDB = new connectDB();
 
 var tableName = "tableName";//表名
-var tableKey = "tableKey";//主键
-var tableDelete = "tableDelete";//删除标志位
+var tableKey = "id";//主键
+var tableDelete = "del";//删除标志位
 
 //获取所有数据
 router.post('/getusers', function (req, res) {
@@ -147,18 +147,4 @@ router.post('/deleteuser', function (req, res) {
         })
     }
 });
-//更新时，用于校验是否是否有更新字段值
-function checkUpdateData(target,current){
-    if (target == null||target =="") {
-        return current;
-    }else if(target !=null||target !=""){
-        if (target != current) {
-            return target;
-        }else{
-            return current;
-        }
-    }else{
-        return current;
-    }
-}
 module.exports = router;
