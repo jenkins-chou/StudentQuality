@@ -108,6 +108,19 @@ router.post('/updateSchool', function (request, response) {
     })
 });
 
+router.post('/deleteSchool', function (req, res) {
+    var id = req.body.id;
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
+    }else{
+        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+id;
+        connectDB.delete(sql,function(result){
+            console.log(result);
+            return res.jsonp(result);
+        })
+    }
+});
+
 //更新时，用于校验是否是否有更新字段值
 function checkUpdateData(target,current){
         if (target == null||target =="") {
