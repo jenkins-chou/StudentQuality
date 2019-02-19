@@ -1,11 +1,14 @@
 package com.jenking.spandroid.activity.manager;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
@@ -30,16 +33,21 @@ public class ManagerCollegeActivity extends BaseActivity {
         finish();
     }
 
+    @BindView(R.id.school_name)
+    TextView school_name;
+
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    private String select_school_id;
+    private String select_school_name;
     private List<String> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
 
     @OnClick(R.id.select_school)
     void select_school(){
         Intent intent = new Intent(this,SchoolListActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,SchoolListActivity.SelectSchoolCode);
     }
 
     @OnClick(R.id.add_college)
@@ -58,9 +66,6 @@ public class ManagerCollegeActivity extends BaseActivity {
     public void initData() {
         super.initData();
         datas = new ArrayList<>();
-        datas.add("");
-        datas.add("");
-        datas.add("");
         baseRecyclerAdapter = new BaseRecyclerAdapter(this,datas,R.layout.activity_manager_college_item) {
             @Override
             protected void convert(BaseViewHolder helper, Object item) {
@@ -78,5 +83,21 @@ public class ManagerCollegeActivity extends BaseActivity {
         baseRecyclerAdapter.openLoadAnimation(false);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("requestCode",requestCode+"");
+        Log.e("resultCode",resultCode+"");
+        switch (requestCode){
+            case SchoolListActivity.SelectSchoolCode:
+                if (data!=null){
+                    select_school_id = data.getStringExtra("school_id");
+                    select_school_name= data.getStringExtra("school_name");
+                    school_name.setText(select_school_name);
+                }
+                break;
+        }
     }
 }

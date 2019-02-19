@@ -92,15 +92,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="比赛名称"
+                android:text="学校名称"
                 android:textColor="@color/base_font_color" />
 
             <TextView
-                android:text="《Android开发》"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/base_font_color2"
+                android:id="@+id/school_name"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="《Android开发》"
+                android:textColor="@color/base_font_color2" />
 
         </LinearLayout>
         <View
@@ -115,14 +116,88 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="比赛时间"
+                android:text="学校校训"
                 android:textColor="@color/base_font_color" />
+
             <TextView
-                android:text="2019年"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/base_font_color2"
+                android:id="@+id/school_abstract"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="2019年"
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细介绍"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/school_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="2019年"
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学校地址"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/school_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="2019年"
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="建设时间"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/school_build_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="2019年"
+                android:textColor="@color/base_font_color2" />
 
         </LinearLayout>
         <View

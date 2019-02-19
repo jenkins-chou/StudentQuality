@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //基本请求参数类
-public class RequestService {
+public class RS {
 
     /**
      * 获取基本请求参数
