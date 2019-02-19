@@ -74,11 +74,11 @@ router.post('/updateSchool', function (request, response) {
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var school_name = connectDB.checkUpdateData(req.body.school_name,result.data[0].school_name);
-                    var school_abstract = connectDB.checkUpdateData(req.body.school_abstract,result.data[0].school_abstract);
-                    var school_detail = connectDB.checkUpdateData(req.body.school_detail,result.data[0].school_detail);
-                    var school_address = connectDB.checkUpdateData(req.body.school_address,result.data[0].school_address);
-                    var school_build_time = connectDB.checkUpdateData(req.body.school_build_time,result.data[0].school_build_time);
+                    var school_name = checkUpdateData(req.body.school_name,result.data[0].school_name);
+                    var school_abstract = checkUpdateData(req.body.school_abstract,result.data[0].school_abstract);
+                    var school_detail = checkUpdateData(req.body.school_detail,result.data[0].school_detail);
+                    var school_address = checkUpdateData(req.body.school_address,result.data[0].school_address);
+                    var school_build_time = checkUpdateData(req.body.school_build_time,result.data[0].school_build_time);
                     
                     var sql  =  "update "+tableName
                     +" set school_name = '"+school_name
@@ -107,4 +107,19 @@ router.post('/updateSchool', function (request, response) {
         }
     })
 });
+
+//更新时，用于校验是否是否有更新字段值
+function checkUpdateData(target,current){
+        if (target == null||target =="") {
+            return current;
+        }else if(target !=null||target !=""){
+            if (target != current) {
+                return target;
+            }else{
+                return current;
+            }
+        }else{
+            return current;
+        }
+    }
 module.exports = router;
