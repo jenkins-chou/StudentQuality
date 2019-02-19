@@ -9,6 +9,8 @@ var path = require('path');
 var uploadController = require("./controller/upload")
 var errorController = require("./controller/operate_record")
 
+var schoolController = require("./controller/operate_record")
+
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
 app.use(express.static(path.join(__dirname, '')))
@@ -28,6 +30,8 @@ app.post('/post',function(req,res){
 
 app.use('/upload',uploadController)
 app.use('/error',errorController)
+
+app.use('/school',schoolController)
 
 app.listen(7777)
 console.log("数据服务器已打开, 端口: 7777");
