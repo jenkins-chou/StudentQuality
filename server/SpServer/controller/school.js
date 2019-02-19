@@ -9,6 +9,14 @@ var tableName = "school";//表名
 var tableKey = "id";//主键
 var tableDelete = "del";//删除标志位
 
+//获取所有数据
+router.post('/getAllSchool', function (req, res) {
+    var sql = "select * from "+tableName+" where "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
 //添加
 router.post('/addSchool', function (req, res) {
     var sql = "insert into "+tableName+"(school_name,school_abstract,school_detail,school_number,school_address,school_build_time,create_time,remark,del) value (?,?,?,?,?,?,?,?,?)";
