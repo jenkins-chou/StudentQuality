@@ -59,4 +59,52 @@ router.post('/addSchool', function (req, res) {
     })
 
 });
+
+//更新信息
+router.post('/updateSchool', function (request, response) {
+    var req = request;
+    var res = response;
+    var id = req.body.id;
+
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
+    }
+    //console.log("hahahhah");
+    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+user_id,function(result){
+        if (result.status=="200") {
+            if (result.data[0]!=null) {
+                console.log(checkUpdateData("dsadsa","adsadsa"));
+                    var school_name = connectDB.checkUpdateData(req.body.school_name,result.data[0].school_name);
+                    var school_abstract = connectDB.checkUpdateData(req.body.school_abstract,result.data[0].school_abstract);
+                    var school_detail = connectDB.checkUpdateData(req.body.school_detail,result.data[0].school_detail);
+                    var school_address = connectDB.checkUpdateData(req.body.school_address,result.data[0].school_address);
+                    var school_build_time = connectDB.checkUpdateData(req.body.school_build_time,result.data[0].school_build_time);
+                    
+                    var sql  =  "update "+tableName
+                    +" set school_name = '"+school_name
+                    +"' , school_abstract = '"+school_abstract
+                    +"' , school_detail = '"+school_detail
+                    +"' , school_address = '"+school_address
+                    +"', school_build_time = '"+school_build_time
+                    +"' where "+tableKey+" = "+id;
+                connectDB.update(sql,function(result){
+                    console.log(result);
+                    return res.jsonp(result);
+                })
+            }else{
+                var result = {
+                    "status": "201",
+                    "message": "failed"
+                }
+                return res.jsonp(result);
+            }
+        }else{
+            var result = {
+                    "status": "201",
+                    "message": "failed"
+                }
+            return res.jsonp(result);
+        }
+    })
+});
 module.exports = router;

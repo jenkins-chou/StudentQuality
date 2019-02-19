@@ -78,43 +78,21 @@ router.post('/adduser', function (req, res) {
 router.post('/updateuser', function (request, response) {
     var req = request;
     var res = response;
-    var user_id = req.body.user_id;
+    var id = req.body.id;
 
-    if (user_id==null) {
-        return res.jsonp("user_id is null! please check!");
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
     }
     //console.log("hahahhah");
     connectDB.query("select * from "+tableName+" where "+tableKey+" = "+user_id,function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var user_name = checkUpdateData(req.body.user_name,result.data[0].user_name);
-                    var user_pass = checkUpdateData(req.body.user_pass,result.data[0].user_pass);
-                    var user_real_name = checkUpdateData(req.body.user_real_name,result.data[0].user_real_name);
-                    var user_avatar_url = checkUpdateData(req.body.user_avatar_url,result.data[0].user_avatar_url);
-                    var user_health = checkUpdateData(req.body.user_health,result.data[0].user_health);
-                    var user_phone = checkUpdateData(req.body.user_phone,result.data[0].user_phone);
-                    var user_email = checkUpdateData(req.body.user_email,result.data[0].user_email);
-                    var user_address = checkUpdateData(req.body.user_address,result.data[0].user_address);
-                    var user_slogan = checkUpdateData(req.body.user_slogan,result.data[0].user_slogan);
-                    var user_status = checkUpdateData(req.body.user_status,result.data[0].user_status);
-                    var user_create_time = checkUpdateData(req.body.user_create_time,result.data[0].user_create_time);
-                    var user_remark  = checkUpdateData(req.body.user_remark,result.data[0].user_remark);
-                    var user_del = checkUpdateData(req.body.user_del,result.data[0].user_del);
+                    var user_name = connectDB.checkUpdateData(req.body.user_name,result.data[0].user_name);
+                    var user_pass = connectDB.checkUpdateData(req.body.user_pass,result.data[0].user_pass);
                     var sql  =  "update "+tableName+" set user_name = '"+user_name
                     +"' , user_pass = '"+user_pass
-                    +"' , user_real_name = '"+user_real_name
-                    +"' , user_avatar_url = '"+user_avatar_url
-                    +"', user_health = '"+user_health
-                    +"' , user_phone = '"+user_phone
-                    +"' , user_email = '"+user_email
-                    +"' , user_address = '"+user_address
-                    +"' , user_slogan = '"+user_slogan
-                    +"' , user_status = '"+user_status
-                    +"' , user_create_time = '"+user_create_time
-                    +"' , user_remark = '"+user_remark
-                    +"' , user_del = '"+user_del
-                    +"' where "+tableKey+" = "+user_id;
+                    +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);
                     return res.jsonp(result);
