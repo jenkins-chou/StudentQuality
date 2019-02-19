@@ -42,16 +42,17 @@
             android:text="德育考核管理"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
+
         <TextView
-            android:id="@+id/add_teacher"
-            android:gravity="center"
-            android:text="新增"
-            android:padding="10dp"
+            android:id="@+id/add_moral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="新增"
+            android:textColor="@color/white" />
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"

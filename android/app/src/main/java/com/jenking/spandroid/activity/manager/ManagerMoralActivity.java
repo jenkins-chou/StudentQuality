@@ -1,14 +1,20 @@
 package com.jenking.spandroid.activity.manager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.View;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
+import com.github.library.listener.OnRecyclerItemClickListener;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
+import com.jenking.spandroid.activity.common.CertDetailActivity;
+import com.jenking.spandroid.activity.common.MoralDetailActivity;
+import com.jenking.spandroid.activity.common.MoralOperateActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +33,12 @@ public class ManagerMoralActivity extends BaseActivity {
     RecyclerView recyclerView;
     private List<String> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
+
+    @OnClick(R.id.add_moral)
+    void add_moral(){
+        Intent intent = new Intent(this, MoralOperateActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +60,13 @@ public class ManagerMoralActivity extends BaseActivity {
             }
         };
         baseRecyclerAdapter.openLoadAnimation(false);
+        baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ManagerMoralActivity.this, MoralDetailActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
     }

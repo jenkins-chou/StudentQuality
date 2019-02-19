@@ -39,20 +39,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="学校管理"
+            android:text="比赛列表"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
-
-        <TextView
-            android:id="@+id/add_school"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="添加"
-            android:textColor="@color/white" />
 
         <View
             android:layout_alignParentBottom="true"
@@ -61,12 +50,8 @@
             android:layout_height="1px"/>
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
         android:id="@+id/recyclerView"
-        android:layout_below="@+id/header"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

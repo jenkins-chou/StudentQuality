@@ -42,16 +42,17 @@
             android:text="学院管理"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
+
         <TextView
-            android:id="@+id/add_teacher"
-            android:gravity="center"
-            android:text="添加"
-            android:padding="10dp"
+            android:id="@+id/add_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="添加"
+            android:textColor="@color/white" />
 
         <View
             android:layout_alignParentBottom="true"

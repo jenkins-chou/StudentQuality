@@ -48,7 +48,27 @@
         <activity android:name=".activity.common.ClassListActivity" />
         <activity android:name=".activity.manager.ManagerCourseArrangeActivity" />
         <activity android:name=".activity.teacher.TeacherCourseArrangeActivity" />
-        <activity android:name=".activity.common.UserInfoActivity"></activity>
+        <activity android:name=".activity.common.UserInfoActivity" />
+        <activity android:name=".activity.common.MatchDetailActivity" />
+        <activity android:name=".activity.common.MatchOperateActivity" />
+        <activity android:name=".activity.common.CertDetailActivity" />
+        <activity android:name=".activity.common.CertOperateActivity" />
+        <activity android:name=".activity.common.ActiDetailActivity" />
+        <activity android:name=".activity.common.ActiOperateActivity" />
+        <activity android:name=".activity.common.MoralDetailActivity" />
+        <activity android:name=".activity.common.MoralOperateActivity" />
+        <activity android:name=".activity.common.TeacherDetailActivity" />
+        <activity android:name=".activity.manager.ManagerSchoolOperateActivity" />
+        <activity android:name=".activity.common.SchoolDetailActivity" />
+        <activity android:name=".activity.common.CollegeDetailActivity" />
+        <activity android:name=".activity.common.CollegeOperateActivity" />
+        <activity android:name=".activity.common.ClassDetailActivity" />
+        <activity android:name=".activity.common.ClassOperateActivity" />
+        <activity android:name=".activity.common.TeacherOperateActivity" />
+        <activity android:name=".activity.common.MatchListActivity" />
+        <activity android:name=".activity.common.CertListActivity" />
+        <activity android:name=".activity.common.ActiListActivity" />
+        <activity android:name=".activity.common.MoralListActivity"></activity>
     </application>
 
 </manifest>
