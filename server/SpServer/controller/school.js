@@ -70,7 +70,7 @@ router.post('/updateSchool', function (request, response) {
         return res.jsonp("id is null! please check!");
     }
     //console.log("hahahhah");
-    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+user_id,function(result){
+    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
