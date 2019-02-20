@@ -17,19 +17,9 @@ router.post('/getusers', function (req, res) {
     })
 });
 
-//根据id获取信息
-router.post('/getuser',function (req, res) {
-    var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.user_id +" and "+tableDelete+" != 'delete'";
-    connectDB.query(sql,function(result){
-        console.log(result);
-        return res.jsonp(result);
-    });
-});
-
-
 
 //添加
-router.post('/adduser', function (req, res) {
+router.post('/addCollege', function (req, res) {
     var sql = "insert into "+tableName+"(college_name,school_id,school_name,create_time,remark,del) value (?,?,?,?,?,?)";
     var sqlparams = [
         req.body.college_name,
@@ -39,7 +29,7 @@ router.post('/adduser', function (req, res) {
         req.body.remark,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where college_name = '" + req.body.college_name+"'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
@@ -55,7 +45,7 @@ router.post('/adduser', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'";
+                    var sqlQueryAgain = "select * from "+tableName+" where college_name = '" + req.body.college_name+"'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
