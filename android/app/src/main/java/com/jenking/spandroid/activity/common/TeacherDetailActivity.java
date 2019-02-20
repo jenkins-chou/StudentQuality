@@ -69,6 +69,7 @@ public class TeacherDetailActivity extends BaseActivity {
             Intent intent = new Intent(this, TeacherOperateActivity.class);
             intent.putExtra("model",new Gson().toJson(userModel));
             startActivity(intent);
+            finish();
         }
 
     }

@@ -138,6 +138,7 @@ router.post('/updateUser', function (request, response) {
                     var idnum = checkUpdateData(req.body.idnum,result.data[0].idnum);
                     var nation = checkUpdateData(req.body.nation,result.data[0].nation);
                     var registered_residence = checkUpdateData(req.body.registered_residence,result.data[0].registered_residence);
+                    var email = checkUpdateData(req.body.email,result.data[0].email);
                     var useridentify = checkUpdateData(req.body.useridentify,result.data[0].useridentify);
                     var phone = checkUpdateData(req.body.phone,result.data[0].phone);
                     var address = checkUpdateData(req.body.address,result.data[0].address);
@@ -165,6 +166,7 @@ router.post('/updateUser', function (request, response) {
                     +"' , idnum = '"+idnum
                     +"' , nation = '"+nation
                     +"' , registered_residence = '"+registered_residence
+                    +"' , email = '"+email
                     +"' , useridentify = '"+useridentify
                     +"' , phone = '"+phone
                     +"' , address = '"+address

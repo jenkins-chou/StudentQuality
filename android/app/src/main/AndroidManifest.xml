@@ -86,7 +86,8 @@
         <activity android:name=".activity.common.CertListActivity" />
         <activity android:name=".activity.common.ActiListActivity" />
         <activity android:name=".activity.common.MoralListActivity" />
-        <activity android:name=".activity.common.SettingActivity"></activity>
+        <activity android:name=".activity.common.SettingActivity" />
+        <activity android:name=".activity.common.UserInfoModifyActivity"></activity>
     </application>
 
 </manifest>

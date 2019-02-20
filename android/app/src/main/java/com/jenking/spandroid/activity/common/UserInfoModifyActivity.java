@@ -5,40 +5,39 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.api.RS;
-import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.presenter.UserPresenter;
 import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
 
-import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class TeacherOperateActivity extends BaseActivity {
+public class UserInfoModifyActivity extends BaseActivity {
 
-    private boolean isAddData = true;
     private UserModel userModel;
 
     private String select_school_id;
     private String select_school_name;
     private String select_college_id;
     private String select_college_name;
+    private String select_class_id;
+    private String select_class_name;
 
     private UserPresenter userPresenter;
 
-    @BindView(R.id.operate_tips)
-    TextView operate_tips;
     @BindView(R.id.name)
     EditText name;
     @BindView(R.id.pass)
@@ -72,6 +71,9 @@ public class TeacherOperateActivity extends BaseActivity {
     @BindView(R.id.college_name)
     TextView college_name;
 
+    @BindView(R.id.class_bar)
+    LinearLayout class_bar;
+
     @OnClick(R.id.back)
     void back(){
         finish();
@@ -79,23 +81,17 @@ public class TeacherOperateActivity extends BaseActivity {
 
     @OnClick(R.id.college_name)
     void college_name(){
-        Intent intent = new Intent(this,CollegeListActivity.class);
-        startActivityForResult(intent,CollegeListActivity.SelectCollegeCode);
+        Intent intent = new Intent(this,ClassListActivity.class);
+        startActivityForResult(intent,ClassListActivity.SelectClassCode);
     }
 
     @OnClick(R.id.submit)
     void submit(){
         String name_str = name.getText().toString();
         String pass_str = pass.getText().toString();
-        String realname_str = realname.getText().toString();
         if (!StringUtil.isNotEmpty(name_str)
-                ||!StringUtil.isNotEmpty(pass_str)
-                ||!StringUtil.isNotEmpty(realname_str)
-                ||!StringUtil.isNotEmpty(select_college_id)
-                ||!StringUtil.isNotEmpty(select_college_name)
-                ||!StringUtil.isNotEmpty(select_school_id)
-                ||!StringUtil.isNotEmpty(select_school_name)){
-            Toast.makeText(this, "请完善信息", Toast.LENGTH_SHORT).show();
+                ||!StringUtil.isNotEmpty(pass_str)){
+            Toast.makeText(this, "登录名和密码必填", Toast.LENGTH_SHORT).show();
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
@@ -115,32 +111,41 @@ public class TeacherOperateActivity extends BaseActivity {
             params.put("address",address.getText().toString());
             params.put("health",health.getText().toString());
             params.put("entrance_time",entrance_time.getText().toString());
-            params.put("class_id","");
-            params.put("college_id",select_college_id);
-            params.put("school_id",select_school_id);
-            params.put("class_name","");
-            params.put("college_name",select_college_name);
-            params.put("school_name",select_school_name);
-            params.put("type","2");
-            if (isAddData){
-                userPresenter.addUser(params);
-            }else{
-                if (userModel!=null){
-                    params.put("id",userModel.getId());
-                    userPresenter.updateUser(params);
-                }
-
+            params.put("class_id",select_class_id+"");
+            params.put("college_id",select_college_id+"");
+            params.put("school_id",select_school_id+"");
+            params.put("class_name",select_class_name+"");
+            params.put("college_name",select_college_name+"");
+            params.put("school_name",select_school_name+"");
+            if (userModel!=null){
+                params.put("id",userModel.getId());
+                userPresenter.updateUser(params);
             }
-
-
         }
-
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_teacher_operate);
+        setContentView(R.layout.activity_user_info_modify);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ClassListActivity.SelectClassCode:
+                if (data != null) {
+                    select_school_id = data.getStringExtra("school_id");
+                    select_school_name = data.getStringExtra("school_name");
+                    select_college_id = data.getStringExtra("college_id");
+                    select_college_name = data.getStringExtra("college_name");
+                    select_class_id = data.getStringExtra("class_id");
+                    select_class_name = data.getStringExtra("class_name");
+                    college_name.setText(select_school_name +"--"+ select_college_name+"--"+select_class_name);
+                }
+                break;
+        }
     }
 
     @Override
@@ -149,9 +154,6 @@ public class TeacherOperateActivity extends BaseActivity {
         Intent intent = getIntent();
         if (intent!=null&& StringUtil.isNotEmpty(intent.getStringExtra("model"))) {
             //表明是修改
-            operate_tips.setText("当前操作：修改");
-            isAddData = false;
-
             String json = intent.getStringExtra("model");
             userModel = new Gson().fromJson(json, UserModel.class);
 
@@ -177,13 +179,15 @@ public class TeacherOperateActivity extends BaseActivity {
                 address.setText(userModel.getAddress());
                 health.setText(userModel.getHealth());
                 entrance_time.setText(userModel.getEntrance_time());
-                college_name.setText(userModel.getCollege_name());
+                college_name.setText(select_school_name +"--"+ select_college_name+"--"+select_class_name);
+
+                select_school_id = userModel.getSchool_id();
+                select_school_name = userModel.getSchool_name();
+                select_college_id = userModel.getCollege_id();
+                select_college_name = userModel.getCollege_name();
+                select_class_id = userModel.getClass_id();
+                select_class_name = userModel.getClass_name();
             }
-
-        }else{
-
-            operate_tips.setText("当前操作：新增");
-            isAddData = true;
         }
 
         userPresenter = new UserPresenter(this);
@@ -195,23 +199,13 @@ public class TeacherOperateActivity extends BaseActivity {
 
             @Override
             public void addUser(boolean isSuccess, Object object) {
-                if (isSuccess){
-                    if (object!=null){
-                        ResultModel resultModel = (ResultModel)object;
-                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
-                            Toast.makeText(TeacherOperateActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }else{
-                            Toast.makeText(TeacherOperateActivity.this, "已存在该用户名", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
             }
 
             @Override
             public void updateUser(boolean isSuccess, Object object) {
                 if (isSuccess){
-                    Toast.makeText(TeacherOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserInfoModifyActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    resaveUser();
                     finish();
                 }
             }
@@ -233,24 +227,43 @@ public class TeacherOperateActivity extends BaseActivity {
         });
     }
 
-    @Override
-    public void initView() {
-        super.initView();
+    private void resaveUser(){
+        if (userModel!=null){
+
+            userModel.setName(name.getText().toString());
+            userModel.setPass(pass.getText().toString());
+            userModel.setRealname(realname.getText().toString());
+            userModel.setSlogan(slogan.getText().toString());
+            userModel.setSex(sex.getText().toString());
+            userModel.setAge(age.getText().toString());
+            userModel.setIdnum(idnum.getText().toString());
+            userModel.setNation(nation.getText().toString());
+
+            userModel.setRegistered_residence(registered_residence.getText().toString());
+            userModel.setEmail(email.getText().toString());
+            userModel.setUseridentify(useridentify.getText().toString());
+            userModel.setPhone(phone.getText().toString());
+            userModel.setAddress(address.getText().toString());
+            userModel.setHealth(health.getText().toString());
+            userModel.setEntrance_time(entrance_time.getText().toString());
+            userModel.setClass_id(select_class_id+"");
+            userModel.setSchool_id(select_school_id+"");
+            userModel.setCollege_id(select_college_id+"");
+            userModel.setClass_name(select_class_name+"");
+            userModel.setCollege_name(select_college_name+"");
+            userModel.setSchool_name(select_school_name+"");
+
+            AccountTool.saveUser(this,userModel);
+        }
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
-            case CollegeListActivity.SelectCollegeCode:
-                if (data!=null){
-                    select_school_id = data.getStringExtra("school_id");
-                    select_school_name= data.getStringExtra("school_name");
-                    select_college_id = data.getStringExtra("college_id");
-                    select_college_name= data.getStringExtra("college_name");
-                    college_name.setText(select_school_name+select_college_name);
-                }
-                break;
+    public void initView() {
+        super.initView();
+        if (AccountTool.isLogin(this)){
+            if (!StringUtil.isEquals(AccountTool.getUserType(this),AccountTool.usertype_student)){
+                class_bar.setVisibility(View.GONE);
+            }
         }
     }
 }
