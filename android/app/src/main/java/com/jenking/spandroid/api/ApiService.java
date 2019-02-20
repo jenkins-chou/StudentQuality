@@ -20,10 +20,13 @@ public interface ApiService {
 
     //模板接口
 
-
     @FormUrlEncoded
     @POST("user/login")
     Observable<ResultModel> template(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user/addUser")
+    Observable<ResultModel> addUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("school/addSchool")

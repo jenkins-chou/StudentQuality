@@ -92,6 +92,7 @@ public class ClassOperateActivity extends BaseActivity {
                     params.put("create_time",StringUtil.getTime());
                     classPresenter.addClass(params);
                 }else{
+                    params.put("id",classModel.getId());
                     classPresenter.updateClass(params);
                 }
             }

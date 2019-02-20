@@ -150,6 +150,7 @@ public class ManagerSchoolOperateActivity extends BaseActivity {
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
                             Toast.makeText(ManagerSchoolOperateActivity.this, "新增成功", Toast.LENGTH_SHORT).show();
+                            finish();
                         }else{
                             Toast.makeText(ManagerSchoolOperateActivity.this, "不能添加重复名称的学校", Toast.LENGTH_SHORT).show();
                         }

@@ -139,25 +139,29 @@ public class ManagerClassActivity extends BaseActivity {
                 }
             }
         });
-
-        Intent intent = getIntent();
-        String school_id = intent.getStringExtra("school_id");
-        String college_id = intent.getStringExtra("college_id");
-        if (intent!=null&&StringUtil.isNotEmpty(school_id)&&StringUtil.isNotEmpty(college_id)) {
-            Map<String,String> params = RS.getBaseParams(this);
-            params.put("school_id",school_id);
-            params.put("college_id",college_id);
-            classPresenter.getClassByCollege(params);
-        }else{
-            classPresenter.getAllClass(RS.getBaseParams(this));
-        }
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        if (StringUtil.isNotEmpty(select_school_id)&&StringUtil.isNotEmpty(select_college_id)){
+            Map<String,String> params = RS.getBaseParams(this);
+            params.put("school_id",select_school_id);
+            params.put("college_id",select_college_id);
+            classPresenter.getClassByCollege(params);
+        }else{
+            Intent intent = getIntent();
+            String school_id = intent.getStringExtra("school_id");
+            String college_id = intent.getStringExtra("college_id");
+            if (intent!=null&&StringUtil.isNotEmpty(school_id)&&StringUtil.isNotEmpty(college_id)) {
+                Map<String,String> params = RS.getBaseParams(this);
+                params.put("school_id",school_id);
+                params.put("college_id",college_id);
+                classPresenter.getClassByCollege(params);
+            }else{
+                classPresenter.getAllClass(RS.getBaseParams(this));
+            }
+        }
     }
 
     @Override

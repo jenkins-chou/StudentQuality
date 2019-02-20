@@ -32,21 +32,10 @@ public class ManagerReportActivity extends BaseActivity {
     private List<String> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
 
-    @OnClick(R.id.select_school)
-    void select_school(){
-        Intent intent = new Intent(this,SchoolListActivity.class);
-        startActivity(intent);
-    }
-    @OnClick(R.id.select_college)
-    void select_college(){
-        Intent intent = new Intent(this,CollegeListActivity.class);
-        startActivity(intent);
-    }
-
     @OnClick(R.id.select_class)
     void select_class(){
         Intent intent = new Intent(this,ClassListActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,ClassListActivity.SelectClassCode);
     }
 
     @Override

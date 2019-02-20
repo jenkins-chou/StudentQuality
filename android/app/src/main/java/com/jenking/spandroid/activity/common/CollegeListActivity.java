@@ -77,14 +77,12 @@ public class CollegeListActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent();
-                if (intent!=null){
-                    intent.putExtra("college_id",datas.get(position).getId());
-                    intent.putExtra("college_name",datas.get(position).getCollege_name());
-                    intent.putExtra("school_id",datas.get(position).getSchool_id());
-                    intent.putExtra("school_name",datas.get(position).getSchool_name());
-                    setResult(SelectCollegeCode,intent);
-                    finish();
-                }
+                intent.putExtra("college_id",datas.get(position).getId());
+                intent.putExtra("college_name",datas.get(position).getCollege_name());
+                intent.putExtra("school_id",datas.get(position).getSchool_id());
+                intent.putExtra("school_name",datas.get(position).getSchool_name());
+                setResult(SelectCollegeCode,intent);
+                finish();
             }
         });
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));

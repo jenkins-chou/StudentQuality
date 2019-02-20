@@ -49,12 +49,14 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
+
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:visibility="gone">
 
         <LinearLayout
             android:id="@+id/select_school"
@@ -79,10 +81,11 @@
                 android:textColor="@color/base_font_color"
                 android:textSize="@dimen/fontsize_15" />
         </LinearLayout>
+
         <View
-            android:background="@color/base_line_color"
             android:layout_width="1px"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:background="@color/base_line_color" />
 
         <LinearLayout
             android:id="@+id/select_college"
@@ -137,7 +140,7 @@
                 android:id="@+id/class_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="选择班级"
+                android:text="选择学校-学院-班级"
                 android:textColor="@color/base_font_color"
                 android:textSize="@dimen/fontsize_15" />
         </LinearLayout>
