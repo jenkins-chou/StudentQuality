@@ -78,6 +78,7 @@ public class ManagerCollegeActivity extends BaseActivity {
             @Override
             protected void convert(BaseViewHolder helper, CollegeModel item) {
                 helper.setText(R.id.college_name,item.getCollege_name());
+                helper.setText(R.id.school_name,item.getSchool_name());
             }
         };
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {

@@ -113,11 +113,11 @@ public class CollegeOperateActivity extends BaseActivity {
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
                             Toast.makeText(CollegeOperateActivity.this, "新增成功", Toast.LENGTH_SHORT).show();
+                            finish();
                         }else{
                             Toast.makeText(CollegeOperateActivity.this, "不能添加重复名称的学院", Toast.LENGTH_SHORT).show();
                         }
                     }
-
                 }
             }
 

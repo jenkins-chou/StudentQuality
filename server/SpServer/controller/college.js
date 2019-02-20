@@ -17,6 +17,14 @@ router.post('/getAllCollege', function (req, res) {
     })
 });
 
+//根据学校id获取学院
+router.post('/getCollegeBySchool', function (req, res) {
+    var sql = "select * from "+tableName+" where school_id = "+req.body.school_id+" and "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
 
 //添加
 router.post('/addCollege', function (req, res) {
