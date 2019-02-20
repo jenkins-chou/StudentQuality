@@ -18,6 +18,8 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.LoginActivity;
 import com.jenking.spandroid.activity.common.SettingActivity;
 import com.jenking.spandroid.activity.common.UserInfoActivity;
+import com.jenking.spandroid.activity.common.UserInfoAvatarActivity;
+import com.jenking.spandroid.api.BaseAPI;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.tools.AccountTool;
 
@@ -35,6 +37,14 @@ public class MainFragment3 extends Fragment {
     ImageView avatar;
     @BindView(R.id.username)
     TextView username;
+
+    @OnClick(R.id.avatar)
+    void modifyAvatar(){
+        if (AccountTool.isLogin(getContext())) {
+            Intent intent = new Intent(getContext(), UserInfoAvatarActivity.class);
+            startActivity(intent);
+        }
+    }
     @OnClick({R.id.user_header})
     void user_header(){
         if (!AccountTool.isLogin(getContext())) {
@@ -79,7 +89,7 @@ public class MainFragment3 extends Fragment {
                 requestOptions.circleCrop();
                 requestOptions.error(R.mipmap.avatar_default);
                 requestOptions.placeholder(R.mipmap.avatar_default);
-                Glide.with(getContext()).load(userModel.getAvatar()).apply(requestOptions).into(avatar);
+                Glide.with(getContext()).load(BaseAPI.base_url+userModel.getAvatar()).apply(requestOptions).into(avatar);
             }
         }else{
             username.setText("请登录");
