@@ -3,6 +3,7 @@ package com.jenking.spandroid.activity.common;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.presenter.UserPresenter;
 import com.jenking.spandroid.tools.StringUtil;
+import com.jenking.spandroid.ui.CommonLoading;
 
 import java.util.Map;
 
@@ -28,6 +30,9 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.confirm_pass)
     TextView confirm_pass;
 
+    @BindView(R.id.loading)
+    CommonLoading loading;
+
     @OnClick(R.id.goto_register)
     void goto_register(){
         String username_str = username.getText().toString();
@@ -40,9 +45,10 @@ public class RegisterActivity extends BaseActivity {
             return;
         }else{
             Map<String,String> params = RS.getBaseParams(this);
-            params.put("username",username_str);
-            params.put("username",username_str);
-
+            params.put("name",username_str);
+            params.put("pass",password_str);
+            userPresenter.addUser(params);
+            setLoadingEnable(true);
         }
     }
 
@@ -58,6 +64,15 @@ public class RegisterActivity extends BaseActivity {
         setContentView(R.layout.activity_register);
     }
 
+    void setLoadingEnable(boolean enable){
+        if (loading==null)return;
+        if (enable){
+            loading.setVisibility(View.VISIBLE);
+        }else{
+            loading.setVisibility(View.GONE);
+        }
+    }
+
     @Override
     public void initData() {
         super.initData();
@@ -66,6 +81,7 @@ public class RegisterActivity extends BaseActivity {
 
             @Override
             public void addUser(boolean isSuccess, Object object) {
+                setLoadingEnable(false);
                 if (isSuccess){
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;

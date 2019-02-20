@@ -21,8 +21,11 @@ public class UserModel {
     public String create_time;
     public String entrance_time;
     public String class_id;
-    public String college;
-    public String school;
+    public String class_name;
+    public String college_id;
+    public String college_name;
+    public String school_id;
+    public String school_name;
     public String remark;
     public String del;
 
@@ -186,20 +189,44 @@ public class UserModel {
         this.class_id = class_id;
     }
 
-    public String getCollege() {
-        return college;
+    public String getClass_name() {
+        return class_name;
     }
 
-    public void setCollege(String college) {
-        this.college = college;
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
     }
 
-    public String getSchool() {
-        return school;
+    public String getCollege_id() {
+        return college_id;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setCollege_id(String college_id) {
+        this.college_id = college_id;
+    }
+
+    public String getCollege_name() {
+        return college_name;
+    }
+
+    public void setCollege_name(String college_name) {
+        this.college_name = college_name;
+    }
+
+    public String getSchool_id() {
+        return school_id;
+    }
+
+    public void setSchool_id(String school_id) {
+        this.school_id = school_id;
+    }
+
+    public String getSchool_name() {
+        return school_name;
+    }
+
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
     }
 
     public String getRemark() {
@@ -241,8 +268,11 @@ public class UserModel {
                 ", create_time='" + create_time + '\'' +
                 ", entrance_time='" + entrance_time + '\'' +
                 ", class_id='" + class_id + '\'' +
-                ", college='" + college + '\'' +
-                ", school='" + school + '\'' +
+                ", class_name='" + class_name + '\'' +
+                ", college_id='" + college_id + '\'' +
+                ", college_name='" + college_name + '\'' +
+                ", school_id='" + school_id + '\'' +
+                ", school_name='" + school_name + '\'' +
                 ", remark='" + remark + '\'' +
                 ", del='" + del + '\'' +
                 '}';

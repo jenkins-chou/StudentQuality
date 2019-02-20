@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     android:background="@color/white"
     tools:context=".activity.student.MineActivityActivity">
     <RelativeLayout
+        android:id="@+id/header"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:background="@mipmap/fragment_main_part1_header_bg"
@@ -52,6 +53,7 @@
             android:layout_height="1px"/>
     </RelativeLayout>
     <LinearLayout
+        android:layout_below="@+id/header"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -121,6 +123,7 @@
 
                 <EditText
                     android:id="@+id/pass"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/common_noline_edittext"
@@ -155,6 +158,7 @@
 
                 <EditText
                     android:id="@+id/confirm_pass"
+                    android:inputType="textPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/common_noline_edittext"
@@ -188,4 +192,11 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <com.jenking.spandroid.ui.CommonLoading
+        android:id="@+id/loading"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:layout_width="100dp"
+        android:layout_height="120dp" />
+</RelativeLayout>
