@@ -95,6 +95,8 @@ public class LoginActivity extends BaseActivity {
                                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 AccountTool.saveUser(LoginActivity.this,userModel);
                                 finish();
+                            }else{
+                                Toast.makeText(LoginActivity.this, "账号不存在", Toast.LENGTH_SHORT).show();
                             }
                         }else{
                             Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
