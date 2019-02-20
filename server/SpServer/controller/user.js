@@ -38,10 +38,33 @@ router.post('/login',function (req, res) {
 
 //添加
 router.post('/addUser', function (req, res) {
-    var sql = "insert into "+tableName+"(name,pass,del) value (?,?,?)";
+    var sql = "insert into "+tableName+"(name,pass,realname,avatar,slogan,sex,age,idnum,nation,registered_residence,email,useridentify,phone,address,health,type,create_time,entrance_time,class_id,class_name,college_id,college_name,school_id,school_name,remark,del) value (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     var sqlparams = [
         req.body.name,
         req.body.pass,
+        req.body.realname,
+        req.body.avatar,
+        req.body.slogan,
+        req.body.sex,
+        req.body.age,
+        req.body.idnum,
+        req.body.nation,
+        req.body.registered_residence,
+        req.body.email,
+        req.body.useridentify,
+        req.body.phone,
+        req.body.address,
+        req.body.health,
+        req.body.type,
+        req.body.create_time,
+        req.body.entrance_time,
+        req.body.class_id,
+        req.body.class_name,
+        req.body.college_id,
+        req.body.college_name,
+        req.body.school_id,
+        req.body.school_name,
+        req.body.remark,
         'normal' //user_del 状态
     ]
     var sqlQuery = "select * from "+tableName+" where name = '" + req.body.name+"'  and del != 'delete'";//用于查询是否存在同名的

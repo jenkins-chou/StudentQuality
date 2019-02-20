@@ -32,6 +32,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/login_name"
+            android:text=""
+            android:textColor="@color/white"
+            android:layout_marginLeft="2dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/header_title_textsize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"
@@ -46,44 +57,60 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:id="@+id/login_tips"
+                android:text="请登录后查看"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/main_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <LinearLayout
                 android:id="@+id/student_bar"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
                             android:layout_width="6dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag" />
+
                         <TextView
-                            android:text="分类"
-                            android:textSize="@dimen/fontsize_15"
-                            android:textColor="@color/base_font_color"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="分类"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/mine_match"
@@ -107,10 +134,11 @@
                             android:textColor="@color/base_font_color"
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
+
                     <View
-                        android:background="@color/base_line_color"
                         android:layout_width="1px"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:background="@color/base_line_color" />
 
                     <LinearLayout
                         android:id="@+id/mine_cert"
@@ -135,14 +163,16 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/mine_activity"
@@ -158,6 +188,7 @@
                             android:layout_height="20dp"
                             android:layout_margin="20dp"
                             android:src="@mipmap/fragment_main_part1_activity" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -165,10 +196,11 @@
                             android:textColor="@color/base_font_color"
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
+
                     <View
-                        android:background="@color/base_line_color"
                         android:layout_width="1px"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:background="@color/base_line_color" />
 
                     <LinearLayout
                         android:id="@+id/mine_moral"
@@ -195,27 +227,30 @@
                 </LinearLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
                             android:layout_width="6dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag" />
+
                         <TextView
-                            android:text="综合素质"
-                            android:textSize="@dimen/fontsize_15"
-                            android:textColor="@color/base_font_color"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="综合素质"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
 
                     <TextView
@@ -229,58 +264,68 @@
                         android:textColor="@color/main_color"
                         android:textSize="12sp" />
                 </RelativeLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/mine_report"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_report"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_report" />
+
                         <TextView
-                            android:text="点击查看我的综合素质报告"
-                            android:textSize="@dimen/fontsize_15"
-                            android:textColor="@color/base_font_color"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:text="点击查看我的综合素质报告"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/manager_bar"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
                             android:layout_width="6dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -290,15 +335,17 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/manager_match"
@@ -322,10 +369,11 @@
                             android:textColor="@color/base_font_color"
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
+
                     <View
-                        android:background="@color/base_line_color"
                         android:layout_width="1px"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:background="@color/base_line_color" />
 
                     <LinearLayout
                         android:id="@+id/manager_cert"
@@ -350,14 +398,16 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/manager_activity"
@@ -381,10 +431,11 @@
                             android:textColor="@color/base_font_color"
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
+
                     <View
-                        android:background="@color/base_line_color"
                         android:layout_width="1px"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:background="@color/base_line_color" />
 
                     <LinearLayout
                         android:id="@+id/manager_moral"
@@ -409,22 +460,25 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
                             android:layout_width="6dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -445,28 +499,32 @@
                         android:textColor="@color/main_color"
                         android:textSize="12sp" />
                 </RelativeLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/manager_report"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_report"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_report" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -478,25 +536,28 @@
                 </LinearLayout>
 
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white">
+
                     <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
                             android:layout_width="6dp"
-                            android:layout_height="20dp" />
+                            android:layout_height="20dp"
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -506,28 +567,32 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/manager_teacher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_teacher"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_teacher" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -537,28 +602,32 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/manager_school"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_school"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_school" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -568,28 +637,32 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/manager_college"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_collage"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_collage" />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -599,28 +672,32 @@
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
                 </LinearLayout>
+
                 <View
-                    android:background="@color/base_line_color"
                     android:layout_width="match_parent"
-                    android:layout_height="1px"/>
+                    android:layout_height="1px"
+                    android:background="@color/base_line_color" />
+
                 <LinearLayout
-                    android:background="@color/white"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:id="@+id/manager_class"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:background="@drawable/common_button_selected"
                         android:gravity="left|center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:orientation="horizontal">
+
                         <ImageView
-                            android:layout_margin="15dp"
-                            android:src="@mipmap/fragment_main_part1_class"
                             android:layout_width="30dp"
-                            android:layout_height="30dp" />
+                            android:layout_height="30dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/fragment_main_part1_class" />
 
                         <TextView
                             android:layout_width="wrap_content"

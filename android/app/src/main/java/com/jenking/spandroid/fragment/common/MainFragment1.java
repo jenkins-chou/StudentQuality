@@ -8,9 +8,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.ComprehensiveReportIsWhatActivity;
+import com.jenking.spandroid.activity.common.LoginActivity;
 import com.jenking.spandroid.activity.manager.ManagerActiActivity;
 import com.jenking.spandroid.activity.manager.ManagerCertActivity;
 import com.jenking.spandroid.activity.manager.ManagerClassActivity;
@@ -25,7 +28,10 @@ import com.jenking.spandroid.activity.student.MineCertActivity;
 import com.jenking.spandroid.activity.student.MineMatchActivity;
 import com.jenking.spandroid.activity.student.MineMoralActivity;
 import com.jenking.spandroid.activity.student.MineReportActivity;
+import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.tools.AccountTool;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -34,6 +40,22 @@ public class MainFragment1 extends Fragment {
 
     private Unbinder unbinder;
 
+    @BindView(R.id.login_tips)
+    TextView login_tips;
+    @BindView(R.id.login_name)
+    TextView login_name;
+    @BindView(R.id.student_bar)
+    LinearLayout student_bar;
+    @BindView(R.id.manager_bar)
+    LinearLayout manager_bar;
+
+    @OnClick(R.id.login_name)
+    void login_name(){
+        if (!AccountTool.isLogin(getContext())){
+            Intent intent = new Intent(getContext(),LoginActivity.class);
+            startActivity(intent);
+        }
+    }
     //-------------------------------------学生区域
     @OnClick(R.id.mine_match)
     void mine_match(){
@@ -125,5 +147,38 @@ public class MainFragment1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_part1,container,false);
         unbinder = ButterKnife.bind(this,view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (AccountTool.isLogin(getContext())){
+            student_bar.setVisibility(View.GONE);
+            manager_bar.setVisibility(View.GONE);
+            String username = "";
+            UserModel userModel = AccountTool.getLoginUser(getContext());
+            if (userModel!=null){
+                username = AccountTool.getLoginUser(getContext()).getName();
+                if (userModel.getType()!=null){
+                    switch (userModel.getType()){
+                        case AccountTool.usertype_student:
+                            student_bar.setVisibility(View.VISIBLE);
+                            login_name.setText("欢迎"+username+"同学");
+                            break;
+                        case AccountTool.usertype_teacher:
+                            login_name.setText("欢迎"+username+"教师");
+                            break;
+                        case AccountTool.usertype_manager:
+                            manager_bar.setVisibility(View.VISIBLE);
+                            login_name.setText("欢迎"+username+"管理员");
+                            break;
+                    }
+                }
+            }
+        }else{
+            login_name.setText("请登录");
+            student_bar.setVisibility(View.GONE);
+            manager_bar.setVisibility(View.GONE);
+        }
     }
 }

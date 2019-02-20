@@ -17,6 +17,7 @@ import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
 import com.jenking.spandroid.ui.CommonLoading;
 
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -49,6 +50,7 @@ public class RegisterActivity extends BaseActivity {
             Map<String,String> params = RS.getBaseParams(this);
             params.put("name",username_str);
             params.put("pass",password_str);
+            params.put("type","1");
             userPresenter.addUser(params);
             setLoadingEnable(true);
         }
@@ -94,7 +96,8 @@ public class RegisterActivity extends BaseActivity {
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
                             if (resultModel.getData()!=null&&resultModel.getData().size()>0){
-                                UserModel userModel = (UserModel) resultModel.getData().get(0);
+                                List<UserModel> userModels = resultModel.getData();
+                                UserModel userModel = userModels.get(0);
                                 Toast.makeText(RegisterActivity.this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
                                 AccountTool.saveUser(RegisterActivity.this,userModel);
                                 finish();

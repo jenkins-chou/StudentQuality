@@ -17,6 +17,7 @@ import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
 import com.jenking.spandroid.ui.CommonLoading;
 
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -91,12 +92,13 @@ public class LoginActivity extends BaseActivity {
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
                             if (resultModel.getData()!=null&&resultModel.getData().size()>0){
-                                UserModel userModel = (UserModel) resultModel.getData().get(0);
+                                List<UserModel> userModels = resultModel.getData();
+                                UserModel userModel = userModels.get(0);
                                 Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                 AccountTool.saveUser(LoginActivity.this,userModel);
                                 finish();
                             }else{
-                                Toast.makeText(LoginActivity.this, "账号不存在", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "账号不存在或登录信息有误", Toast.LENGTH_SHORT).show();
                             }
                         }else{
                             Toast.makeText(LoginActivity.this, "登录失败", Toast.LENGTH_SHORT).show();

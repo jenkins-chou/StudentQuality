@@ -24,7 +24,6 @@ import butterknife.OnClick;
 
 public class ClassOperateActivity extends BaseActivity {
 
-    private Object object;
     private boolean isAddData = true;
     private ClassModel classModel;
 
