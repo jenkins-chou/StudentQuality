@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50723
 File Encoding         : 65001
 
-Date: 2019-02-20 08:59:22
+Date: 2019-02-20 09:22:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,9 +20,10 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `college`;
 CREATE TABLE `college` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `college_name` varchar(255) DEFAULT NULL,
   `school_id` varchar(255) DEFAULT NULL,
+  `school_name` varchar(255) DEFAULT NULL,
   `create_time` varchar(255) DEFAULT NULL,
   `remark` varchar(255) DEFAULT NULL,
   `del` varchar(255) DEFAULT NULL,

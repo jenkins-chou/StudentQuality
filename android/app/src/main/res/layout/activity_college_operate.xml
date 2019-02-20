@@ -78,12 +78,14 @@
                     android:text="基本信息"
                     android:textColor="@color/base_font_color"
                     android:textSize="@dimen/fontsize_15" />
+
                 <TextView
+                    android:id="@+id/operate_tips"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="当前操作：修改"
                     android:layout_marginLeft="10dp"
                     android:alpha="0.5"
+                    android:text="当前操作：修改"
                     android:textColor="@color/colorAccent"
                     android:textSize="@dimen/fontsize_12" />
             </LinearLayout>
@@ -105,11 +107,39 @@
                 android:textColor="@color/base_font_color" />
 
             <EditText
+                android:id="@+id/college_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/common_noline_edittext"
-                android:hint="请输入学校名称"
+                android:hint="请输入学院名称"
+                android:text=""
+                android:textColor="@color/base_font_color2"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="所属学校"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/school_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请选择学校"
                 android:text=""
                 android:textColor="@color/base_font_color2" />
 
@@ -120,11 +150,13 @@
             android:layout_height="1px"/>
 
     </LinearLayout>
+
     <Button
-        android:text="提交"
-        android:textColor="@color/white"
-        android:background="@drawable/activity_login_signin_button"
-        android:layout_margin="15dp"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/activity_login_signin_button"
+        android:text="提交"
+        android:textColor="@color/white" />
 </LinearLayout>

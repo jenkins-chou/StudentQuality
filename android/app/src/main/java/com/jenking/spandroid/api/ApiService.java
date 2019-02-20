@@ -17,6 +17,8 @@ import retrofit2.http.POST;
 public interface ApiService {
 
     //模板接口
+
+
     @FormUrlEncoded
     @POST("user/login")
     Observable<ResultModel> template(@FieldMap Map<String, String> body);
@@ -36,5 +38,9 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("school/getAllSchool")
     Observable<ResultModel<SchoolModel>> getAllSchool(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("college/addCollege")
+    Observable<ResultModel> addCollege(@FieldMap Map<String, String> body);
 
 }
