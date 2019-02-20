@@ -97,12 +97,12 @@ router.post('/updateCollege', function (request, response) {
         }
     })
 });
-router.post('/deleteuser', function (req, res) {
-    var user_id = req.body.user_id;
-    if (user_id==null) {
-        return res.jsonp("user_id is null! please check!");
+router.post('/deleteCollege', function (req, res) {
+    var id = req.body.id;
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
     }else{
-        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+user_id;
+        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+id;
         connectDB.delete(sql,function(result){
             console.log(result);
             return res.jsonp(result);

@@ -128,7 +128,10 @@ public class CollegeOperateActivity extends BaseActivity {
 
             @Override
             public void updateCollege(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    Toast.makeText(CollegeOperateActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
 
             @Override

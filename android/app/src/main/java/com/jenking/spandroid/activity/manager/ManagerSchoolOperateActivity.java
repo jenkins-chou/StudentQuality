@@ -162,6 +162,7 @@ public class ManagerSchoolOperateActivity extends BaseActivity {
             public void updateSchool(boolean isSuccess, Object object) {
                 if (isSuccess){
                     Toast.makeText(ManagerSchoolOperateActivity.this, "更新成功", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
 

@@ -122,7 +122,14 @@ public class ManagerCollegeActivity extends BaseActivity {
             }
         });
 //        collegePresenter.
-        collegePresenter.getAllCollege(RS.getBaseParams(this));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (collegePresenter!=null){
+            collegePresenter.getAllCollege(RS.getBaseParams(this));
+        }
     }
 
     @Override
