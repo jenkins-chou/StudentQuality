@@ -63,13 +63,13 @@ public class ClassOperateActivity extends BaseActivity {
         String class_detail_str = class_detail.getText().toString();
         String class_headmaster_str = class_headmaster.getText().toString();
         if (!StringUtil.isNotEmpty(class_name_str)
-            &&!StringUtil.isNotEmpty(class_abstract_str)
-            &&!StringUtil.isNotEmpty(class_detail_str)
-            &&!StringUtil.isNotEmpty(class_headmaster_str)
-                &&!StringUtil.isNotEmpty(select_college_id)
-                &&!StringUtil.isNotEmpty(select_college_name)
-                &&!StringUtil.isNotEmpty(select_school_id)
-                &&!StringUtil.isNotEmpty(select_school_name)){
+            ||!StringUtil.isNotEmpty(class_abstract_str)
+            ||!StringUtil.isNotEmpty(class_detail_str)
+            ||!StringUtil.isNotEmpty(class_headmaster_str)
+                ||!StringUtil.isNotEmpty(select_college_id)
+                ||!StringUtil.isNotEmpty(select_college_name)
+                ||!StringUtil.isNotEmpty(select_school_id)
+                ||!StringUtil.isNotEmpty(select_school_name)){
             Toast.makeText(this, "请完善信息", Toast.LENGTH_SHORT).show();
             return;
         }else{
