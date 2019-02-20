@@ -30,13 +30,13 @@ router.post('/getAllUser',function (req, res) {
 
 //添加
 router.post('/addUser', function (req, res) {
-    var sql = "insert into "+tableName+"(user_name,user_pass,del) value (?,?,?)";
+    var sql = "insert into "+tableName+"(name,pass,del) value (?,?,?)";
     var sqlparams = [
-        req.body.user_name,
-        req.body.user_pass,
+        req.body.name,
+        req.body.pass,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'  and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where name = '" + req.body.name+"'  and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
@@ -52,7 +52,7 @@ router.post('/addUser', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'";
+                    var sqlQueryAgain = "select * from "+tableName+" where name = '" + req.body.name+"'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
@@ -78,10 +78,10 @@ router.post('/updateuser', function (request, response) {
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var user_name = checkUpdateData(req.body.user_name,result.data[0].user_name);
-                    var user_pass = checkUpdateData(req.body.user_pass,result.data[0].user_pass);
-                    var sql  =  "update "+tableName+" set user_name = '"+user_name
-                    +"' , user_pass = '"+user_pass
+                    var name = checkUpdateData(req.body.name,result.data[0].name);
+                    var pass = checkUpdateData(req.body.pass,result.data[0].pass);
+                    var sql  =  "update "+tableName+" set name = '"+name
+                    +"' , pass = '"+pass
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);

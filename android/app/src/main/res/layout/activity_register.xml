@@ -84,14 +84,16 @@
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
                 <EditText
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:hint="请输入账号"
-                    android:textColorHint="#cccccc"
-                    android:background="@drawable/common_noline_edittext"
+                    android:id="@+id/username"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_noline_edittext"
+                    android:hint="请输入账号"
+                    android:padding="5dp"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
             </LinearLayout>
             <View
                 android:layout_marginTop="10dp"
@@ -116,14 +118,16 @@
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
                 <EditText
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:hint="请输入密码"
-                    android:textColorHint="#cccccc"
-                    android:background="@drawable/common_noline_edittext"
+                    android:id="@+id/pass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_noline_edittext"
+                    android:hint="请输入密码"
+                    android:padding="5dp"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
             </LinearLayout>
             <View
                 android:layout_marginTop="10dp"
@@ -148,14 +152,16 @@
                     android:layout_marginRight="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
+
                 <EditText
-                    android:padding="5dp"
-                    android:textSize="15sp"
-                    android:hint="请确认密码"
-                    android:textColorHint="#cccccc"
-                    android:background="@drawable/common_noline_edittext"
+                    android:id="@+id/confirm_pass"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/common_noline_edittext"
+                    android:hint="请确认密码"
+                    android:padding="5dp"
+                    android:textColorHint="#cccccc"
+                    android:textSize="15sp" />
             </LinearLayout>
 
             <Button
