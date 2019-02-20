@@ -50,108 +50,469 @@
             android:layout_height="1px"/>
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@color/white"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
             android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <View
-                    android:layout_margin="15dp"
-                    android:background="@drawable/fragment_main_part2_roundcircle_tag"
-                    android:layout_width="6dp"
-                    android:layout_height="20dp" />
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_margin="15dp"
+                        android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="基本信息"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="基本信息"
-                    android:textColor="@color/base_font_color"
-                    android:textSize="@dimen/fontsize_15" />
+                    android:text="登录名称"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/base_font_color2"
+                    android:textColorHint="@color/red" />
+
             </LinearLayout>
-        </RelativeLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="教师名称"
-                android:textColor="@color/base_font_color" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="登录密码"
+                    android:textColor="@color/base_font_color" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="张某"
-                android:textColor="@color/base_font_color2" />
+                <TextView
+                    android:id="@+id/pass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/base_font_color2"
+                    android:textColorHint="@color/red" />
 
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="真实姓名"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/realname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textColor="@color/base_font_color2"
+                    android:textColorHint="@color/red" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教师标签"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/slogan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教师性别"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教师年龄"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="身份证号"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/idnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="民族"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/nation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="户籍"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/registered_residence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邮箱"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教师编号"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/useridentify"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="手机号码"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="常住地址"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="教师生日"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/health"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="聘用时间"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/entrance_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:hint=""
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="学校学院"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:id="@+id/college_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textColorHint="@color/red"
+                    android:text=""
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <LinearLayout
+                android:id="@+id/manager_bar"
+                android:orientation="horizontal"
+                android:gravity="right"
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/modify_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="修改"
+                    android:textColor="@color/main_color" />
+
+                <TextView
+                    android:id="@+id/delete_teacher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="删除"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
         </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    </ScrollView>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="所属学院"
-                android:textColor="@color/base_font_color" />
-            <TextView
-                android:text="2019年"
-                android:layout_marginLeft="10dp"
-                android:textColor="@color/base_font_color2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-
-        <LinearLayout
-            android:id="@+id/manager_bar"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/modify_teacher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:text="修改"
-                android:textColor="@color/main_color" />
-
-            <TextView
-                android:id="@+id/delete_teacher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="删除"
-                android:textColor="@color/colorAccent" />
-        </LinearLayout>
-    </LinearLayout>
 </LinearLayout>

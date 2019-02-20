@@ -111,6 +111,16 @@ public class LoginActivity extends BaseActivity {
             public void addUser(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void getTeachers(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getTeachersByCollege(boolean isSuccess, Object object) {
+
+            }
         });
     }
 }

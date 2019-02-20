@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +36,6 @@ public class TeacherOperateActivity extends BaseActivity {
     private String select_college_name;
 
     private UserPresenter userPresenter;
-
 
     @BindView(R.id.operate_tips)
     TextView operate_tips;
@@ -121,7 +121,7 @@ public class TeacherOperateActivity extends BaseActivity {
             params.put("class_name","");
             params.put("college_name",select_college_name);
             params.put("school_name",select_school_name);
-            params.put("type","1");
+            params.put("type","2");
             userPresenter.addUser(params);
         }
 
@@ -144,6 +144,27 @@ public class TeacherOperateActivity extends BaseActivity {
 
             String json = intent.getStringExtra("model");
             userModel = new Gson().fromJson(json, UserModel.class);
+
+            if (userModel!=null){
+                Log.e("usermodel",userModel.toString());
+
+                name.setText(userModel.getName());
+                pass.setText(userModel.getPass());
+                realname.setText(userModel.getRealname());
+                slogan.setText(userModel.getSlogan());
+                sex.setText(userModel.getSex());
+                age.setText(userModel.getAge());
+                idnum.setText(userModel.getIdnum());
+                nation.setText(userModel.getNation());
+                registered_residence.setText(userModel.getRegistered_residence());
+                email.setText(userModel.getEmail());
+                useridentify.setText(userModel.getUseridentify());
+                phone.setText(userModel.getPhone());
+                address.setText(userModel.getAddress());
+                health.setText(userModel.getHealth());
+                entrance_time.setText(userModel.getEntrance_time());
+                college_name.setText(userModel.getCollege_name());
+            }
 
         }else{
             operate_tips.setText("当前操作：新增");
@@ -170,6 +191,16 @@ public class TeacherOperateActivity extends BaseActivity {
                         }
                     }
                 }
+            }
+
+            @Override
+            public void getTeachers(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getTeachersByCollege(boolean isSuccess, Object object) {
+
             }
         });
     }

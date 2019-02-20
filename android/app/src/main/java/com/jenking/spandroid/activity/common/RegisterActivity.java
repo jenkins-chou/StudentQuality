@@ -109,6 +109,16 @@ public class RegisterActivity extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getTeachers(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getTeachersByCollege(boolean isSuccess, Object object) {
+
+            }
         });
     }
 }

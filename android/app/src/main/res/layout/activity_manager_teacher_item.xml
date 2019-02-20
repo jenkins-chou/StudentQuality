@@ -7,19 +7,23 @@
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_margin="15dp"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:text="江映"
+            android:id="@+id/realname"
+            android:text=""
             android:textColor="@color/base_font_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:text="政治系"
+            android:id="@+id/college_name"
+            android:text=""
             android:textSize="10sp"
             android:alpha="0.5"
-            android:layout_marginLeft="5dp"
+            android:layout_marginTop="2dp"
             android:textColor="@color/white"
+            android:maxLength="13"
             android:background="@color/main_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
