@@ -46,7 +46,7 @@ router.post('/adduser', function (req, res) {
         req.body.user_remark,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'  and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){

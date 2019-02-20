@@ -111,6 +111,44 @@ public class CollegePresenter {
                 });
     }
 
+    //根据学校查询学院
+    public void getCollegeBySchool(Map<String,String> params){
+        if (params==null)return;
+        Log.e("开始请求","p-->"+params.toString());
+        new ApiUtil(context)
+                .getServer(ApiService.class)
+                //记得更改请求接口数据
+                .getCollegeBySchool(params)
+                .subscribeOn(Schedulers.io())//后台处理线程
+                .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
+                .subscribe(new Observer<ResultModel>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        System.out.print(d);
+                    }
+
+                    @Override
+                    public void onNext(ResultModel resultModel) {
+                        //更新视图
+                        if (onCallBack!=null){
+                            onCallBack.getCollegeBySchool(true,resultModel);
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                        System.out.print("----error");
+                        e.printStackTrace();
+                        if (onCallBack!=null){
+                            onCallBack.getCollegeBySchool(false,e);
+                        }
+                        //view.failed(e);
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
+
     //带参基本请求方法
     public void updateCollege(Map<String,String> params){
         if (params==null)return;
@@ -191,6 +229,7 @@ public class CollegePresenter {
     public interface OnCallBack{
         void addCollege(boolean isSuccess, Object object);
         void getAllCollege(boolean isSuccess, Object object);
+        void getCollegeBySchool(boolean isSuccess, Object object);
         void updateCollege(boolean isSuccess, Object object);
         void deleteCollege(boolean isSuccess, Object object);
     }

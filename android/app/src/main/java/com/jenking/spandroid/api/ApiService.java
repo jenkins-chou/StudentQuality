@@ -56,4 +56,8 @@ public interface ApiService {
     @POST("college/getAllCollege")
     Observable<ResultModel<CollegeModel>> getAllCollege(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("college/getCollegeBySchool")
+    Observable<ResultModel<CollegeModel>> getCollegeBySchool(@FieldMap Map<String, String> body);
+
 }

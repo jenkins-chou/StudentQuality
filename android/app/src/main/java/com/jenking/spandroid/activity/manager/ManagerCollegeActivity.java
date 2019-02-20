@@ -28,6 +28,7 @@ import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -113,6 +114,17 @@ public class ManagerCollegeActivity extends BaseActivity {
             }
 
             @Override
+            public void getCollegeBySchool(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
+            }
+
+            @Override
             public void updateCollege(boolean isSuccess, Object object) {
 
             }
@@ -129,7 +141,14 @@ public class ManagerCollegeActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (collegePresenter!=null){
-            collegePresenter.getAllCollege(RS.getBaseParams(this));
+            if (StringUtil.isNotEmpty(select_school_id)){
+                Map<String,String> params = RS.getBaseParams(this);
+                params.put("school_id",select_school_id);
+                collegePresenter.getCollegeBySchool(params);
+            }else{
+                collegePresenter.getAllCollege(RS.getBaseParams(this));
+            }
+
         }
     }
 
@@ -144,6 +163,12 @@ public class ManagerCollegeActivity extends BaseActivity {
                     select_school_id = data.getStringExtra("school_id");
                     select_school_name= data.getStringExtra("school_name");
                     school_name.setText(select_school_name);
+
+                    if (collegePresenter!=null){
+                        Map<String,String> params = RS.getBaseParams(this);
+                        params.put("school_id",select_school_id);
+                        collegePresenter.getCollegeBySchool(params);
+                    }
                 }
                 break;
         }

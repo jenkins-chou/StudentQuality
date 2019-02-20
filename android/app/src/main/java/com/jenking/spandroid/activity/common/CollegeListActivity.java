@@ -1,11 +1,14 @@
 package com.jenking.spandroid.activity.common;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
@@ -19,6 +22,7 @@ import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -34,6 +38,11 @@ public class CollegeListActivity extends BaseActivity {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.school_name)
+    TextView school_name;
+
+    private String select_school_id;
+    private String select_school_name;
 
     private List<CollegeModel> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
@@ -42,7 +51,7 @@ public class CollegeListActivity extends BaseActivity {
     @OnClick(R.id.select_school)
     void select_school(){
         Intent intent = new Intent(this,SchoolListActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,SchoolListActivity.SelectSchoolCode);
     }
 
     @Override
@@ -98,6 +107,11 @@ public class CollegeListActivity extends BaseActivity {
             }
 
             @Override
+            public void getCollegeBySchool(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void updateCollege(boolean isSuccess, Object object) {
 
             }
@@ -108,5 +122,27 @@ public class CollegeListActivity extends BaseActivity {
             }
         });
         collegePresenter.getAllCollege(RS.getBaseParams(this));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e("requestCode",requestCode+"");
+        Log.e("resultCode",resultCode+"");
+        switch (requestCode){
+            case SchoolListActivity.SelectSchoolCode:
+                if (data!=null){
+                    select_school_id = data.getStringExtra("school_id");
+                    select_school_name= data.getStringExtra("school_name");
+                    school_name.setText(select_school_name);
+
+                    if (collegePresenter!=null){
+                        Map<String,String> params = RS.getBaseParams(this);
+                        params.put("school_id",select_school_id);
+                        collegePresenter.getCollegeBySchool(params);
+                    }
+                }
+                break;
+        }
     }
 }

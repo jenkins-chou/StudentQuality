@@ -99,6 +99,11 @@ public class CollegeDetailActivity extends BaseActivity {
             }
 
             @Override
+            public void getCollegeBySchool(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void updateCollege(boolean isSuccess, Object object) {
 
             }
