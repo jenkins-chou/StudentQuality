@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
+import com.jenking.spandroid.activity.manager.ManagerSchoolOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.CollegeModel;
+import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
 import com.jenking.spandroid.presenter.CollegePresenter;
 import com.jenking.spandroid.tools.StringUtil;
@@ -64,6 +66,7 @@ public class CollegeOperateActivity extends BaseActivity {
             params.put("college_name",college_name_str);
             params.put("school_id",select_school_id);
             params.put("school_name",select_school_name);
+            params.put("create_time",StringUtil.getTime());
             if (isAddData){
                 collegePresenter.addCollege(params);
             }else{
@@ -101,7 +104,18 @@ public class CollegeOperateActivity extends BaseActivity {
         collegePresenter.setOnCallBack(new CollegePresenter.OnCallBack() {
             @Override
             public void addCollege(boolean isSuccess, Object object) {
+                Log.e("addSchool",""+isSuccess);
+                if (isSuccess){
+                    if (object!=null){
+                        ResultModel resultModel = (ResultModel)object;
+                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
+                            Toast.makeText(CollegeOperateActivity.this, "新增成功", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(CollegeOperateActivity.this, "不能添加重复名称的学院", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
+                }
             }
 
             @Override

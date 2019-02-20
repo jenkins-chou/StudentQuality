@@ -19,6 +19,10 @@ import com.jenking.spandroid.activity.common.CollegeDetailActivity;
 import com.jenking.spandroid.activity.common.CollegeOperateActivity;
 import com.jenking.spandroid.activity.common.SchoolDetailActivity;
 import com.jenking.spandroid.activity.common.SchoolListActivity;
+import com.jenking.spandroid.models.base.CollegeModel;
+import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.presenter.CollegePresenter;
+import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,8 +45,10 @@ public class ManagerCollegeActivity extends BaseActivity {
 
     private String select_school_id;
     private String select_school_name;
-    private List<String> datas;
+    private List<CollegeModel> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
+
+    private CollegePresenter collegePresenter;
 
     @OnClick(R.id.select_school)
     void select_school(){
@@ -66,10 +72,10 @@ public class ManagerCollegeActivity extends BaseActivity {
     public void initData() {
         super.initData();
         datas = new ArrayList<>();
-        baseRecyclerAdapter = new BaseRecyclerAdapter(this,datas,R.layout.activity_manager_college_item) {
+        baseRecyclerAdapter = new BaseRecyclerAdapter<CollegeModel>(this,datas,R.layout.activity_manager_college_item) {
             @Override
-            protected void convert(BaseViewHolder helper, Object item) {
-
+            protected void convert(BaseViewHolder helper, CollegeModel item) {
+                helper.setText(R.id.college_name,item.getCollege_name());
             }
         };
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
@@ -83,6 +89,36 @@ public class ManagerCollegeActivity extends BaseActivity {
         baseRecyclerAdapter.openLoadAnimation(false);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
+
+        collegePresenter = new CollegePresenter(this);
+        collegePresenter.setOnCallBack(new CollegePresenter.OnCallBack() {
+            @Override
+            public void addCollege(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getAllCollege(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
+            }
+
+            @Override
+            public void updateCollege(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteCollege(boolean isSuccess, Object object) {
+
+            }
+        });
+//        collegePresenter.
     }
 
     @Override
