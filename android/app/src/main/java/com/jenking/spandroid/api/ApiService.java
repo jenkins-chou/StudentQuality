@@ -60,4 +60,24 @@ public interface ApiService {
     @POST("college/getCollegeBySchool")
     Observable<ResultModel<CollegeModel>> getCollegeBySchool(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("class/addClass")
+    Observable<ResultModel> addClass(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("class/updateClass")
+    Observable<ResultModel> updateClass(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("class/deleteClass")
+    Observable<ResultModel> deleteClass(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("class/getAllClass")
+    Observable<ResultModel> getAllClass(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("class/getClassByCollege")
+    Observable<ResultModel> getClassByCollege(@FieldMap Map<String, String> body);
+
 }

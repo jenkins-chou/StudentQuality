@@ -48,6 +48,7 @@ public class ManagerCollegeActivity extends BaseActivity {
 
     private String select_school_id;
     private String select_school_name;
+
     private List<CollegeModel> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
 
@@ -146,9 +147,8 @@ public class ManagerCollegeActivity extends BaseActivity {
                 params.put("school_id",select_school_id);
                 collegePresenter.getCollegeBySchool(params);
             }else{
-                collegePresenter.getAllCollege(RS.getBaseParams(this));
-            }
-
+            collegePresenter.getAllCollege(RS.getBaseParams(this));
+        }
         }
     }
 

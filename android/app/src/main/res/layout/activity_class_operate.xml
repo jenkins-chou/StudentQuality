@@ -107,6 +107,7 @@
                 android:textColor="@color/base_font_color" />
 
             <EditText
+                android:id="@+id/class_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -120,13 +121,120 @@
             android:background="@color/base_line_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="班级简介"
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/class_abstract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入班级简介"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细介绍"
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/class_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入详细介绍"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="班主任："
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/class_headmaster"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入班主任姓名"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学校学院"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/college_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请选择学校和学院"
+                android:text=""
+                android:textColor="@color/base_font_color2"
+                android:textSize="17sp" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
 
     </LinearLayout>
+
     <Button
-        android:text="提交"
-        android:textColor="@color/white"
-        android:background="@drawable/activity_login_signin_button"
-        android:layout_margin="15dp"
+        android:id="@+id/submit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/activity_login_signin_button"
+        android:text="提交"
+        android:textColor="@color/white" />
 </LinearLayout>

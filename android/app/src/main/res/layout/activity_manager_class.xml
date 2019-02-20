@@ -72,7 +72,8 @@
             android:layout_weight="1"
             android:background="@drawable/common_button_selected"
             android:gravity="left|center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="gone">
 
             <ImageView
                 android:layout_width="30dp"
@@ -112,7 +113,7 @@
                 android:id="@+id/college_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="选择学院"
+                android:text="选择学校 和 学院"
                 android:textColor="@color/base_font_color"
                 android:textSize="@dimen/fontsize_15" />
         </LinearLayout>

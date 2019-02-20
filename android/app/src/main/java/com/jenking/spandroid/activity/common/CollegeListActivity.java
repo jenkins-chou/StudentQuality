@@ -79,7 +79,9 @@ public class CollegeListActivity extends BaseActivity {
                 Intent intent = new Intent();
                 if (intent!=null){
                     intent.putExtra("college_id",datas.get(position).getId());
-                    intent.putExtra("college_name",datas.get(position).getSchool_name());
+                    intent.putExtra("college_name",datas.get(position).getCollege_name());
+                    intent.putExtra("school_id",datas.get(position).getSchool_id());
+                    intent.putExtra("school_name",datas.get(position).getSchool_name());
                     setResult(SelectCollegeCode,intent);
                     finish();
                 }
@@ -108,7 +110,13 @@ public class CollegeListActivity extends BaseActivity {
 
             @Override
             public void getCollegeBySchool(boolean isSuccess, Object object) {
-
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
             }
 
             @Override
@@ -121,7 +129,16 @@ public class CollegeListActivity extends BaseActivity {
 
             }
         });
-        collegePresenter.getAllCollege(RS.getBaseParams(this));
+
+        Intent intent = getIntent();
+        if (intent!=null&&intent.getStringExtra("school_id")!=null){
+            Map<String,String> params = RS.getBaseParams(this);
+            params.put("school_id",select_school_id);
+            collegePresenter.getCollegeBySchool(params);
+        }else{
+            collegePresenter.getAllCollege(RS.getBaseParams(this));
+        }
+
     }
 
     @Override
@@ -135,7 +152,6 @@ public class CollegeListActivity extends BaseActivity {
                     select_school_id = data.getStringExtra("school_id");
                     select_school_name= data.getStringExtra("school_name");
                     school_name.setText(select_school_name);
-
                     if (collegePresenter!=null){
                         Map<String,String> params = RS.getBaseParams(this);
                         params.put("school_id",select_school_id);

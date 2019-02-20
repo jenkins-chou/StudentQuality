@@ -11,6 +11,7 @@ var errorController = require("./controller/operate_record")
 
 var schoolController = require("./controller/school")
 var collegeController = require("./controller/college")
+var classController = require("./controller/class")
 
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
@@ -34,6 +35,7 @@ app.use('/error',errorController)
 
 app.use('/school',schoolController)
 app.use('/college',collegeController)
+app.use('/class',classController)
 
 app.listen(7777)
 console.log("数据服务器已打开, 端口: 7777");
