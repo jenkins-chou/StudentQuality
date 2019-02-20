@@ -48,8 +48,9 @@ public class AccountTool {
         UserModel userModel = new Gson().fromJson((String) SPUtils.get(context,SPUtils.FILE_USER,SPUtils.user_object,""),UserModel.class);
         if (userModel!=null){
             if (StringUtil.isNotEmpty(userModel.getRealname())
-                    &&StringUtil.isNotEmpty(userModel.getSchool())
-                    &&StringUtil.isNotEmpty(userModel.getCollege())){
+                    &&StringUtil.isNotEmpty(userModel.getSchool_id())
+                    &&StringUtil.isNotEmpty(userModel.getCollege_id())
+                    &&StringUtil.isNotEmpty(userModel.getClass_id())){
                 result = true;
             }
         }

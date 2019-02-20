@@ -4,6 +4,7 @@ import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.CollegeModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
+import com.jenking.spandroid.models.base.UserModel;
 
 import java.util.Map;
 
@@ -23,6 +24,11 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user/login")
     Observable<ResultModel> template(@FieldMap Map<String, String> body);
+
+
+    @FormUrlEncoded
+    @POST("user/login")
+    Observable<ResultModel<UserModel>> login(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user/addUser")

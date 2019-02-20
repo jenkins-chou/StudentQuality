@@ -11,7 +11,9 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.presenter.UserPresenter;
+import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
 import com.jenking.spandroid.ui.CommonLoading;
 
@@ -86,8 +88,13 @@ public class RegisterActivity extends BaseActivity {
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
-                            Toast.makeText(RegisterActivity.this, "新增成功", Toast.LENGTH_SHORT).show();
-                            finish();
+                            if (resultModel.getData()!=null&&resultModel.getData().size()>0){
+                                UserModel userModel = (UserModel) resultModel.getData().get(0);
+                                Toast.makeText(RegisterActivity.this, "注册成功，已默认登录", Toast.LENGTH_SHORT).show();
+                                AccountTool.saveUser(RegisterActivity.this,userModel);
+                                finish();
+                            }
+
                         }else{
                             Toast.makeText(RegisterActivity.this, "已存在该用户名", Toast.LENGTH_SHORT).show();
                         }
