@@ -114,7 +114,7 @@ router.post('/addUser', function (req, res) {
 
 });
 //更新信息
-router.post('/updateuser', function (request, response) {
+router.post('/updateUser', function (request, response) {
     var req = request;
     var res = response;
     var id = req.body.id;
@@ -152,12 +152,12 @@ router.post('/updateuser', function (request, response) {
         }
     })
 });
-router.post('/deleteuser', function (req, res) {
-    var user_id = req.body.user_id;
-    if (user_id==null) {
-        return res.jsonp("user_id is null! please check!");
+router.post('/deleteUser', function (req, res) {
+    var id = req.body.id;
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
     }else{
-        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+user_id;
+        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+id;
         connectDB.delete(sql,function(result){
             console.log(result);
             return res.jsonp(result);
