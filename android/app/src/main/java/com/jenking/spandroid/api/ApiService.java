@@ -32,7 +32,7 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("user/addUser")
-    Observable<ResultModel> addUser(@FieldMap Map<String, String> body);
+    Observable<ResultModel<UserModel>> addUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("school/addSchool")

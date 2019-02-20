@@ -7,6 +7,8 @@ import com.jenking.spandroid.api.ApiService;
 import com.jenking.spandroid.api.ApiUtil;
 import com.jenking.spandroid.contracts.BaseCallBack;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.base.UserMatchModel;
+import com.jenking.spandroid.models.base.UserModel;
 
 import java.util.Map;
 
@@ -84,14 +86,14 @@ public class UserPresenter {
                 .addUser(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
-                .subscribe(new Observer<ResultModel>() {
+                .subscribe(new Observer<ResultModel<UserModel>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         System.out.print(d);
                     }
 
                     @Override
-                    public void onNext(ResultModel resultModel) {
+                    public void onNext(ResultModel<UserModel> resultModel) {
                         //更新视图
                         if (onCallBack!=null){
                             onCallBack.addUser(true,resultModel);

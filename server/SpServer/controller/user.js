@@ -35,6 +35,24 @@ router.post('/login',function (req, res) {
     });
 });
 
+//根据获取所有老师
+router.post('/getTeachers',function (req, res) {
+    var sql = "select * from "+tableName+" where type = '2' and "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        console.log(result);
+        return res.jsonp(result);
+    });
+});
+
+//根据学院获取所有老师
+router.post('/getTeachersByCollege',function (req, res) {
+    var sql = "select * from "+tableName+" where type = '2' and college_id = '"+req.body.college_id +"' and school_id = '"+req.body.school_id+"' and "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        console.log(result);
+        return res.jsonp(result);
+    });
+});
+
 
 //添加
 router.post('/addUser', function (req, res) {
