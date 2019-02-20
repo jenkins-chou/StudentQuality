@@ -126,11 +126,58 @@ router.post('/updateUser', function (request, response) {
     connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
-                console.log(checkUpdateData("dsadsa","adsadsa"));
+
                     var name = checkUpdateData(req.body.name,result.data[0].name);
                     var pass = checkUpdateData(req.body.pass,result.data[0].pass);
-                    var sql  =  "update "+tableName+" set name = '"+name
+
+                    var realname = checkUpdateData(req.body.realname,result.data[0].realname);
+                    var avatar = checkUpdateData(req.body.avatar,result.data[0].avatar);
+                    var slogan = checkUpdateData(req.body.slogan,result.data[0].slogan);
+                    var sex = checkUpdateData(req.body.sex,result.data[0].sex);
+                    var age = checkUpdateData(req.body.age,result.data[0].age);
+                    var idnum = checkUpdateData(req.body.idnum,result.data[0].idnum);
+                    var nation = checkUpdateData(req.body.nation,result.data[0].nation);
+                    var registered_residence = checkUpdateData(req.body.registered_residence,result.data[0].registered_residence);
+                    var useridentify = checkUpdateData(req.body.useridentify,result.data[0].useridentify);
+                    var phone = checkUpdateData(req.body.phone,result.data[0].phone);
+                    var address = checkUpdateData(req.body.address,result.data[0].address);
+                    var health = checkUpdateData(req.body.health,result.data[0].health);
+                    var type = checkUpdateData(req.body.type,result.data[0].type);
+                    var create_time = checkUpdateData(req.body.create_time,result.data[0].create_time);
+                    var entrance_time = checkUpdateData(req.body.entrance_time,result.data[0].entrance_time);
+
+                    var class_id = checkUpdateData(req.body.class_id,result.data[0].class_id);
+                    var class_name = checkUpdateData(req.body.class_name,result.data[0].class_name);
+                    var college_id = checkUpdateData(req.body.college_id,result.data[0].college_id);
+                    var college_name = checkUpdateData(req.body.college_name,result.data[0].college_name);
+                    var school_id = checkUpdateData(req.body.school_id,result.data[0].school_id);
+                    var school_name = checkUpdateData(req.body.school_name,result.data[0].school_name);
+
+                    var sql  =  "update "+tableName
+                    +" set name = '"+name
                     +"' , pass = '"+pass
+
+                    +"' , realname = '"+realname
+                    +"' , avatar = '"+avatar
+                    +"' , slogan = '"+slogan
+                    +"' , sex = '"+sex
+                    +"' , age = '"+age
+                    +"' , idnum = '"+idnum
+                    +"' , nation = '"+nation
+                    +"' , registered_residence = '"+registered_residence
+                    +"' , useridentify = '"+useridentify
+                    +"' , phone = '"+phone
+                    +"' , address = '"+address
+                    +"' , health = '"+health
+                    +"' , type = '"+type
+                    +"' , create_time = '"+create_time
+                    +"' , entrance_time = '"+entrance_time
+                    +"' , class_id = '"+class_id
+                    +"' , class_name = '"+class_name
+                    +"' , college_id = '"+college_id
+                    +"' , college_name = '"+college_name
+                    +"' , school_id = '"+school_id
+                    +"' , school_name = '"+school_name
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);
