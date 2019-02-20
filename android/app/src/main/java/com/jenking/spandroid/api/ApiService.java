@@ -49,6 +49,10 @@ public interface ApiService {
     Observable<ResultModel> updateCollege(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
+    @POST("college/deleteCollege")
+    Observable<ResultModel> deleteCollege(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
     @POST("college/getAllCollege")
     Observable<ResultModel<CollegeModel>> getAllCollege(@FieldMap Map<String, String> body);
 

@@ -29,7 +29,7 @@ router.post('/addCollege', function (req, res) {
         req.body.remark,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where college_name = '" + req.body.college_name+"'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where college_name = '" + req.body.college_name+"' and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
