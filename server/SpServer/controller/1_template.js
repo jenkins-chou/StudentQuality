@@ -88,8 +88,8 @@ router.post('/updateuser', function (request, response) {
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var user_name = connectDB.checkUpdateData(req.body.user_name,result.data[0].user_name);
-                    var user_pass = connectDB.checkUpdateData(req.body.user_pass,result.data[0].user_pass);
+                    var user_name = checkUpdateData(req.body.user_name,result.data[0].user_name);
+                    var user_pass = checkUpdateData(req.body.user_pass,result.data[0].user_pass);
                     var sql  =  "update "+tableName+" set user_name = '"+user_name
                     +"' , user_pass = '"+user_pass
                     +"' where "+tableKey+" = "+id;

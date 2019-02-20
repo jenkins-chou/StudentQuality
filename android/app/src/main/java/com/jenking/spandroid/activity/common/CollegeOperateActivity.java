@@ -70,7 +70,8 @@ public class CollegeOperateActivity extends BaseActivity {
             if (isAddData){
                 collegePresenter.addCollege(params);
             }else{
-
+                params.put("id",collegeModel.getId());
+                collegePresenter.updateCollege(params);
             }
         }
     }

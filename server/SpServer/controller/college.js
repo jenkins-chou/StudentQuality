@@ -70,9 +70,9 @@ router.post('/updateCollege', function (request, response) {
     connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
-                    var college_name = connectDB.checkUpdateData(req.body.college_name,result.data[0].college_name);
-                    var school_id = connectDB.checkUpdateData(req.body.school_id,result.data[0].school_id);
-                    var school_name = connectDB.checkUpdateData(req.body.school_name,result.data[0].school_name);
+                    var college_name = checkUpdateData(req.body.college_name,result.data[0].college_name);
+                    var school_id = checkUpdateData(req.body.school_id,result.data[0].school_id);
+                    var school_name = checkUpdateData(req.body.school_name,result.data[0].school_name);
                     var sql  =  "update "+tableName+" set college_name = '"+college_name
                     +"' , school_id = '"+school_id
                     +"' , school_name = '"+school_name
