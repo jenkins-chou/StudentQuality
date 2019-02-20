@@ -122,7 +122,13 @@ public class TeacherOperateActivity extends BaseActivity {
             params.put("college_name",select_college_name);
             params.put("school_name",select_school_name);
             params.put("type","2");
-            userPresenter.addUser(params);
+            if (isAddData){
+                userPresenter.addUser(params);
+            }else{
+//                userPresenter.addUser(params);
+            }
+
+
         }
 
     }
@@ -148,6 +154,8 @@ public class TeacherOperateActivity extends BaseActivity {
             if (userModel!=null){
                 Log.e("usermodel",userModel.toString());
 
+                select_college_id = userModel.getCollege_id();
+                select_school_id = userModel.getSchool_id();
                 name.setText(userModel.getName());
                 pass.setText(userModel.getPass());
                 realname.setText(userModel.getRealname());

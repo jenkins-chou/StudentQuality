@@ -111,6 +111,16 @@ public class RegisterActivity extends BaseActivity {
             }
 
             @Override
+            public void updateUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void getTeachers(boolean isSuccess, Object object) {
 
             }

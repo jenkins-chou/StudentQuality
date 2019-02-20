@@ -82,7 +82,7 @@ public class ManagerTeacherActivity extends BaseActivity {
             @Override
             protected void convert(BaseViewHolder helper, UserModel item) {
                 helper.setText(R.id.realname,item.getRealname());
-                helper.setText(R.id.college_name,item.getSchool_name()+item.getCollege_name());
+                helper.setText(R.id.college_name,item.getSchool_name()+"---"+item.getCollege_name());
             }
         };
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
@@ -156,7 +156,7 @@ public class ManagerTeacherActivity extends BaseActivity {
                     select_school_name= data.getStringExtra("school_name");
                     select_college_id = data.getStringExtra("college_id");
                     select_college_name= data.getStringExtra("college_name");
-                    college_name.setText(select_school_name+select_college_name);
+                    college_name.setText(select_school_name+"-"+select_college_name);
 
                     Map<String,String> params = RS.getBaseParams(this);
                     params.put("college_id",select_college_id);
