@@ -58,7 +58,7 @@ router.post('/addCollege', function (req, res) {
 
 });
 //更新信息
-router.post('/updateuser', function (request, response) {
+router.post('/updateCollege', function (request, response) {
     var req = request;
     var res = response;
     var id = req.body.id;
@@ -70,11 +70,12 @@ router.post('/updateuser', function (request, response) {
     connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
-                console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var user_name = connectDB.checkUpdateData(req.body.user_name,result.data[0].user_name);
-                    var user_pass = connectDB.checkUpdateData(req.body.user_pass,result.data[0].user_pass);
-                    var sql  =  "update "+tableName+" set user_name = '"+user_name
-                    +"' , user_pass = '"+user_pass
+                    var college_name = connectDB.checkUpdateData(req.body.college_name,result.data[0].college_name);
+                    var school_id = connectDB.checkUpdateData(req.body.school_id,result.data[0].school_id);
+                    var school_name = connectDB.checkUpdateData(req.body.school_name,result.data[0].school_name);
+                    var sql  =  "update "+tableName+" set college_name = '"+college_name
+                    +"' , school_id = '"+school_id
+                    +"' , school_name = '"+school_name
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);

@@ -1,5 +1,6 @@
 package com.jenking.spandroid.api;
 
+import com.jenking.spandroid.models.base.CollegeModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
 
@@ -42,5 +43,9 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("college/addCollege")
     Observable<ResultModel> addCollege(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("college/getAllCollege")
+    Observable<ResultModel<CollegeModel>> getAllCollege(@FieldMap Map<String, String> body);
 
 }

@@ -92,9 +92,11 @@ public class CollegeOperateActivity extends BaseActivity {
             String json = intent.getStringExtra("model");
             collegeModel = new Gson().fromJson(json,CollegeModel.class);
             if (collegeModel!=null){
-
+                select_school_id = collegeModel.getSchool_id();
+                select_school_name = collegeModel.getSchool_name();
+                college_name.setText(collegeModel.getCollege_name());
+                school_name.setText(collegeModel.getSchool_name());
             }
-
         }else{
             operate_tips.setText("当前操作：新增");
             isAddData = true;
