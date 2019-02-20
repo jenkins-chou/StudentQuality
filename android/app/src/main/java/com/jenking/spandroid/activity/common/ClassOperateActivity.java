@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.api.RS;
+import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.presenter.ClassPresenter;
 import com.jenking.spandroid.tools.StringUtil;
@@ -24,6 +26,8 @@ public class ClassOperateActivity extends BaseActivity {
 
     private Object object;
     private boolean isAddData = true;
+    private ClassModel classModel;
+
     @BindView(R.id.operate_tips)
     TextView operate_tips;
 
@@ -88,7 +92,7 @@ public class ClassOperateActivity extends BaseActivity {
                     params.put("create_time",StringUtil.getTime());
                     classPresenter.addClass(params);
                 }else{
-
+                    classPresenter.updateClass(params);
                 }
             }
         }
@@ -108,6 +112,22 @@ public class ClassOperateActivity extends BaseActivity {
             //表明是修改
             operate_tips.setText("当前操作：修改");
             isAddData = false;
+
+            String json = intent.getStringExtra("model");
+            classModel = new Gson().fromJson(json,ClassModel.class);
+
+            if (classModel!=null){
+                select_college_id = classModel.getCollege_id();
+                select_college_name = classModel.getCollege_name();
+                select_school_name = classModel.getSchool_name();
+                select_school_id = classModel.getSchool_id();
+                class_name.setText(classModel.getClass_name());
+                class_abstract.setText(classModel.getClass_abstract());
+                class_detail.setText(classModel.getClass_detail());
+                class_headmaster.setText(classModel.getHeadmaster());
+                college_name.setText(classModel.getSchool_name()+classModel.getCollege_name());
+            }
+
         }else{
             operate_tips.setText("当前操作：新增");
             isAddData = true;
@@ -133,7 +153,10 @@ public class ClassOperateActivity extends BaseActivity {
 
             @Override
             public void updateClass(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    Toast.makeText(ClassOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
 
             @Override

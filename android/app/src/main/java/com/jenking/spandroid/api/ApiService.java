@@ -1,5 +1,6 @@
 package com.jenking.spandroid.api;
 
+import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.CollegeModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
@@ -74,10 +75,10 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("class/getAllClass")
-    Observable<ResultModel> getAllClass(@FieldMap Map<String, String> body);
+    Observable<ResultModel<ClassModel>> getAllClass(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("class/getClassByCollege")
-    Observable<ResultModel> getClassByCollege(@FieldMap Map<String, String> body);
+    Observable<ResultModel<ClassModel>> getClassByCollege(@FieldMap Map<String, String> body);
 
 }

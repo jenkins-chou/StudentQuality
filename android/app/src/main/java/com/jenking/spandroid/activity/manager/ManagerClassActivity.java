@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
 import com.github.library.listener.OnRecyclerItemClickListener;
+import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.ClassDetailActivity;
@@ -90,6 +91,7 @@ public class ManagerClassActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(ManagerClassActivity.this,ClassDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(datas.get(position)));
                 startActivity(intent);
             }
         });
@@ -127,24 +129,29 @@ public class ManagerClassActivity extends BaseActivity {
 
             @Override
             public void getClassByCollege(boolean isSuccess, Object object) {
-
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas.clear();
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
             }
         });
 
         Intent intent = getIntent();
         String school_id = intent.getStringExtra("school_id");
         String college_id = intent.getStringExtra("college_id");
-        if (intent!=null) {
-            if (StringUtil.isNotEmpty(school_id)&&StringUtil.isNotEmpty(college_id)){
-                Map<String,String> params = RS.getBaseParams(this);
-                params.put("school_id",school_id);
-                params.put("college_id",college_id);
-                classPresenter.getClassByCollege(params);
-            }
+        if (intent!=null&&StringUtil.isNotEmpty(school_id)&&StringUtil.isNotEmpty(college_id)) {
+            Map<String,String> params = RS.getBaseParams(this);
+            params.put("school_id",school_id);
+            params.put("college_id",college_id);
+            classPresenter.getClassByCollege(params);
         }else{
             classPresenter.getAllClass(RS.getBaseParams(this));
         }
-        
+
     }
 
     @Override

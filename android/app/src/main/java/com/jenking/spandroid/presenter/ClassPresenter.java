@@ -6,6 +6,7 @@ import android.util.Log;
 import com.jenking.spandroid.api.ApiService;
 import com.jenking.spandroid.api.ApiUtil;
 import com.jenking.spandroid.contracts.BaseCallBack;
+import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.ResultModel;
 
 import java.util.Map;
@@ -157,7 +158,7 @@ public class ClassPresenter {
                 .getAllClass(params)
                 .subscribeOn(Schedulers.io())//后台处理线程
                 .observeOn(AndroidSchedulers.mainThread())//指定回调发生的线程
-                .subscribe(new Observer<ResultModel>() {
+                .subscribe(new Observer<ResultModel<ClassModel>>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         System.out.print(d);

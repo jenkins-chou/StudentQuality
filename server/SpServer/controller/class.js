@@ -24,17 +24,6 @@ router.post('/getClassByCollege', function (req, res) {
     })
 });
 
-//根据id获取信息
-router.post('/getuser',function (req, res) {
-    var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.user_id +" and "+tableDelete+" != 'delete'";
-    connectDB.query(sql,function(result){
-        console.log(result);
-        return res.jsonp(result);
-    });
-});
-
-
-
 //添加
 router.post('/addClass', function (req, res) {
     var sql = "insert into "+tableName+"(class_name,class_abstract,class_detail,headmaster,school_id,college_id,school_name,college_name,create_time,del) value (?,?,?,?,?,?,?,?,?,?)";
@@ -78,8 +67,10 @@ router.post('/addClass', function (req, res) {
     })
 
 });
+
+
 //更新信息
-router.post('/updateuser', function (request, response) {
+router.post('/updateClass', function (request, response) {
     var req = request;
     var res = response;
     var id = req.body.id;
@@ -92,10 +83,23 @@ router.post('/updateuser', function (request, response) {
         if (result.status=="200") {
             if (result.data[0]!=null) {
                 console.log(checkUpdateData("dsadsa","adsadsa"));
-                    var user_name = checkUpdateData(req.body.user_name,result.data[0].user_name);
-                    var user_pass = checkUpdateData(req.body.user_pass,result.data[0].user_pass);
-                    var sql  =  "update "+tableName+" set user_name = '"+user_name
-                    +"' , user_pass = '"+user_pass
+                    var class_name = checkUpdateData(req.body.class_name,result.data[0].class_name);
+                    var class_abstract = checkUpdateData(req.body.class_abstract,result.data[0].class_abstract);
+                    var class_detail = checkUpdateData(req.body.class_detail,result.data[0].class_detail);
+                    var headmaster = checkUpdateData(req.body.headmaster,result.data[0].headmaster);
+                    var school_id = checkUpdateData(req.body.school_id,result.data[0].school_id);
+                     var school_name = checkUpdateData(req.body.school_name,result.data[0].school_name);
+                      var college_id = checkUpdateData(req.body.college_id,result.data[0].college_id);
+                       var college_name = checkUpdateData(req.body.college_name,result.data[0].college_name);
+                    var sql  =  "update "+tableName
+                    +" set class_name = '"+class_name
+                    +"' , class_abstract = '"+class_abstract
+                    +"' , class_detail = '"+class_detail
+                    +"' , headmaster = '"+headmaster
+                    +"' , school_id = '"+school_id
+                    +"' , school_name = '"+school_name
+                    +"' , college_id = '"+college_id
+                    +"' , college_name = '"+college_name
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);
