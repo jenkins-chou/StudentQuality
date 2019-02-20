@@ -112,8 +112,6 @@ public class UserPresenter {
                 });
     }
 
-
-
     public interface OnCallBack{
         void login(boolean isSuccess, Object object);
         void addUser(boolean isSuccess, Object object);

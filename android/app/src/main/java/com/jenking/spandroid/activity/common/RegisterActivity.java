@@ -82,6 +82,11 @@ public class RegisterActivity extends BaseActivity {
         userPresenter.setOnCallBack(new UserPresenter.OnCallBack() {
 
             @Override
+            public void login(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void addUser(boolean isSuccess, Object object) {
                 setLoadingEnable(false);
                 if (isSuccess){

@@ -28,7 +28,7 @@ router.post('/getUserById',function (req, res) {
 
 //根据id获取信息
 router.post('/login',function (req, res) {
-    var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.user_id +" and "+tableDelete+" != 'delete'";
+    var sql = "select * from "+tableName+" where name = '"+req.body.name +"' and pass = '"+req.body.pass+"' and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         console.log(result);
         return res.jsonp(result);
