@@ -63,6 +63,7 @@ public class CollegeOperateActivity extends BaseActivity {
             Map<String,String> params = RS.getBaseParams(this);
             params.put("college_name",college_name_str);
             params.put("school_id",select_school_id);
+            params.put("school_name",select_school_name);
             if (isAddData){
                 collegePresenter.addCollege(params);
             }else{
