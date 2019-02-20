@@ -10,8 +10,15 @@ var tableKey = "id";//主键
 var tableDelete = "del";//删除标志位
 
 //获取所有数据
-router.post('/getusers', function (req, res) {
+router.post('/getAllClass', function (req, res) {
     var sql = "select * from "+tableName+" where "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
+router.post('/getClassByCollege', function (req, res) {
+    var sql = "select * from "+tableName+" where school_id = "+req.body.school_id+" and college_id = "+req.body.college_id+" and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })

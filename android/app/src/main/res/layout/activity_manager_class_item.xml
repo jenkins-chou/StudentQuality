@@ -7,13 +7,24 @@
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_margin="15dp"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
-            android:text="计科1181班"
-            android:textColor="@color/base_font_color"
+            android:id="@+id/college_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="学院名称"
+            android:textSize="12sp"
+            android:textColor="@color/main_color" />
+
+        <TextView
+            android:id="@+id/class_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="计科1181班"
+            android:textColor="@color/base_font_color" />
     </LinearLayout>
     <TextView
         android:text="查看"

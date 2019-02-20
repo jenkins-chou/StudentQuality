@@ -7,8 +7,10 @@ public class ClassModel {
     public String class_abstract;
     public String class_detail;
     public String headmaster;
-    public String school;
-    public String college;
+    public String school_id;
+    public String college_id;
+    public String school_name;
+    public String college_name;
     public String create_time;
     public String del;
 
@@ -60,20 +62,36 @@ public class ClassModel {
         this.headmaster = headmaster;
     }
 
-    public String getSchool() {
-        return school;
+    public String getSchool_id() {
+        return school_id;
     }
 
-    public void setSchool(String school) {
-        this.school = school;
+    public void setSchool_id(String school_id) {
+        this.school_id = school_id;
     }
 
-    public String getCollege() {
-        return college;
+    public String getCollege_id() {
+        return college_id;
     }
 
-    public void setCollege(String college) {
-        this.college = college;
+    public void setCollege_id(String college_id) {
+        this.college_id = college_id;
+    }
+
+    public String getSchool_name() {
+        return school_name;
+    }
+
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
+
+    public String getCollege_name() {
+        return college_name;
+    }
+
+    public void setCollege_name(String college_name) {
+        this.college_name = college_name;
     }
 
     public String getCreate_time() {
@@ -90,5 +108,23 @@ public class ClassModel {
 
     public void setDel(String del) {
         this.del = del;
+    }
+
+    @Override
+    public String toString() {
+        return "ClassModel{" +
+                "id='" + id + '\'' +
+                ", class_name='" + class_name + '\'' +
+                ", class_number='" + class_number + '\'' +
+                ", class_abstract='" + class_abstract + '\'' +
+                ", class_detail='" + class_detail + '\'' +
+                ", headmaster='" + headmaster + '\'' +
+                ", school_id='" + school_id + '\'' +
+                ", college_id='" + college_id + '\'' +
+                ", school_name='" + school_name + '\'' +
+                ", college_name='" + college_name + '\'' +
+                ", create_time='" + create_time + '\'' +
+                ", del='" + del + '\'' +
+                '}';
     }
 }
