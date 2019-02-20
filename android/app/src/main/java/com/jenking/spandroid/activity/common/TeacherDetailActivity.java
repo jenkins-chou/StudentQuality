@@ -6,18 +6,24 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
+import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.presenter.UserPresenter;
 import com.jenking.spandroid.tools.StringUtil;
+
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class TeacherDetailActivity extends BaseActivity {
 
+    private UserPresenter userPresenter;
     private UserModel userModel;
     @BindView(R.id.name)
     TextView name;
@@ -51,6 +57,7 @@ public class TeacherDetailActivity extends BaseActivity {
     TextView entrance_time;
     @BindView(R.id.college_name)
     TextView college_name;
+
     @OnClick(R.id.back)
     void back(){
         finish();
@@ -77,7 +84,11 @@ public class TeacherDetailActivity extends BaseActivity {
 
                     @Override
                     public void confirm() {
-
+                        if (userModel!=null&&userPresenter!=null){
+                            Map<String,String> params = RS.getBaseParams(TeacherDetailActivity.this);
+                            params.put("id",userModel.getId());
+                            userPresenter.deleteTeacher(params);
+                        }
                     }
                 }).show();
     }
@@ -118,5 +129,41 @@ public class TeacherDetailActivity extends BaseActivity {
             }
 
         }
+
+        userPresenter = new UserPresenter(this);
+        userPresenter.setOnCallBack(new UserPresenter.OnCallBack() {
+            @Override
+            public void login(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUser(boolean isSuccess, Object object) {
+                if (isSuccess){
+                    Toast.makeText(TeacherDetailActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void getTeachers(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getTeachersByCollege(boolean isSuccess, Object object) {
+
+            }
+        });
     }
 }

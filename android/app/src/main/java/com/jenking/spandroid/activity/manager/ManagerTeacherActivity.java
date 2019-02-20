@@ -110,6 +110,16 @@ public class ManagerTeacherActivity extends BaseActivity {
             }
 
             @Override
+            public void updateUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
             public void getTeachers(boolean isSuccess, Object object) {
                 if (isSuccess&&object!=null){
                     ResultModel resultModel = (ResultModel)object;
