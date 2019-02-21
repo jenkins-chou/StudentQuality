@@ -86,7 +86,8 @@ public class TermOperateActivity extends BaseActivity {
             String json = intent.getStringExtra("model");
             termModel = new Gson().fromJson(json, TermModel.class);
             if (termModel!=null){
-
+                term_name.setText(termModel.getTerm_name());
+                remark.setText(termModel.getRemark());
             }
         }else{
             operate_tips.setText("当前操作：新增");

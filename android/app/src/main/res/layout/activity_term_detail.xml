@@ -155,7 +155,7 @@
                     android:textColor="@color/main_color" />
 
                 <TextView
-                    android:id="@+id/delete_teacher"
+                    android:id="@+id/delete_term"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="删除"

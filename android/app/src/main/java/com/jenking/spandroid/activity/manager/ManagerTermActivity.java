@@ -15,6 +15,7 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.ClassDetailActivity;
 import com.jenking.spandroid.activity.common.TermDetailActivity;
+import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.TermModel;
@@ -103,5 +104,13 @@ public class ManagerTermActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (termPresenter!=null){
+            termPresenter.getAllTerms(RS.getBaseParams(this));
+        }
     }
 }
