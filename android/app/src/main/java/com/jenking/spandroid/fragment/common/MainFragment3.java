@@ -84,7 +84,6 @@ public class MainFragment3 extends Fragment {
             userModel = AccountTool.getLoginUser(getContext());
             if (userModel!=null){
                 username.setText(userModel.getName());
-
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.circleCrop();
                 requestOptions.error(R.mipmap.avatar_default);

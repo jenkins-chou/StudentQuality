@@ -16,6 +16,7 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.fragment.common.MainFragment1;
 import com.jenking.spandroid.fragment.common.MainFragment2;
 import com.jenking.spandroid.fragment.common.MainFragment3;
+import com.jenking.spandroid.tools.AccountTool;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -136,5 +137,10 @@ public class MainActivity extends BaseActivity {
             return true;
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 }

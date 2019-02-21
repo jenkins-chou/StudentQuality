@@ -42,7 +42,6 @@
             android:text="比赛详情"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
-
         <View
             android:layout_alignParentBottom="true"
             android:background="@color/base_line_color"
@@ -84,6 +83,7 @@
             android:background="@color/base_line_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
+
         <LinearLayout
             android:padding="15dp"
             android:layout_width="match_parent"
@@ -96,11 +96,12 @@
                 android:textColor="@color/base_font_color" />
 
             <TextView
-                android:text="《Android开发》"
+                android:id="@+id/match_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/base_font_color2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:text=""
+                android:textColor="@color/base_font_color2" />
 
         </LinearLayout>
         <View
@@ -117,12 +118,159 @@
                 android:layout_height="wrap_content"
                 android:text="比赛时间"
                 android:textColor="@color/base_font_color" />
+
             <TextView
-                android:text="2019年"
+                android:id="@+id/match_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="@color/base_font_color2"
+                android:hint="请选择"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="比赛简介"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/match_abstract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="详细介绍"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/match_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="主办方："
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/match_sponsor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="比赛级别"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/match_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="比赛状态"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/match_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                android:textColor="@color/base_font_color" />
+
+            <TextView
+                android:id="@+id/remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
 
         </LinearLayout>
         <View

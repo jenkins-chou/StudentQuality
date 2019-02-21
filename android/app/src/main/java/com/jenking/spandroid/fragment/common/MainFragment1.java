@@ -28,6 +28,7 @@ import com.jenking.spandroid.activity.student.MineCertActivity;
 import com.jenking.spandroid.activity.student.MineMatchActivity;
 import com.jenking.spandroid.activity.student.MineMoralActivity;
 import com.jenking.spandroid.activity.student.MineReportActivity;
+import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.tools.AccountTool;
 
@@ -59,29 +60,39 @@ public class MainFragment1 extends Fragment {
     //-------------------------------------学生区域
     @OnClick(R.id.mine_match)
     void mine_match(){
-        Intent intent = new Intent(getContext(),MineMatchActivity.class);
-        startActivity(intent);
+        if (checkUserinfo()){
+            Intent intent = new Intent(getContext(),MineMatchActivity.class);
+            startActivity(intent);
+        }
     }
     @OnClick(R.id.mine_cert)
     void mine_cert(){
-        Intent intent = new Intent(getContext(),MineCertActivity.class);
-        startActivity(intent);
+        if (checkUserinfo()){
+            Intent intent = new Intent(getContext(),MineCertActivity.class);
+            startActivity(intent);
+        }
     }
     @OnClick(R.id.mine_activity)
     void mine_activity(){
-        Intent intent = new Intent(getContext(),MineActivityActivity.class);
-        startActivity(intent);
+        if (checkUserinfo()){
+            Intent intent = new Intent(getContext(),MineActivityActivity.class);
+            startActivity(intent);
+        }
     }
     @OnClick(R.id.mine_moral)
     void mine_moral(){
-        Intent intent = new Intent(getContext(),MineMoralActivity.class);
-        startActivity(intent);
+        if (checkUserinfo()){
+            Intent intent = new Intent(getContext(),MineMoralActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick(R.id.mine_report)
     void mine_report(){
-        Intent intent = new Intent(getContext(),MineReportActivity.class);
-        startActivity(intent);
+        if (checkUserinfo()){
+            Intent intent = new Intent(getContext(),MineReportActivity.class);
+            startActivity(intent);
+        }
     }
 
     @OnClick({R.id.what_is_report1,R.id.what_is_report2})
@@ -139,6 +150,15 @@ public class MainFragment1 extends Fragment {
     void manager_class(){
         Intent intent = new Intent(getContext(),ManagerClassActivity.class);
         startActivity(intent);
+    }
+
+    boolean checkUserinfo(){
+        if (AccountTool.isLogin(getContext())&&AccountTool.isCompleteUserInfo(getContext())){
+            return true;
+        }else{
+            CommonTipsDialog.showTip(getContext(),"温馨提示","请前往完善您的个人信息，包括真实姓名、学校，学院和班级信息，否则将无法查询您的综合素质成绩和报告",false);
+            return false;
+        }
     }
 
     @Nullable

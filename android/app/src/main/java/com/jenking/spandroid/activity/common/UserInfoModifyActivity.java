@@ -164,6 +164,9 @@ public class UserInfoModifyActivity extends BaseActivity {
                 select_college_name = userModel.getCollege_name();
                 select_school_id = userModel.getSchool_id();
                 select_school_name = userModel.getSchool_name();
+                select_class_id = userModel.getClass_id();
+                select_class_name = userModel.getClass_name();
+
                 name.setText(userModel.getName());
                 pass.setText(userModel.getPass());
                 realname.setText(userModel.getRealname());
@@ -181,12 +184,6 @@ public class UserInfoModifyActivity extends BaseActivity {
                 entrance_time.setText(userModel.getEntrance_time());
                 college_name.setText(select_school_name +"--"+ select_college_name+"--"+select_class_name);
 
-                select_school_id = userModel.getSchool_id();
-                select_school_name = userModel.getSchool_name();
-                select_college_id = userModel.getCollege_id();
-                select_college_name = userModel.getCollege_name();
-                select_class_id = userModel.getClass_id();
-                select_class_name = userModel.getClass_name();
             }
         }
 

@@ -1,7 +1,11 @@
 package com.jenking.spandroid.api;
 
+import com.jenking.spandroid.models.base.ActiModel;
+import com.jenking.spandroid.models.base.CertificateModel;
 import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.CollegeModel;
+import com.jenking.spandroid.models.base.MatchModel;
+import com.jenking.spandroid.models.base.MoralModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
 import com.jenking.spandroid.models.base.UserModel;
@@ -49,6 +53,14 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user/updateUser")
     Observable<ResultModel<UserModel>> updateUser(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user/getAllStudent")
+    Observable<ResultModel<UserModel>> getAllStudent(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user/getStudentByClass")
+    Observable<ResultModel<UserModel>> getStudentByClass(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("school/addSchool")
@@ -105,5 +117,69 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("class/getClassByCollege")
     Observable<ResultModel<ClassModel>> getClassByCollege(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("match/addMatch")
+    Observable<ResultModel<MatchModel>> addMatch(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("match/updateMatch")
+    Observable<ResultModel<MatchModel>> updateMatch(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("match/deleteMatch")
+    Observable<ResultModel<MatchModel>> deleteMatch(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("match/getAllMatchs")
+    Observable<ResultModel<MatchModel>> getAllMatchs(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("cert/addCert")
+    Observable<ResultModel<CertificateModel>> addCert(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("cert/updateCert")
+    Observable<ResultModel<CertificateModel>> updateCert(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("cert/deleteCert")
+    Observable<ResultModel<CertificateModel>> deleteCert(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("cert/getAllCerts")
+    Observable<ResultModel<CertificateModel>> getAllCerts(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("acti/addActi")
+    Observable<ResultModel<ActiModel>> addActi(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("acti/updateActi")
+    Observable<ResultModel<ActiModel>> updateActi(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("acti/deleteActi")
+    Observable<ResultModel<ActiModel>> deleteActi(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("acti/getAllActi")
+    Observable<ResultModel<ActiModel>> getAllActi(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("moral/addMoral")
+    Observable<ResultModel<MoralModel>> addMoral(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("moral/updateMoral")
+    Observable<ResultModel<MoralModel>> updateMoral(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("moral/deleteMoral")
+    Observable<ResultModel<MoralModel>> deleteMoral(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("moral/getAllMorals")
+    Observable<ResultModel<MoralModel>> getAllMorals(@FieldMap Map<String, String> body);
 
 }
