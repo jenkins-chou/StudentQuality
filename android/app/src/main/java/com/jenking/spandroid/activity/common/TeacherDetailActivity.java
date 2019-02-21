@@ -165,6 +165,16 @@ public class TeacherDetailActivity extends BaseActivity {
             public void getTeachersByCollege(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void getAllStudent(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getStudentByClass(boolean isSuccess, Object object) {
+
+            }
         });
     }
 }

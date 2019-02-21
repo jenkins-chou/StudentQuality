@@ -70,7 +70,8 @@ public class ClassListActivity extends BaseActivity {
         baseRecyclerAdapter = new BaseRecyclerAdapter<ClassModel>(this,datas,R.layout.activity_class_list_item) {
             @Override
             protected void convert(BaseViewHolder helper, ClassModel item) {
-
+                helper.setText(R.id.class_name,item.getClass_name());
+                helper.setText(R.id.college_name,item.getSchool_name()+"--"+item.getCollege_name());
             }
         };
         baseRecyclerAdapter.openLoadAnimation(false);

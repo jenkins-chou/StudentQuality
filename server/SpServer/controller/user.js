@@ -55,7 +55,7 @@ router.post('/getTeachersByCollege',function (req, res) {
 
 //获取所有学生
 router.post('/getAllStudents', function (req, res) {
-    var sql = "select * from "+tableName+" where type = '1' and realname != '' and "+tableDelete+" != 'delete'";
+    var sql = "select * from "+tableName+" where type = '1' and realname != '' and "+tableDelete+" != 'delete' limit 100";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })

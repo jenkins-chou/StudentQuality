@@ -11,20 +11,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/school_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="学院名称"
-            android:textSize="12sp"
-            android:textColor="@color/main_color" />
-
-        <TextView
             android:id="@+id/college_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="农业学院"
             android:layout_marginTop="2dp"
             android:textColor="@color/base_font_color" />
+        <TextView
+            android:id="@+id/school_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学院名称"
+            android:textSize="10sp"
+            android:textColor="@color/white"
+            android:alpha="0.5"
+            android:background="@color/main_color"/>
     </LinearLayout>
 
     <TextView

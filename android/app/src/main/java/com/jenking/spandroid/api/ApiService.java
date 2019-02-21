@@ -55,8 +55,8 @@ public interface ApiService {
     Observable<ResultModel<UserModel>> updateUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
-    @POST("user/getAllStudent")
-    Observable<ResultModel<UserModel>> getAllStudent(@FieldMap Map<String, String> body);
+    @POST("user/getAllStudents")
+    Observable<ResultModel<UserModel>> getAllStudents(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user/getStudentByClass")

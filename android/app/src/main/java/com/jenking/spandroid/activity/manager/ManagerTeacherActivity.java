@@ -140,6 +140,16 @@ public class ManagerTeacherActivity extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getAllStudent(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getStudentByClass(boolean isSuccess, Object object) {
+
+            }
         });
     }
 
