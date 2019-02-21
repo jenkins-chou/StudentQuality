@@ -19,7 +19,7 @@ router.post('/getusers', function (req, res) {
 
 //根据id获取信息
 router.post('/getuser',function (req, res) {
-    var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.user_id +" and "+tableDelete+" != 'delete'";
+    var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.id +" and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         console.log(result);
         return res.jsonp(result);
@@ -62,7 +62,7 @@ router.post('/adduser', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'";
+                    var sqlQueryAgain = "select * from "+tableName+" where user_name = '" + req.body.user_name+"'  and del != 'delete'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
@@ -84,13 +84,13 @@ router.post('/updateuser', function (request, response) {
         return res.jsonp("id is null! please check!");
     }
     //console.log("hahahhah");
-    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
+    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id + " and del != 'delete'",function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
-                console.log(checkUpdateData("dsadsa","adsadsa"));
                     var user_name = checkUpdateData(req.body.user_name,result.data[0].user_name);
                     var user_pass = checkUpdateData(req.body.user_pass,result.data[0].user_pass);
-                    var sql  =  "update "+tableName+" set user_name = '"+user_name
+                    var sql  =  "update "+tableName
+                    +" set user_name = '"+user_name
                     +"' , user_pass = '"+user_pass
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
@@ -114,11 +114,11 @@ router.post('/updateuser', function (request, response) {
     })
 });
 router.post('/deleteuser', function (req, res) {
-    var user_id = req.body.user_id;
-    if (user_id==null) {
-        return res.jsonp("user_id is null! please check!");
+    var id = req.body.id;
+    if (id==null) {
+        return res.jsonp("id is null! please check!");
     }else{
-        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+user_id;
+        var sql = "update "+tableName+" set "+tableDelete+" = 'delete' where "+tableKey+" = "+id;
         connectDB.delete(sql,function(result){
             console.log(result);
             return res.jsonp(result);

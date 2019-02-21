@@ -5,12 +5,12 @@ var url = require('url');
 var connectDB = require('../tool/connectDB');
 connectDB = new connectDB();
 
-var tableName = "matchs";//表名
+var tableName = "activity";//表名
 var tableKey = "id";//主键
 var tableDelete = "del";//删除标志位
 
 //获取所有数据
-router.post('/getAllMatchs', function (req, res) {
+router.post('/getAllActi', function (req, res) {
     var sql = "select * from "+tableName+" where "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
@@ -18,7 +18,7 @@ router.post('/getAllMatchs', function (req, res) {
 });
 
 //根据id获取信息
-router.post('/getMatchById',function (req, res) {
+router.post('/getActiById',function (req, res) {
     var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.id +" and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         console.log(result);
@@ -29,22 +29,22 @@ router.post('/getMatchById',function (req, res) {
 
 
 //添加
-router.post('/addMatch', function (req, res) {
-    var sql = "insert into "+tableName+"(match_name,match_time,match_abstract,match_detail,match_leader,match_sponsor,match_level,match_status,create_time,remark,del) value (?,?,?,?,?,?,?,?,?,?,?)";
+router.post('/addActi', function (req, res) {
+    var sql = "insert into "+tableName+"(activity_name,activity_time,activity_leader,activity_abstract,activity_detail,activity_stunum,activity_status,activity_score,create_time,remark,del) value (?,?,?,?,?,?,?,?,?,?,?)";
     var sqlparams = [
-        req.body.match_name,
-        req.body.match_time,
-        req.body.match_abstract,
-        req.body.match_detail,
-        req.body.match_leader,
-        req.body.match_sponsor,
-        req.body.match_level,
-        req.body.match_status,
+        req.body.activity_name,
+        req.body.activity_time,
+        req.body.activity_leader,
+        req.body.activity_abstract,
+        req.body.activity_detail,
+        req.body.activity_stunum,
+        req.body.activity_status,
+        req.body.activity_score,
         req.body.create_time,
         req.body.remark,
-        'normal' //del 状态
+        'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where match_name = '" + req.body.match_name+"'  and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where activity_name = '" + req.body.activity_name+"'  and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
@@ -60,7 +60,7 @@ router.post('/addMatch', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where match_name = '" + req.body.match_name+"' and del != 'delete'";
+                    var sqlQueryAgain = "select * from "+tableName+" where activity_name = '" + req.body.activity_name+"'  and del != 'delete'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
@@ -73,7 +73,7 @@ router.post('/addMatch', function (req, res) {
 
 });
 //更新信息
-router.post('/updateMatch', function (request, response) {
+router.post('/updateActi', function (request, response) {
     var req = request;
     var res = response;
     var id = req.body.id;
@@ -82,34 +82,33 @@ router.post('/updateMatch', function (request, response) {
         return res.jsonp("id is null! please check!");
     }
     //console.log("hahahhah");
-    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
+    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id + " and del != 'delete'",function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
 
-                    var match_name = checkUpdateData(req.body.match_name,result.data[0].match_name);
-                    var match_time = checkUpdateData(req.body.match_time,result.data[0].match_time);
+                    var activity_name = checkUpdateData(req.body.activity_name,result.data[0].activity_name);
+                    var activity_time = checkUpdateData(req.body.activity_time,result.data[0].activity_time);
 
-                    var match_abstract = checkUpdateData(req.body.match_abstract,result.data[0].match_abstract);
-                    var match_detail = checkUpdateData(req.body.match_detail,result.data[0].match_detail);
+                    var activity_leader = checkUpdateData(req.body.activity_leader,result.data[0].activity_leader);
+                    var activity_abstract = checkUpdateData(req.body.activity_abstract,result.data[0].activity_abstract);
 
-                    var match_leader = checkUpdateData(req.body.match_leader,result.data[0].match_leader);
-                    var match_sponsor = checkUpdateData(req.body.match_sponsor,result.data[0].match_sponsor);
+                    var activity_detail = checkUpdateData(req.body.activity_detail,result.data[0].activity_detail);
+                    var activity_stunum = checkUpdateData(req.body.activity_stunum,result.data[0].activity_stunum);
 
-                    var match_level = checkUpdateData(req.body.match_level,result.data[0].match_level);
-                    var match_status = checkUpdateData(req.body.match_status,result.data[0].match_status);
+                    var activity_status = checkUpdateData(req.body.activity_status,result.data[0].activity_status);
+                    var activity_score = checkUpdateData(req.body.activity_score,result.data[0].activity_score);
 
                     var create_time = checkUpdateData(req.body.create_time,result.data[0].create_time);
                     var remark = checkUpdateData(req.body.remark,result.data[0].remark);
-
                     var sql  =  "update "+tableName
-                    +" set match_name = '"+match_name
-                    +"' , match_time = '"+match_time
-                    +"' , match_abstract = '"+match_abstract
-                    +"' , match_detail = '"+match_detail
-                    +"' , match_leader = '"+match_leader
-                    +"' , match_sponsor = '"+match_sponsor
-                    +"' , match_level = '"+match_level
-                    +"' , match_status = '"+match_status
+                    +" set activity_name = '"+activity_name
+                    +"' , activity_time = '"+activity_time
+                    +"' , activity_leader = '"+activity_leader
+                    +"' , activity_abstract = '"+activity_abstract
+                    +"' , activity_detail = '"+activity_detail
+                    +"' , activity_stunum = '"+activity_stunum
+                    +"' , activity_status = '"+activity_status
+                    +"' , activity_score = '"+activity_score
                     +"' , create_time = '"+create_time
                     +"' , remark = '"+remark
                     +"' where "+tableKey+" = "+id;
@@ -133,7 +132,7 @@ router.post('/updateMatch', function (request, response) {
         }
     })
 });
-router.post('/deleteMatch', function (req, res) {
+router.post('/deleteActi', function (req, res) {
     var id = req.body.id;
     if (id==null) {
         return res.jsonp("id is null! please check!");

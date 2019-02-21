@@ -5,12 +5,12 @@ var url = require('url');
 var connectDB = require('../tool/connectDB');
 connectDB = new connectDB();
 
-var tableName = "matchs";//表名
+var tableName = "moral";//表名
 var tableKey = "id";//主键
 var tableDelete = "del";//删除标志位
 
 //获取所有数据
-router.post('/getAllMatchs', function (req, res) {
+router.post('/getAllMorals', function (req, res) {
     var sql = "select * from "+tableName+" where "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
@@ -18,7 +18,7 @@ router.post('/getAllMatchs', function (req, res) {
 });
 
 //根据id获取信息
-router.post('/getMatchById',function (req, res) {
+router.post('/getMoralById',function (req, res) {
     var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.id +" and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         console.log(result);
@@ -29,22 +29,21 @@ router.post('/getMatchById',function (req, res) {
 
 
 //添加
-router.post('/addMatch', function (req, res) {
-    var sql = "insert into "+tableName+"(match_name,match_time,match_abstract,match_detail,match_leader,match_sponsor,match_level,match_status,create_time,remark,del) value (?,?,?,?,?,?,?,?,?,?,?)";
+router.post('/addMoral', function (req, res) {
+    var sql = "insert into "+tableName+"(moral_name,moral_abstract,moral_detail,moral_type,moral_status,moral_manager,moral_score,create_time,remark,del) value (?,?,?,?,?,?,?,?,?,?)";
     var sqlparams = [
-        req.body.match_name,
-        req.body.match_time,
-        req.body.match_abstract,
-        req.body.match_detail,
-        req.body.match_leader,
-        req.body.match_sponsor,
-        req.body.match_level,
-        req.body.match_status,
+        req.body.moral_name,
+        req.body.moral_abstract,
+        req.body.moral_detail,
+        req.body.moral_type,
+        req.body.moral_status,
+        req.body.moral_manager,
+        req.body.moral_score,
         req.body.create_time,
         req.body.remark,
-        'normal' //del 状态
+        'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where match_name = '" + req.body.match_name+"'  and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where moral_name = '" + req.body.moral_name+"'  and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
@@ -60,7 +59,7 @@ router.post('/addMatch', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where match_name = '" + req.body.match_name+"' and del != 'delete'";
+                    var sqlQueryAgain = "select * from "+tableName+" where moral_name = '" + req.body.moral_name+"'  and del != 'delete'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
@@ -73,7 +72,7 @@ router.post('/addMatch', function (req, res) {
 
 });
 //更新信息
-router.post('/updateMatch', function (request, response) {
+router.post('/updateMoral', function (request, response) {
     var req = request;
     var res = response;
     var id = req.body.id;
@@ -82,34 +81,31 @@ router.post('/updateMatch', function (request, response) {
         return res.jsonp("id is null! please check!");
     }
     //console.log("hahahhah");
-    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id,function(result){
+    connectDB.query("select * from "+tableName+" where "+tableKey+" = "+id + " and del != 'delete'",function(result){
         if (result.status=="200") {
             if (result.data[0]!=null) {
+                    var moral_name = checkUpdateData(req.body.moral_name,result.data[0].moral_name);
+                    var moral_abstract = checkUpdateData(req.body.moral_abstract,result.data[0].moral_abstract);
 
-                    var match_name = checkUpdateData(req.body.match_name,result.data[0].match_name);
-                    var match_time = checkUpdateData(req.body.match_time,result.data[0].match_time);
+                    var moral_detail = checkUpdateData(req.body.moral_detail,result.data[0].moral_detail);
+                    var moral_type = checkUpdateData(req.body.moral_type,result.data[0].moral_type);
 
-                    var match_abstract = checkUpdateData(req.body.match_abstract,result.data[0].match_abstract);
-                    var match_detail = checkUpdateData(req.body.match_detail,result.data[0].match_detail);
+                    var moral_status = checkUpdateData(req.body.moral_status,result.data[0].moral_status);
+                    var moral_manager = checkUpdateData(req.body.moral_manager,result.data[0].moral_manager);
 
-                    var match_leader = checkUpdateData(req.body.match_leader,result.data[0].match_leader);
-                    var match_sponsor = checkUpdateData(req.body.match_sponsor,result.data[0].match_sponsor);
-
-                    var match_level = checkUpdateData(req.body.match_level,result.data[0].match_level);
-                    var match_status = checkUpdateData(req.body.match_status,result.data[0].match_status);
-
+                    var moral_score = checkUpdateData(req.body.moral_score,result.data[0].moral_score);
                     var create_time = checkUpdateData(req.body.create_time,result.data[0].create_time);
+
                     var remark = checkUpdateData(req.body.remark,result.data[0].remark);
 
                     var sql  =  "update "+tableName
-                    +" set match_name = '"+match_name
-                    +"' , match_time = '"+match_time
-                    +"' , match_abstract = '"+match_abstract
-                    +"' , match_detail = '"+match_detail
-                    +"' , match_leader = '"+match_leader
-                    +"' , match_sponsor = '"+match_sponsor
-                    +"' , match_level = '"+match_level
-                    +"' , match_status = '"+match_status
+                    +" set moral_name = '"+moral_name
+                    +"' , moral_abstract = '"+moral_abstract
+                    +"' , moral_detail = '"+moral_detail
+                    +"' , moral_type = '"+moral_type
+                    +"' , moral_status = '"+moral_status
+                    +"' , moral_manager = '"+moral_manager
+                    +"' , moral_score = '"+moral_score
                     +"' , create_time = '"+create_time
                     +"' , remark = '"+remark
                     +"' where "+tableKey+" = "+id;
@@ -133,7 +129,7 @@ router.post('/updateMatch', function (request, response) {
         }
     })
 });
-router.post('/deleteMatch', function (req, res) {
+router.post('/deleteMoral', function (req, res) {
     var id = req.body.id;
     if (id==null) {
         return res.jsonp("id is null! please check!");

@@ -14,6 +14,11 @@ var collegeController = require("./controller/college")
 var classController = require("./controller/class")
 var userController = require("./controller/user")
 
+var matchController = require("./controller/match")
+var certController = require("./controller/cert")
+var actiController = require("./controller/acti")
+var moralController = require("./controller/moral")
+
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
 app.use(express.static(path.join(__dirname, '')))
@@ -38,6 +43,11 @@ app.use('/school',schoolController)
 app.use('/college',collegeController)
 app.use('/class',classController)
 app.use('/user',userController)
+
+app.use('/match',matchController)
+app.use('/cert',certController)
+app.use('/acti',actiController)
+app.use('/moral',moralController)
 
 app.listen(7777)
 console.log("数据服务器已打开, 端口: 7777");
