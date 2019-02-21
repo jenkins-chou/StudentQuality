@@ -64,7 +64,7 @@ router.post('/getAllStudents', function (req, res) {
 //获取班级获取所有学生
 router.post('/getStudentByClass', function (req, res) {
     console.log("getStudentByClass");
-    var sql = "select * from "+tableName+" where type = '1' and realname != '' and college_id = '"+req.body.college_id +"' and school_id = '"+req.body.school_id+" and class_id = '"+req.body.class_id+"' and "+tableDelete+" != 'delete'";
+    var sql = "select * from "+tableName+" where type = '1' and realname != '' and college_id = '"+req.body.college_id +"' and school_id = '"+req.body.school_id+"' and class_id = '"+req.body.class_id+"' and "+tableDelete+" != 'delete'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })
