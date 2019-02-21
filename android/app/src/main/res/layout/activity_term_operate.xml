@@ -99,6 +99,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
             <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学期名称"
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/term_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
                 android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -106,11 +132,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="学期名称"
+                    android:text="备注"
                     android:textColor="@color/base_font_color" />
 
                 <EditText
-                    android:id="@+id/term_name"
+                    android:id="@+id/remark"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"

@@ -8,6 +8,7 @@ import com.jenking.spandroid.models.base.MatchModel;
 import com.jenking.spandroid.models.base.MoralModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
+import com.jenking.spandroid.models.base.TermModel;
 import com.jenking.spandroid.models.base.UserModel;
 
 import java.util.Map;
@@ -181,5 +182,21 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("moral/getAllMorals")
     Observable<ResultModel<MoralModel>> getAllMorals(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("term/addTerm")
+    Observable<ResultModel<TermModel>> addTerm(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("term/updateTerm")
+    Observable<ResultModel<TermModel>> updateTerm(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("term/deleteTerm")
+    Observable<ResultModel<TermModel>> deleteTerm(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("term/getAllTerms")
+    Observable<ResultModel<TermModel>> getAllTerms(@FieldMap Map<String, String> body);
 
 }
