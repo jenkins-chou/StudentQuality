@@ -47,6 +47,106 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <LinearLayout
+                android:id="@+id/common_bar"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <View
+                            android:layout_margin="15dp"
+                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                            android:layout_width="6dp"
+                            android:layout_height="20dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="全部课程"
+                            android:textColor="@color/main_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/course_list_all"
+                        android:layout_marginRight="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="查看全部"
+                        android:textColor="@color/main_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </RelativeLayout>
+                <View
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <RelativeLayout
+                    android:id="@+id/course_list_obligatory"
+                    android:background="@drawable/common_button_selected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="10dp"
+                            android:src="@mipmap/course_bixiu"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="必修课"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </RelativeLayout>
+                <View
+                    android:layout_marginLeft="15dp"
+                    android:background="@color/base_line_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"/>
+                <RelativeLayout
+                    android:id="@+id/course_list_elective"
+                    android:background="@drawable/common_button_selected"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_margin="10dp"
+                            android:src="@mipmap/course_xuanxiu"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="选修课"
+                            android:textColor="@color/base_font_color"
+                            android:textSize="@dimen/fontsize_15" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:id="@+id/student_bar"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
@@ -154,106 +254,7 @@
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/common_bar"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <View
-                            android:layout_margin="15dp"
-                            android:background="@drawable/fragment_main_part2_roundcircle_tag"
-                            android:layout_width="6dp"
-                            android:layout_height="20dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="全部课程"
-                            android:textColor="@color/main_color"
-                            android:textSize="@dimen/fontsize_15" />
-                    </LinearLayout>
-                    <TextView
-                        android:id="@+id/course_list_all"
-                        android:layout_marginRight="15dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="查看全部"
-                        android:textColor="@color/main_color"
-                        android:textSize="@dimen/fontsize_15" />
-                </RelativeLayout>
-                <View
-                    android:background="@color/base_line_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"/>
-                <RelativeLayout
-                    android:id="@+id/course_list_obligatory"
-                    android:background="@drawable/common_button_selected"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_margin="10dp"
-                            android:src="@mipmap/course_bixiu"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="必修课"
-                            android:textColor="@color/base_font_color"
-                            android:textSize="@dimen/fontsize_15" />
-                    </LinearLayout>
-                </RelativeLayout>
-                <View
-                    android:layout_marginLeft="15dp"
-                    android:background="@color/base_line_color"
-                    android:layout_width="match_parent"
-                    android:layout_height="1px"/>
-                <RelativeLayout
-                    android:id="@+id/course_list_elective"
-                    android:background="@drawable/common_button_selected"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <LinearLayout
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:layout_margin="10dp"
-                            android:src="@mipmap/course_xuanxiu"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="选修课"
-                            android:textColor="@color/base_font_color"
-                            android:textSize="@dimen/fontsize_15" />
-                    </LinearLayout>
-                </RelativeLayout>
-            </LinearLayout>
             <LinearLayout
                 android:id="@+id/manager_bar"
                 android:orientation="vertical"

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.CourseListActivity;
@@ -19,6 +20,8 @@ import com.jenking.spandroid.activity.student.MineCourseActivity;
 import com.jenking.spandroid.activity.student.MineCourseElectiveActivity;
 import com.jenking.spandroid.activity.student.MineCourseObligatoryActivity;
 import com.jenking.spandroid.activity.teacher.TeacherCourseArrangeActivity;
+import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.tools.AccountTool;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -28,6 +31,16 @@ import butterknife.Unbinder;
 public class MainFragment2 extends Fragment {
 
     private Unbinder unbinder;
+
+    @BindView(R.id.student_bar)
+    LinearLayout student_bar;
+    @BindView(R.id.common_bar)
+    LinearLayout common_bar;
+    @BindView(R.id.teacher_bar)
+    LinearLayout teacher_bar;
+    @BindView(R.id.manager_bar)
+    LinearLayout manager_bar;
+
     //------------------------------学生区域
     @OnClick(R.id.mine_all_course)
     void mine_all_course(){
@@ -108,5 +121,37 @@ public class MainFragment2 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_main_part2,container,false);
         unbinder = ButterKnife.bind(this,view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        common_bar.setVisibility(View.GONE);
+        student_bar.setVisibility(View.GONE);
+        teacher_bar.setVisibility(View.GONE);
+        manager_bar.setVisibility(View.GONE);
+        if (AccountTool.isLogin(getContext())){
+            String username = "";
+            UserModel userModel = AccountTool.getLoginUser(getContext());
+            if (userModel!=null){
+                username = AccountTool.getLoginUser(getContext()).getName();
+                if (userModel.getType()!=null){
+                    switch (userModel.getType()){
+                        case AccountTool.usertype_student:
+                            common_bar.setVisibility(View.VISIBLE);
+                            student_bar.setVisibility(View.VISIBLE);
+                            break;
+                        case AccountTool.usertype_teacher:
+                            common_bar.setVisibility(View.VISIBLE);
+                            teacher_bar.setVisibility(View.VISIBLE);
+                            break;
+                        case AccountTool.usertype_manager:
+                            common_bar.setVisibility(View.VISIBLE);
+                            manager_bar.setVisibility(View.VISIBLE);
+                            break;
+                    }
+                }
+            }
+        }
     }
 }

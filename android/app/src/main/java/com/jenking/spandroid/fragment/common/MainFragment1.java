@@ -23,6 +23,7 @@ import com.jenking.spandroid.activity.manager.ManagerMoralActivity;
 import com.jenking.spandroid.activity.manager.ManagerReportActivity;
 import com.jenking.spandroid.activity.manager.ManagerSchoolActivity;
 import com.jenking.spandroid.activity.manager.ManagerTeacherActivity;
+import com.jenking.spandroid.activity.manager.ManagerTermActivity;
 import com.jenking.spandroid.activity.student.MineActivityActivity;
 import com.jenking.spandroid.activity.student.MineCertActivity;
 import com.jenking.spandroid.activity.student.MineMatchActivity;
@@ -149,6 +150,12 @@ public class MainFragment1 extends Fragment {
     @OnClick(R.id.manager_class)
     void manager_class(){
         Intent intent = new Intent(getContext(),ManagerClassActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.manager_term)
+    void manager_term(){
+        Intent intent = new Intent(getContext(),ManagerTermActivity.class);
         startActivity(intent);
     }
 
