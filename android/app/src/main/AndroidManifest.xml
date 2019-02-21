@@ -91,7 +91,9 @@
         <activity android:name=".activity.common.UserInfoAvatarActivity" />
         <activity android:name=".activity.manager.ManagerTermActivity" />
         <activity android:name=".activity.manager.TermOperateActivity" />
-        <activity android:name=".activity.common.TermDetailActivity"></activity>
+        <activity android:name=".activity.common.TermDetailActivity" />
+        <activity android:name=".activity.common.CourseOperateActivity" />
+        <activity android:name=".activity.common.TermListActivity"></activity>
     </application>
 
 </manifest>

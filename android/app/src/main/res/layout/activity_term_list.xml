@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="课程安排"
+            android:text="学期列表"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 
@@ -49,30 +49,9 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
-    <LinearLayout
-        android:orientation="vertical"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:text="以班级为单位进行排课"
-            android:gravity="center"
-            android:padding="13sp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:textColor="@color/main_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:text="以个人为单位进行排课"
-            android:gravity="center"
-            android:padding="13sp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:textColor="@color/main_color"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 </LinearLayout>

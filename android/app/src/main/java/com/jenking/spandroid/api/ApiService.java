@@ -4,6 +4,7 @@ import com.jenking.spandroid.models.base.ActiModel;
 import com.jenking.spandroid.models.base.CertificateModel;
 import com.jenking.spandroid.models.base.ClassModel;
 import com.jenking.spandroid.models.base.CollegeModel;
+import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.MatchModel;
 import com.jenking.spandroid.models.base.MoralModel;
 import com.jenking.spandroid.models.base.ResultModel;
@@ -198,5 +199,21 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("term/getAllTerms")
     Observable<ResultModel<TermModel>> getAllTerms(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("course/addCourse")
+    Observable<ResultModel<CourseModel>> addCourse(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("course/updateCourse")
+    Observable<ResultModel<CourseModel>> updateCourse(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("course/deleteCourse")
+    Observable<ResultModel<CourseModel>> deleteCourse(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("course/getAllCourses")
+    Observable<ResultModel<CourseModel>> getAllCourses(@FieldMap Map<String, String> body);
 
 }

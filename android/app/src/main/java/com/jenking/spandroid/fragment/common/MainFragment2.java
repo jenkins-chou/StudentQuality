@@ -82,21 +82,7 @@ public class MainFragment2 extends Fragment {
         Intent intent = new Intent(getContext(),ManagerCourseActivity.class);
         startActivity(intent);
     }
-    @OnClick(R.id.manager_course_enroll)
-    void manager_course_enroll(){
-        Intent intent = new Intent(getContext(),ManagerCourseSelectedActivity.class);
-        startActivity(intent);
-    }
-    @OnClick(R.id.manager_course_process)
-    void manager_course_process(){
-        Intent intent = new Intent(getContext(),ManagerCourseSelectedActivity.class);
-        startActivity(intent);
-    }
-    @OnClick(R.id.manager_course_selected)
-    void manager_course_selected(){
-        Intent intent = new Intent(getContext(),ManagerCourseSelectedActivity.class);
-        startActivity(intent);
-    }
+
     @OnClick(R.id.manager_score)
     void manager_score(){
         Intent intent = new Intent(getContext(),ManagerScoreActivity.class);
@@ -109,6 +95,8 @@ public class MainFragment2 extends Fragment {
         startActivity(intent);
     }
 
+
+    //-----------------------------------教师区域
     @OnClick(R.id.teacher_course_arrange)
     void teacher_course_arrange(){
         Intent intent = new Intent(getContext(),TeacherCourseArrangeActivity.class);
