@@ -51,7 +51,7 @@ router.post('/addCourse', function (req, res) {
         req.body.create_time,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where course_name = '" + req.body.course_name+"' and school_id = '"+req.body.school_id+"' and college_name = '"+req.body.college_name+"' and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where course_name = '" + req.body.course_name+"' and school_id = '"+req.body.school_id+"' and college_id = '"+req.body.college_id+"' and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){
@@ -67,7 +67,7 @@ router.post('/addCourse', function (req, res) {
             connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
                 if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where course_name = '" + req.body.course_name+"' and school_id = '"+req.body.school_id+"' and college_name = '"+req.body.college_name"' and del != 'delete'";
+                    var sqlQueryAgain = "select * from "+tableName+" where course_name = '" + req.body.course_name+"' and school_id = '"+req.body.school_id+"' and college_id = '"+req.body.college_id+"' and del != 'delete'";
                     connectDB.query(sqlQueryAgain,function(resultAgain){
                         return res.jsonp(resultAgain);
                     })
