@@ -93,7 +93,8 @@
         <activity android:name=".activity.manager.TermOperateActivity" />
         <activity android:name=".activity.common.TermDetailActivity" />
         <activity android:name=".activity.common.CourseOperateActivity" />
-        <activity android:name=".activity.common.TermListActivity"></activity>
+        <activity android:name=".activity.common.TermListActivity" />
+        <activity android:name=".activity.common.TeacherListActivity"></activity>
     </application>
 
 </manifest>

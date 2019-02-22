@@ -26,6 +26,29 @@ router.post('/getCourse',function (req, res) {
     });
 });
 
+//条件查询
+router.post('/getCourseSelected',function (req, res) {
+    var school_id = req.body.school_id;
+    var college_id = req.body.college_id;
+    var term_id = req.body.term_id;
+    var course_type = req.body.course_type;
+    var sql = "select * from "+tableName+" where "+tableDelete+" != 'delete'";
+    if (school_id!=null&&college_id!=null) {
+        sql = sql + " and school_id = '"+school_id+"' and college_id = '"+college_id+"'";
+    }
+    if (term_id!=null) {
+        sql = sql + " and term_id = '"+term_id+"'";
+    }
+    if (course_type!=null) {
+        sql = sql + " and course_type = '"+course_type+"'";
+    }
+    console.log(sql);
+    connectDB.query(sql,function(result){
+        console.log(result);
+        return res.jsonp(result);
+    });
+});
+
 
 
 //添加

@@ -1,6 +1,7 @@
 package com.jenking.spandroid.activity.common;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,12 +12,16 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.api.RS;
+import com.jenking.spandroid.dialog.CommonBottomListDialog;
+import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.presenter.CoursePresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -37,6 +42,9 @@ public class CourseOperateActivity extends BaseActivity {
     private String select_teacher_id;
     private String select_teacher_name;
 
+    private List<String> courseTypeList;
+    private List<String> courseStatusList;
+
     @BindView(R.id.operate_tips)
     TextView operate_tips;
     @BindView(R.id.course_name)
@@ -52,7 +60,7 @@ public class CourseOperateActivity extends BaseActivity {
     @BindView(R.id.course_status)
     TextView course_status;
     @BindView(R.id.course_score)
-    TextView course_score;
+    EditText course_score;
     @BindView(R.id.course_term)
     TextView course_term;
     @BindView(R.id.course_teacher)
@@ -62,10 +70,44 @@ public class CourseOperateActivity extends BaseActivity {
     @BindView(R.id.college_name)
     TextView college_name;
 
+    @OnClick(R.id.course_type)
+    void course_type(){
+        CommonBottomListDialog commonBottomListDialog = new CommonBottomListDialog(this,"课程类型",courseTypeList,"",false) {
+            @Override
+            protected void setOnItemClickListener(String value) {
+                course_type.setText(value);
+            }
+        };
+        commonBottomListDialog.show();
+    }
+
+    @OnClick(R.id.course_status)
+    void course_status(){
+        CommonBottomListDialog commonBottomListDialog = new CommonBottomListDialog(this,"课程状态",courseStatusList,"",false) {
+            @Override
+            protected void setOnItemClickListener(String value) {
+                course_status.setText(value);
+            }
+        };
+        commonBottomListDialog.show();
+    }
+
+    @OnClick(R.id.course_teacher)
+    void course_teacher(){
+        Intent intent = new Intent(this,TeacherListActivity.class);
+        startActivityForResult(intent,TeacherListActivity.SelectTeacherCode);
+    }
+
     @OnClick(R.id.college_name)
     void college_name(){
         Intent intent = new Intent(this,CollegeListActivity.class);
         startActivityForResult(intent,CollegeListActivity.SelectCollegeCode);
+    }
+
+    @OnClick(R.id.course_term)
+    void course_term(){
+        Intent intent = new Intent(this,TermListActivity.class);
+        startActivityForResult(intent,TermListActivity.SelectTermCode);
     }
 
     @OnClick(R.id.back)
@@ -111,12 +153,11 @@ public class CourseOperateActivity extends BaseActivity {
                     coursePresenter.addCourse(params);
                 }else{
                     if (courseModel!=null){
-                        params.put("is",courseModel.getId());
+                        params.put("id",courseModel.getId());
                         coursePresenter.updateCourse(params);
                     }
                 }
             }
-
         }
     }
     @Override
@@ -128,7 +169,11 @@ public class CourseOperateActivity extends BaseActivity {
     @Override
     public void initData() {
         super.initData();
-
+        courseTypeList = new ArrayList<>();
+        courseTypeList.add("必修");
+        courseTypeList.add("选修");
+        courseStatusList = new ArrayList<>();
+        courseStatusList.add("正常开课");
         Intent intent = getIntent();
         if (intent!=null&& StringUtil.isNotEmpty(intent.getStringExtra("model"))) {
             //表明是修改
@@ -139,6 +184,14 @@ public class CourseOperateActivity extends BaseActivity {
             courseModel = new Gson().fromJson(json, CourseModel.class);
 
             if (courseModel!=null){
+                select_term_id = courseModel.getTerm_id();
+                select_teacher_id = courseModel.getTeacher_id();
+                select_college_id = courseModel.getCollege_id();
+                select_school_id = courseModel.getSchool_id();
+                select_term_name = courseModel.getTerm_name();
+                select_teacher_name = courseModel.getTeacher_name();
+                select_college_name = courseModel.getCollege_name();
+                select_school_name = courseModel.getSchool_name();
                 course_name.setText(courseModel.getCourse_name());
                 course_stunum.setText(courseModel.getCourse_stunum());
                 course_abstract.setText(courseModel.getCourse_abstract());
@@ -176,7 +229,10 @@ public class CourseOperateActivity extends BaseActivity {
 
             @Override
             public void updateCourse(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    Toast.makeText(CourseOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
 
             @Override
@@ -189,5 +245,32 @@ public class CourseOperateActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data!=null){
+            switch (requestCode){
+                case CollegeListActivity.SelectCollegeCode:
+                    select_school_id = data.getStringExtra("school_id");
+                    select_school_name= data.getStringExtra("school_name");
+                    select_college_id = data.getStringExtra("college_id");
+                    select_college_name= data.getStringExtra("college_name");
+                    college_name.setText(select_school_name+select_college_name);
+                    break;
+                case TermListActivity.SelectTermCode:
+
+                    select_term_id = data.getStringExtra("term_id");
+                    select_term_name = data.getStringExtra("term_name");
+                    course_term.setText(select_term_name);
+                    break;
+                case TeacherListActivity.SelectTeacherCode:
+                    select_teacher_id = data.getStringExtra("teacher_id");
+                    select_teacher_name = data.getStringExtra("teacher_name");
+                    course_teacher.setText(select_teacher_name);
+                    break;
+            }
+        }
     }
 }

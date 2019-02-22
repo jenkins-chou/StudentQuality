@@ -271,17 +271,17 @@
                     android:text="课程学分"
                     android:textColor="@color/base_font_color" />
 
-                <TextView
+                <EditText
                     android:id="@+id/course_score"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:background="@drawable/common_noline_edittext"
-                    android:hint="课程学分"
+                    android:hint="请输入学分"
                     android:inputType="numberDecimal"
-                    android:textColorHint="@color/red"
                     android:text=""
                     android:textColor="@color/base_font_color2"
+                    android:textColorHint="@color/red"
                     android:textSize="17sp" />
 
             </LinearLayout>
