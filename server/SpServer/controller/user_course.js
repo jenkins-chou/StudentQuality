@@ -11,7 +11,7 @@ var tableDelete = "del";//删除标志位
 
 //根据班级id获取班级课程
 router.post('/getCoursesByClassId', function (req, res) {
-    var sql = "select a.*,b.user_id,b.class_id from course a,user_course b where a.id = b.course_id and del != 'delete' and class_id = '"+req.body.class_id+"'";
+    var sql = "select a.*,b.user_id,distinct b.class_id from course a,user_course b where a.id = b.course_id and b.del != 'delete' and a.del != 'delete' and class_id = '"+req.body.class_id+"'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })
@@ -30,7 +30,7 @@ router.post('/addCourseTypeClass', function (req, res) {
     var class_id = req.body.class_id;
     var course_id = req.body.course_id;
     var sql = req.body.sql;
-    var sqlQuery = "select * from "+tableName+" where class_id = '" + class_id+"' and course_id = '"+course_id+"' and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where class_id = '"+class_id+"' and course_id = '"+course_id+"' and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
             console.log(result);
             if(result.data[0]!=null){

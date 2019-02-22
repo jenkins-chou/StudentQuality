@@ -120,9 +120,9 @@ public class ManagerCourseArrangeTypeClassAdd extends BaseActivity {
                             String sql = "insert into user_course(user_id,course_id,class_id,create_time,del) values ";
                             for (int i =0;i<userModelList.size();i++){
                                 if (i==userModelList.size()-1){
-                                    sql = sql + "("+userModelList.get(i).getId()+","+"1"+","+select_class_id+","+StringUtil.getTime()+","+"noraml"+");";
+                                    sql = sql + "('"+userModelList.get(i).getId()+"','"+"1"+"','"+select_class_id+"','"+StringUtil.getTime()+"','"+"noraml"+"');";
                                 }else{
-                                    sql = sql + "("+userModelList.get(i).getId()+","+"1"+","+select_class_id+","+StringUtil.getTime()+","+"noraml"+"),";
+                                    sql = sql + "('"+userModelList.get(i).getId()+"','"+"1"+"','"+select_class_id+"','"+StringUtil.getTime()+"','"+"noraml"+"'),";
                                 }
                             }
                             Map<String,String> params = RS.getBaseParams(ManagerCourseArrangeTypeClassAdd.this);

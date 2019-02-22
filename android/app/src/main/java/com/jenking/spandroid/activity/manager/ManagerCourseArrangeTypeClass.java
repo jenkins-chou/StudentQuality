@@ -19,6 +19,7 @@ import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.presenter.UserCoursePresenter;
 import com.jenking.spandroid.presenter.UserPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
@@ -50,6 +51,7 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
 
     private List<CourseModel> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
+    private UserCoursePresenter userCoursePresenter;
 
     @OnClick(R.id.arrange_course)
     void arrange_course(){
@@ -98,6 +100,30 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
 
+        userCoursePresenter = new UserCoursePresenter(this);
+        userCoursePresenter.setOnCallBack(new UserCoursePresenter.OnCallBack() {
+            @Override
+            public void getCoursesByClassId(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
+            }
+
+            @Override
+            public void deleteByClassIdAndCourseId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addCourseTypeClass(boolean isSuccess, Object object) {
+
+            }
+        });
+
     }
 
     @Override
@@ -118,6 +144,10 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
                     select_class_id = data.getStringExtra("class_id");
                     select_class_name = data.getStringExtra("class_name");
                     class_name.setText(select_school_name +"--"+ select_college_name+"--"+select_class_name);
+
+                    Map<String,String> params = RS.getBaseParams(this);
+                    params.put("class_id",select_class_id);
+                    userCoursePresenter.getCoursesByClassId(params);
                 }
                 break;
         }
