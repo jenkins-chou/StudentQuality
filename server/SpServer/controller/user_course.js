@@ -20,7 +20,7 @@ router.post('/getCoursesByClassId', function (req, res) {
 //根据班级id和课程id移除课程
 router.post('/deleteByClassIdAndCourseId', function (req, res) {
     var sql = "update user_course set del = 'delete' where class_id = '"+req.body.class_id+"' and course_id = '"+req.body.course_id+"'";
-    connectDB.query(sql,function(result){
+    connectDB.delete(sql,function(result){
         return res.jsonp(result);
     })
 });

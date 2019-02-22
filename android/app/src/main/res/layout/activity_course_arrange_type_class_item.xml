@@ -60,13 +60,14 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/remove_course"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="10dp"
         android:text="移除"
         android:textColor="@color/main_color"
-        android:textSize="12sp" />
+        android:textSize="13sp" />
 
 </RelativeLayout>

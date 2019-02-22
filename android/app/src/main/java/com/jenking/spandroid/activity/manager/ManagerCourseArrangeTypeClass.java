@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.ClassListActivity;
 import com.jenking.spandroid.api.RS;
+import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
@@ -93,6 +95,21 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
                 helper.setText(R.id.college_name,item.getSchool_name()+"--"+item.getCollege_name());
                 helper.setText(R.id.college_type,item.getCourse_type());
                 helper.setText(R.id.college_term,item.getTerm_name());
+
+                TextView remove_course = helper.getView(R.id.remove_course);
+                remove_course.setTag(item.getCollege_id());
+                remove_course.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Map<String,String> params = RS.getBaseParams(ManagerCourseArrangeTypeClass.this);
+                        params.put("course_id",view.getTag().toString());
+                        params.put("class_id",select_class_id);
+                        Log.e("deleteByClass",params.toString());
+                        confirmToRemove(params);
+
+                    }
+                });
             }
         };
 
@@ -123,12 +140,29 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
 
             }
         });
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+    }
+
+    void confirmToRemove(final Map<String,String> params){
+        if (params==null)return;
+        CommonTipsDialog.create(this,"温馨提示","确认要移除吗?",false)
+                .setOnClickListener(new CommonTipsDialog.OnClickListener() {
+                    @Override
+                    public void cancel() {
+
+                    }
+
+                    @Override
+                    public void confirm() {
+                        if (userCoursePresenter!=null){
+                            userCoursePresenter.deleteByClassIdAndCourseId(params);
+                        }
+                    }
+                }).show();
     }
 
     @Override
@@ -137,6 +171,8 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
         switch (requestCode) {
             case ClassListActivity.SelectClassCode:
                 if (data != null) {
+                    datas.clear();
+                    baseRecyclerAdapter.setData(datas);
                     select_school_id = data.getStringExtra("school_id");
                     select_school_name = data.getStringExtra("school_name");
                     select_college_id = data.getStringExtra("college_id");

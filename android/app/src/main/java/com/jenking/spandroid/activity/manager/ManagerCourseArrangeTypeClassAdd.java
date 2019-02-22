@@ -155,8 +155,15 @@ public class ManagerCourseArrangeTypeClassAdd extends BaseActivity {
             @Override
             public void addCourseTypeClass(boolean isSuccess, Object object) {
                 if (isSuccess){
-                    Toast.makeText(ManagerCourseArrangeTypeClassAdd.this, "添加成功", Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (object!=null){
+                        ResultModel resultModel = (ResultModel)object;
+                        if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
+                            Toast.makeText(ManagerCourseArrangeTypeClassAdd.this, "添加成功", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }else{
+                            Toast.makeText(ManagerCourseArrangeTypeClassAdd.this, "已存在该课程", Toast.LENGTH_SHORT).show();
+                        }
+                    }
                 }
             }
         });
