@@ -97,7 +97,7 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
                 helper.setText(R.id.college_term,item.getTerm_name());
 
                 TextView remove_course = helper.getView(R.id.remove_course);
-                remove_course.setTag(item.getCollege_id());
+                remove_course.setTag(item.getId());
                 remove_course.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -132,7 +132,12 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
 
             @Override
             public void deleteByClassIdAndCourseId(boolean isSuccess, Object object) {
-
+                if (isSuccess){
+                    Toast.makeText(ManagerCourseArrangeTypeClass.this, "删除成功，正在刷新数据", Toast.LENGTH_LONG).show();
+                    Map<String,String> params = RS.getBaseParams(ManagerCourseArrangeTypeClass.this);
+                    params.put("class_id",select_class_id);
+                    userCoursePresenter.getCoursesByClassId(params);
+                }
             }
 
             @Override
@@ -153,9 +158,7 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
                 .setOnClickListener(new CommonTipsDialog.OnClickListener() {
                     @Override
                     public void cancel() {
-
                     }
-
                     @Override
                     public void confirm() {
                         if (userCoursePresenter!=null){

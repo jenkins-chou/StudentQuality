@@ -11,7 +11,7 @@ var tableDelete = "del";//删除标志位
 
 //根据班级id获取班级课程
 router.post('/getCoursesByClassId', function (req, res) {
-    var sql = "select * from course where id in (select distinct course_id from user_course where del != 'del' and class_id = '"+req.body.class_id+"') and del != 'delete'"
+    var sql = "select * from course where id in (select distinct course_id from user_course where del != 'delete' and class_id = '"+req.body.class_id+"') and del != 'delete'"
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })
