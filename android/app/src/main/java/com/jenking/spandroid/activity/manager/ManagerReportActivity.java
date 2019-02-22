@@ -31,7 +31,6 @@ import butterknife.OnClick;
 
 public class ManagerReportActivity extends BaseActivity {
 
-
     @OnClick(R.id.back)
     void back(){
         finish();

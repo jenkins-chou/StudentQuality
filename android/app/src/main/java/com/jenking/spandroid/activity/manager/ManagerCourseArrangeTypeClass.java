@@ -150,6 +150,11 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (userCoursePresenter!=null&&StringUtil.isNotEmpty(select_class_id)){
+            Map<String,String> params = RS.getBaseParams(ManagerCourseArrangeTypeClass.this);
+            params.put("class_id",select_class_id);
+            userCoursePresenter.getCoursesByClassId(params);
+        }
     }
 
     void confirmToRemove(final Map<String,String> params){
