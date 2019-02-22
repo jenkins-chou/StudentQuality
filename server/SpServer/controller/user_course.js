@@ -5,7 +5,7 @@ var url = require('url');
 var connectDB = require('../tool/connectDB');
 connectDB = new connectDB();
 
-var tableName = "tableName";//表名
+var tableName = "user_course";//表名
 var tableKey = "id";//主键
 var tableDelete = "del";//删除标志位
 
