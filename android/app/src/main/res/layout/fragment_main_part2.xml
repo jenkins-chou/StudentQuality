@@ -75,16 +75,6 @@
                             android:textColor="@color/main_color"
                             android:textSize="@dimen/fontsize_15" />
                     </LinearLayout>
-                    <TextView
-                        android:id="@+id/course_list_all"
-                        android:layout_marginRight="15dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="查看全部"
-                        android:textColor="@color/main_color"
-                        android:textSize="@dimen/fontsize_15" />
                 </RelativeLayout>
                 <View
                     android:background="@color/base_line_color"

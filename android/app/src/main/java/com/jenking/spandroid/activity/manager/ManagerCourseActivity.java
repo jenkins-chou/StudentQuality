@@ -98,6 +98,8 @@ public class ManagerCourseActivity extends BaseActivity {
             protected void convert(BaseViewHolder helper, CourseModel item) {
                 helper.setText(R.id.course_name,item.getCourse_name());
                 helper.setText(R.id.college_name,item.getSchool_name()+"--"+item.getCollege_name());
+                helper.setText(R.id.college_type,item.getCourse_type());
+                helper.setText(R.id.college_term,item.getTerm_name());
             }
         };
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
@@ -110,7 +112,7 @@ public class ManagerCourseActivity extends BaseActivity {
         });
 
         baseRecyclerAdapter.openLoadAnimation(false);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
 
         coursePresenter = new CoursePresenter(this);
@@ -135,7 +137,23 @@ public class ManagerCourseActivity extends BaseActivity {
                 if (isSuccess&&object!=null){
                     ResultModel resultModel = (ResultModel)object;
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas.clear();
                         datas = resultModel.getData()!=null?resultModel.getData():datas;
+                        baseRecyclerAdapter.setData(datas);
+                    }
+                }
+            }
+
+            @Override
+            public void getCourseSelected(boolean isSuccess, Object object) {
+                Log.e("getCourseSelected","getCourseSelected");
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        datas.clear();
+                        datas = resultModel.getData()!=null?resultModel.getData():datas;
+
+                        Log.e("getCourseSelected",datas.size()+"");
                         baseRecyclerAdapter.setData(datas);
                     }
                 }
@@ -147,7 +165,21 @@ public class ManagerCourseActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         if (coursePresenter!=null){
-            coursePresenter.getAllCourses(RS.getBaseParams(this));
+            if (!StringUtil.isNotEmpty(select_college_id)
+                    &&!StringUtil.isNotEmpty(select_school_id)
+                    &&!StringUtil.isNotEmpty(select_term_id)){
+                coursePresenter.getAllCourses(RS.getBaseParams(this));
+            }else {
+                Map<String,String> params = RS.getBaseParams(this);
+                if (StringUtil.isNotEmpty(select_school_id)&&StringUtil.isNotEmpty(select_college_id)){
+                    params.put("school_id",select_school_id);
+                    params.put("college_id",select_college_id);
+                }
+                if (StringUtil.isNotEmpty(select_term_id)){
+                    params.put("term_id",select_term_id);
+                }
+                coursePresenter.getCourseSelected(params);
+            }
         }
     }
     @Override
@@ -168,7 +200,10 @@ public class ManagerCourseActivity extends BaseActivity {
                     Map<String,String> params = RS.getBaseParams(this);
                     params.put("school_id",select_school_id);
                     params.put("college_id",select_college_id);
-                    params.put("term_id",select_term_id);
+                    if (StringUtil.isNotEmpty(select_term_id)){
+                        params.put("term_id",select_term_id);
+                    }
+                    coursePresenter.getCourseSelected(params);
                 }
                 break;
             case TermListActivity.SelectTermCode:
@@ -176,6 +211,14 @@ public class ManagerCourseActivity extends BaseActivity {
                     select_term_id = data.getStringExtra("term_id");
                     select_term_name= data.getStringExtra("term_name");
                     term_name.setText(select_term_name);
+
+                    Map<String,String> params = RS.getBaseParams(this);
+                    params.put("term_id",select_term_id);
+                    if (StringUtil.isNotEmpty(select_school_id)&&StringUtil.isNotEmpty(select_college_id)){
+                        params.put("school_id",select_school_id);
+                        params.put("college_id",select_college_id);
+                    }
+                    coursePresenter.getCourseSelected(params);
                 }
                 break;
         }

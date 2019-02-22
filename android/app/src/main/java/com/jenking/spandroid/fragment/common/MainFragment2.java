@@ -58,20 +58,18 @@ public class MainFragment2 extends Fragment {
         startActivity(intent);
     }
 
-    @OnClick(R.id.course_list_all)
-    void course_list_all(){
-        Intent intent = new Intent(getContext(),CourseListActivity.class);
-        startActivity(intent);
-    }
-
+    //-------------------------公共区域
     @OnClick(R.id.course_list_obligatory)
     void course_list_obligatory(){
         Intent intent = new Intent(getContext(),CourseListActivity.class);
+        intent.putExtra("course_type","必修");
         startActivity(intent);
     }
+
     @OnClick(R.id.course_list_elective)
     void course_list_elective(){
         Intent intent = new Intent(getContext(),CourseListActivity.class);
+        intent.putExtra("course_type","选修");
         startActivity(intent);
     }
 

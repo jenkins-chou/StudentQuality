@@ -16,20 +16,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="课程名称"
-
+            android:textStyle="bold"
             android:textColor="@color/main_color" />
-
-        <TextView
-            android:id="@+id/college_name"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="农业学院"
-            android:textSize="10sp"
-            android:alpha="0.5"
-            android:layout_marginTop="2dp"
-            android:textColor="@color/white"
-            android:background="@color/main_color"/>
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/college_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="农业学院"
+                android:textSize="10sp"
+                android:alpha="0.5"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:background="@color/main_color"/>
 
+            <TextView
+                android:id="@+id/college_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="课程类型"
+                android:textSize="10sp"
+                android:alpha="0.5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:background="@color/colorAccent"/>
+
+            <TextView
+                android:id="@+id/college_term"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="开课学期"
+                android:textSize="10sp"
+                android:alpha="0.5"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/white"
+                android:background="@color/colorPrimary"/>
+        </LinearLayout>
 
     </LinearLayout>
     <TextView

@@ -216,4 +216,8 @@ public interface ApiService {
     @POST("course/getAllCourses")
     Observable<ResultModel<CourseModel>> getAllCourses(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("course/getCourseSelected")
+    Observable<ResultModel<CourseModel>> getCourseSelected(@FieldMap Map<String, String> body);
+
 }
