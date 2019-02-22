@@ -19,8 +19,9 @@ var certController = require("./controller/cert")
 var actiController = require("./controller/acti")
 var moralController = require("./controller/moral")
 var termController = require("./controller/term")
-
 var courseController = require("./controller/course")
+
+var userCourseController = require("./controller/user_course")
 
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
@@ -54,6 +55,7 @@ app.use('/moral',moralController)
 app.use('/term',termController)
 
 app.use('/course',courseController)
+app.use('/user_course',userCourseController)
 
 app.listen(7777)
 console.log("数据服务器已打开, 端口: 7777");
