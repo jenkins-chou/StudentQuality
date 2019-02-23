@@ -54,7 +54,7 @@
         <activity android:name=".activity.student.MineCourseObligatoryActivity" />
         <activity android:name=".activity.student.MineCourseElectiveActivity" />
         <activity android:name=".activity.manager.ManagerCourseSelectedActivity" />
-        <activity android:name=".activity.common.CourseListActivity" />
+        <activity android:name=".activity.common.CourseShowListActivity" />
         <activity android:name=".activity.manager.ManagerScoreActivity" />
         <activity android:name=".activity.common.LoginActivity" />
         <activity android:name=".activity.common.RegisterActivity" />
@@ -97,7 +97,9 @@
         <activity android:name=".activity.common.TeacherListActivity" />
         <activity android:name=".activity.manager.ManagerCourseArrangeTypeClass" />
         <activity android:name=".activity.manager.ManagerCourseArrangeTypePerson" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClassAdd"></activity>
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypeClassAdd" />
+        <activity android:name=".activity.common.CourseListActivity" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonList"></activity>
     </application>
 
 </manifest>

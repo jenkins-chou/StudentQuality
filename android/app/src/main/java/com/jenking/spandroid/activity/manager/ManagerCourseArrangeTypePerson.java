@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
+import com.github.library.listener.OnRecyclerItemClickListener;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.ClassListActivity;
@@ -85,6 +86,17 @@ public class ManagerCourseArrangeTypePerson extends BaseActivity {
         };
 
         baseRecyclerAdapter.openLoadAnimation(false);
+        baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ManagerCourseArrangeTypePerson.this,ManagerCourseArrangeTypePersonList.class);
+                intent.putExtra("user_id",datas.get(position).getId());
+                intent.putExtra("user_realname",datas.get(position).getRealname());
+                intent.putExtra("class_id",datas.get(position).getClass_id());
+                startActivity(intent);
+            }
+        });
+
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
 

@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jenking.spandroid.R;
-import com.jenking.spandroid.activity.common.CourseListActivity;
+import com.jenking.spandroid.activity.common.CourseShowListActivity;
 import com.jenking.spandroid.activity.manager.ManagerCourseActivity;
 import com.jenking.spandroid.activity.manager.ManagerCourseArrangeActivity;
-import com.jenking.spandroid.activity.manager.ManagerCourseSelectedActivity;
 import com.jenking.spandroid.activity.manager.ManagerScoreActivity;
 import com.jenking.spandroid.activity.student.MineCourseActivity;
 import com.jenking.spandroid.activity.student.MineCourseElectiveActivity;
@@ -61,14 +60,14 @@ public class MainFragment2 extends Fragment {
     //-------------------------公共区域
     @OnClick(R.id.course_list_obligatory)
     void course_list_obligatory(){
-        Intent intent = new Intent(getContext(),CourseListActivity.class);
+        Intent intent = new Intent(getContext(),CourseShowListActivity.class);
         intent.putExtra("course_type","必修");
         startActivity(intent);
     }
 
     @OnClick(R.id.course_list_elective)
     void course_list_elective(){
-        Intent intent = new Intent(getContext(),CourseListActivity.class);
+        Intent intent = new Intent(getContext(),CourseShowListActivity.class);
         intent.putExtra("course_type","选修");
         startActivity(intent);
     }

@@ -232,4 +232,16 @@ public interface ApiService {
     @POST("user_course/addCourseTypeClass")
     Observable<ResultModel<CourseModel>> addCourseTypeClass(@FieldMap Map<String, String> body);
 
+    @FormUrlEncoded
+    @POST("user_course/getCoursesByUserId")
+    Observable<ResultModel<CourseModel>> getCoursesByUserId(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_course/deleteByUserIdAndCourseId")
+    Observable<ResultModel<CourseModel>> deleteByUserIdAndCourseId(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_course/addCourseTypeUser")
+    Observable<ResultModel<CourseModel>> addCourseTypeUser(@FieldMap Map<String, String> body);
+
 }

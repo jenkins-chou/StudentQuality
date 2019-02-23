@@ -1,8 +1,8 @@
 package com.jenking.spandroid.activity.common;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -14,7 +14,6 @@ import com.github.library.BaseViewHolder;
 import com.github.library.listener.OnRecyclerItemClickListener;
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
-import com.jenking.spandroid.activity.manager.ManagerCourseActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
@@ -28,9 +27,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class CourseListActivity extends BaseActivity {
+public class CourseShowListActivity extends BaseActivity {
 
-    public static final int SelectCourseCode = 60002;
     @BindView(R.id.college_name)
     TextView college_name;
     @BindView(R.id.term_name)
@@ -39,6 +37,7 @@ public class CourseListActivity extends BaseActivity {
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
+    private String select_course_type;
     private String select_school_id;
     private String select_school_name;
     private String select_college_id;
@@ -56,6 +55,15 @@ public class CourseListActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.all_course)
+    void add_course(){
+        if (coursePresenter!=null){
+            Map<String,String> params = RS.getBaseParams(this);
+            params.put("course_type",select_course_type);
+            coursePresenter.getCourseSelected(params);
+        }
+    }
+
     @OnClick(R.id.select_college)
     void select_college(){
         Intent intent = new Intent(this,CollegeListActivity.class);
@@ -68,16 +76,21 @@ public class CourseListActivity extends BaseActivity {
         startActivityForResult(intent,TermListActivity.SelectTermCode);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list);
+        setContentView(R.layout.activity_show_course_list);
     }
 
     @Override
     public void initData() {
         super.initData();
 
+        Intent intent = getIntent();
+        if (intent!=null&&StringUtil.isNotEmpty(intent.getStringExtra("course_type"))){
+            select_course_type = intent.getStringExtra("course_type");
+        }
         datas = new ArrayList<>();
         baseRecyclerAdapter = new BaseRecyclerAdapter<CourseModel>(this,datas,R.layout.activity_manager_course_item) {
             @Override
@@ -91,11 +104,9 @@ public class CourseListActivity extends BaseActivity {
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Intent intent = new Intent();
-                intent.putExtra("course_id",datas.get(position).getId());
-                intent.putExtra("course_name",datas.get(position).getCourse_name());
-                setResult(SelectCourseCode,intent);
-                finish();
+                Intent intent = new Intent(CourseShowListActivity.this,CourseDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(datas.get(position)));
+                startActivity(intent);
             }
         });
 
@@ -140,7 +151,6 @@ public class CourseListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         datas.clear();
                         datas = resultModel.getData()!=null?resultModel.getData():datas;
-
                         Log.e("getCourseSelected",datas.size()+"");
                         baseRecyclerAdapter.setData(datas);
                     }
@@ -156,7 +166,13 @@ public class CourseListActivity extends BaseActivity {
             if (!StringUtil.isNotEmpty(select_college_id)
                     &&!StringUtil.isNotEmpty(select_school_id)
                     &&!StringUtil.isNotEmpty(select_term_id)){
-                coursePresenter.getAllCourses(RS.getBaseParams(this));
+                if (StringUtil.isNotEmpty(select_course_type)){
+                    Map<String,String> params = RS.getBaseParams(this);
+                    params.put("course_type",select_course_type);
+                    coursePresenter.getCourseSelected(params);
+                }else{
+                    coursePresenter.getAllCourses(RS.getBaseParams(this));
+                }
             }else {
                 Map<String,String> params = RS.getBaseParams(this);
                 if (StringUtil.isNotEmpty(select_school_id)&&StringUtil.isNotEmpty(select_college_id)){
@@ -165,6 +181,9 @@ public class CourseListActivity extends BaseActivity {
                 }
                 if (StringUtil.isNotEmpty(select_term_id)){
                     params.put("term_id",select_term_id);
+                }
+                if (StringUtil.isNotEmpty(select_course_type)){
+                    params.put("course_type",select_course_type);
                 }
                 coursePresenter.getCourseSelected(params);
             }
@@ -191,6 +210,9 @@ public class CourseListActivity extends BaseActivity {
                     if (StringUtil.isNotEmpty(select_term_id)){
                         params.put("term_id",select_term_id);
                     }
+                    if (StringUtil.isNotEmpty(select_course_type)){
+                        params.put("course_type",select_course_type);
+                    }
                     coursePresenter.getCourseSelected(params);
                 }
                 break;
@@ -205,6 +227,9 @@ public class CourseListActivity extends BaseActivity {
                     if (StringUtil.isNotEmpty(select_school_id)&&StringUtil.isNotEmpty(select_college_id)){
                         params.put("school_id",select_school_id);
                         params.put("college_id",select_college_id);
+                    }
+                    if (StringUtil.isNotEmpty(select_course_type)){
+                        params.put("course_type",select_course_type);
                     }
                     coursePresenter.getCourseSelected(params);
                 }

@@ -51,6 +51,49 @@ router.post('/addCourseTypeClass', function (req, res) {
         })    
 });
 
+//根据用户id获取课程列表
+router.post('/getCoursesByUserId', function (req, res) {
+    var sql = "select * from course where id in (select distinct course_id from user_course where del != 'delete' and user_id = '"+req.body.user_id+"') and del != 'delete'"
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
+//根据用户id和课程id移除课程
+router.post('/deleteByUserIdAndCourseId', function (req, res) {
+    var sql = "update user_course set del = 'delete' where user_id = '"+req.body.user_id+"' and course_id = '"+req.body.course_id+"'";
+    connectDB.delete(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
+//已个人为单位添加课程安排
+router.post('/addCourseTypeUser', function (req, res) {
+    var user_id = req.body.user_id;
+    var course_id = req.body.course_id;
+    var sql = req.body.sql;
+    var sqlQuery = "select * from "+tableName+" where user_id = '"+user_id+"' and course_id = '"+course_id+"' and del != 'delete'";//用于查询是否存在同名的
+    connectDB.query(sqlQuery,function(result){
+            console.log(result);
+            if(result.data[0]!=null){
+                console.log("已经存在");
+                var resultexist = {
+                        "status": "201",
+                        "message": "已经存在",
+                        "data":[]
+                    }
+                return res.jsonp(resultexist);
+            }else{
+                console.log("可添加");
+                connectDB.excute(sql,function(result){
+                    console.log(result);
+                    return res.jsonp(result);
+                })
+            }
+        })    
+});
+
+
 //更新时，用于校验是否是否有更新字段值
     function checkUpdateData(target,current){
         if (target == null||target =="") {

@@ -159,6 +159,12 @@
                 android:textSize="@dimen/fontsize_15" />
         </LinearLayout>
     </LinearLayout>
+    <TextView
+        android:text="班级课程安排"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
     <android.support.v7.widget.RecyclerView
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
