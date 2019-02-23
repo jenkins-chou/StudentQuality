@@ -69,7 +69,7 @@ public class ActiListActivity extends BaseActivity {
         });
 
         baseRecyclerAdapter.openLoadAnimation(false);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
 
         actiPresenter = new ActiPresenter(this);

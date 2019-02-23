@@ -108,7 +108,9 @@
         <activity android:name=".activity.common.UserCertOperateActivity" />
         <activity android:name=".activity.common.UserCertDetailActivity" />
         <activity android:name=".activity.common.UserActiOperateActivity" />
-        <activity android:name=".activity.common.UserActiDetailActivity"></activity>
+        <activity android:name=".activity.common.UserActiDetailActivity" />
+        <activity android:name=".activity.common.UserMoralDetailActivity" />
+        <activity android:name=".activity.common.UserMoralOperateActivity"></activity>
     </application>
 
 </manifest>

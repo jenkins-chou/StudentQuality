@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
+import android.widget.TextView;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
@@ -21,14 +22,18 @@ import com.jenking.spandroid.activity.common.UserCertDetailActivity;
 import com.jenking.spandroid.activity.common.UserCertOperateActivity;
 import com.jenking.spandroid.activity.common.UserMatchDetailActivity;
 import com.jenking.spandroid.activity.common.UserMatchOperateActivity;
+import com.jenking.spandroid.activity.common.UserMoralDetailActivity;
+import com.jenking.spandroid.activity.common.UserMoralOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.models.impl.UserMoralDetail;
 import com.jenking.spandroid.presenter.UserActivityPresenter;
 import com.jenking.spandroid.presenter.UserCertPresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
+import com.jenking.spandroid.presenter.UserMoralPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.ArrayList;
@@ -45,14 +50,17 @@ public class ManagerReportListActivity extends BaseActivity {
     private List<UserMatchDetail> userMatchDetails;
     private List<UserCertDetail> userCertDetails;
     private List<UserActivityDetail> userActivityDetails;
+    private List<UserMoralDetail> userMoralDetails;
 
     private BaseRecyclerAdapter matchAdapter;
     private BaseRecyclerAdapter certAdapter;
     private BaseRecyclerAdapter actiAdapter;
+    private BaseRecyclerAdapter moralAdapter;
 
     private UserMatchPresenter userMatchPresenter;
     private UserCertPresenter userCertPresenter;
     private UserActivityPresenter userActivityPresenter;
+    private UserMoralPresenter userMoralPresenter;
 
     @BindView(R.id.match_rv)
     RecyclerView match_rv;
@@ -60,6 +68,8 @@ public class ManagerReportListActivity extends BaseActivity {
     RecyclerView cert_rv;
     @BindView(R.id.acti_rv)
     RecyclerView acti_rv;
+    @BindView(R.id.moral_rv)
+    RecyclerView moral_rv;
 
     @OnClick(R.id.back)
     void back(){
@@ -89,6 +99,14 @@ public class ManagerReportListActivity extends BaseActivity {
             startActivity(intent);
         }
     }
+    @OnClick(R.id.add_user_moral)
+    void add_user_moral(){
+        if (StringUtil.isNotEmpty(user_id)){
+            Intent intent = new Intent(this,UserMoralOperateActivity.class);
+            intent.putExtra("user_id",user_id);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,6 +123,7 @@ public class ManagerReportListActivity extends BaseActivity {
             initUserMatch();
             initUserCert();
             initUserActi();
+            initUserMoral();
         }
     }
 
@@ -124,6 +143,10 @@ public class ManagerReportListActivity extends BaseActivity {
 
         if (userActivityPresenter!=null){
             userActivityPresenter.getUserActivityByUserId(params);
+        }
+
+        if (userMoralPresenter!=null){
+            userMoralPresenter.getUserMoralByUserId(params);
         }
     }
 
@@ -275,6 +298,68 @@ public class ManagerReportListActivity extends BaseActivity {
 
             @Override
             public void deleteUserActivity(boolean isSuccess, Object object) {
+
+            }
+        });
+    }
+
+    private void initUserMoral(){
+        userMoralDetails = new ArrayList<>();
+        moralAdapter = new BaseRecyclerAdapter<UserMoralDetail>(this,userMoralDetails,R.layout.activity_manager_report_moral_item) {
+            @Override
+            protected void convert(BaseViewHolder helper, UserMoralDetail item) {
+                helper.setText(R.id.moral_name,item.getMoral_name());
+
+                TextView add_type = helper.getView(R.id.add_type);
+                TextView reduce_type = helper.getView(R.id.reduce_type);
+                add_type.setVisibility(View.GONE);
+                reduce_type.setVisibility(View.GONE);
+                if (StringUtil.isEquals(item.getMoral_type(),"加分")){
+                    add_type.setText("加分:"+item.getMoral_score()+"分");
+                    add_type.setVisibility(View.VISIBLE);
+                }else if (StringUtil.isEquals(item.getMoral_type(),"减分")){
+                    reduce_type.setText("减分:"+item.getMoral_score()+"分");
+                    reduce_type.setVisibility(View.VISIBLE);
+                }
+            }
+        };
+        moralAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ManagerReportListActivity.this,UserMoralDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(userMoralDetails.get(position)));
+                startActivity(intent);
+            }
+        });
+        moralAdapter.openLoadAnimation(false);
+        moral_rv.setLayoutManager(new StaggeredGridLayoutManager(1,1));
+        moral_rv.setAdapter(moralAdapter);
+
+        userMoralPresenter = new UserMoralPresenter(this);
+        userMoralPresenter.setOnCallBack(new UserMoralPresenter.OnCallBack() {
+            @Override
+            public void getUserMoralByUserId(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        userMoralDetails = resultModel.getData()!=null?resultModel.getData():userMoralDetails;
+                        moralAdapter.setData(userMoralDetails);
+                    }
+                }
+            }
+
+            @Override
+            public void addUserMoral(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateUserMoral(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUserMoral(boolean isSuccess, Object object) {
 
             }
         });

@@ -68,7 +68,7 @@ public class CertListActivity extends BaseActivity {
             }
         });
         baseRecyclerAdapter.openLoadAnimation(false);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2,1));
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);
 
         certPresenter = new CertPresenter(this);

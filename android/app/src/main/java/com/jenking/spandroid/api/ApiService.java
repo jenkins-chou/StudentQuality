@@ -14,6 +14,7 @@ import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.models.impl.UserMoralDetail;
 
 import java.util.Map;
 
@@ -294,5 +295,21 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user_activity/deleteUserActivity")
     Observable<ResultModel<UserActivityDetail>> deleteUserActivity(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_moral/getUserMoralByUserId")
+    Observable<ResultModel<UserMoralDetail>> getUserMoralByUserId(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_moral/addUserMoral")
+    Observable<ResultModel<UserMoralDetail>> addUserMoral(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_moral/updateUserMoral")
+    Observable<ResultModel<UserMoralDetail>> updateUserMoral(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_moral/deleteUserMoral")
+    Observable<ResultModel<UserMoralDetail>> deleteUserMoral(@FieldMap Map<String, String> body);
 
 }
