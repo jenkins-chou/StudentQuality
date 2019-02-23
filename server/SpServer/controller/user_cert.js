@@ -11,7 +11,7 @@ var tableDelete = "del";//删除标志位
 
 //根据id获取信息
 router.post('/getUserCertByUserId',function (req, res) {
-    var sql = "select a.*,b.* from matchs a,user_certificate b where a.id = b.certificate_id and a.del != 'delete' and b.del != 'delete' and b.user_id ='"+req.body.user_id+"'";
+    var sql = "select a.*,b.* from certificate a,user_certificate b where a.id = b.certificate_id and a.del != 'delete' and b.del != 'delete' and b.user_id ='"+req.body.user_id+"'";
     connectDB.query(sql,function(result){
         console.log(result);
         return res.jsonp(result);

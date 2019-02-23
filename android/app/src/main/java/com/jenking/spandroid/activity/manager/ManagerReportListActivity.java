@@ -20,7 +20,9 @@ import com.jenking.spandroid.activity.common.UserMatchDetailActivity;
 import com.jenking.spandroid.activity.common.UserMatchOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.presenter.UserCertPresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
@@ -36,13 +38,18 @@ public class ManagerReportListActivity extends BaseActivity {
     private String user_id;
 
     private List<UserMatchDetail> userMatchDetails;
+    private List<UserCertDetail> userCertDetails;
 
     private BaseRecyclerAdapter matchAdapter;
+    private BaseRecyclerAdapter certAdapter;
 
     private UserMatchPresenter userMatchPresenter;
+    private UserCertPresenter userCertPresenter;
 
     @BindView(R.id.match_rv)
     RecyclerView match_rv;
+    @BindView(R.id.cert_rv)
+    RecyclerView cert_rv;
 
     @OnClick(R.id.back)
     void back(){
@@ -78,6 +85,7 @@ public class ManagerReportListActivity extends BaseActivity {
         if (intent!=null&&StringUtil.isNotEmpty(intent.getStringExtra("user_id"))){
             user_id= intent.getStringExtra("user_id");
             initUserMatch();
+            initUserCert();
         }
     }
 
@@ -89,6 +97,10 @@ public class ManagerReportListActivity extends BaseActivity {
         params.put("user_id",user_id);
         if (userMatchPresenter!=null){
             userMatchPresenter.getUserMatchByUserId(params);
+        }
+
+        if (userCertPresenter!=null){
+            userCertPresenter.getUserCertByUserId(params);
         }
     }
 
@@ -138,6 +150,57 @@ public class ManagerReportListActivity extends BaseActivity {
 
             @Override
             public void deleteUserMatch(boolean isSuccess, Object object) {
+
+            }
+        });
+    }
+
+    private void initUserCert(){
+        userCertDetails = new ArrayList<>();
+        certAdapter = new BaseRecyclerAdapter<UserCertDetail>(this,userCertDetails,R.layout.activity_manager_report_cert_item) {
+            @Override
+            protected void convert(BaseViewHolder helper, UserCertDetail item) {
+                helper.setText(R.id.cert_name,item.getCertificate_name());
+                helper.setText(R.id.user_cert_score,"加分:"+item.getCertificate_score()+"分");
+            }
+        };
+        certAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+//                Intent intent = new Intent(ManagerReportListActivity.this,UserMatchDetailActivity.class);
+//                intent.putExtra("model",new Gson().toJson(userCertDetails.get(position)));
+//                startActivityForResult(intent,MatchListActivity.SelectMatchCode);
+            }
+        });
+        certAdapter.openLoadAnimation(false);
+        cert_rv.setLayoutManager(new StaggeredGridLayoutManager(1,1));
+        cert_rv.setAdapter(certAdapter);
+
+        userCertPresenter = new UserCertPresenter(this);
+        userCertPresenter.setOnCallBack(new UserCertPresenter.OnCallBack() {
+            @Override
+            public void getUserCertByUserId(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        userCertDetails = resultModel.getData()!=null?resultModel.getData():userMatchDetails;
+                        certAdapter.setData(userCertDetails);
+                    }
+                }
+            }
+
+            @Override
+            public void addUserCert(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateUserCert(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUserCert(boolean isSuccess, Object object) {
 
             }
         });

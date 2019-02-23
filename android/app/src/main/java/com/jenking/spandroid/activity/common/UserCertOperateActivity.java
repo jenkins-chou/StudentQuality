@@ -57,8 +57,8 @@ public class UserCertOperateActivity extends BaseActivity {
             if (userCertPresenter!=null){
                 Map<String,String> params = RS.getBaseParams(this);
                 params.put("user_id",select_user_id);
-                params.put("cert_id",select_cert_id);
-                params.put("get_cetificate_time",get_cert_time.getText().toString());
+                params.put("certificate_id",select_cert_id);
+                params.put("get_certificate_time",get_cert_time.getText().toString());
                 params.put("create_time",StringUtil.getTime());
                 params.put("remark",remark.getText().toString());
                 if (isAddData){
