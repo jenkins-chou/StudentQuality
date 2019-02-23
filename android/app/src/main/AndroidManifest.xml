@@ -104,7 +104,8 @@
         <activity android:name=".activity.student.StudentSelectCourseActivity" />
         <activity android:name=".activity.common.UserMatchDetailActivity" />
         <activity android:name=".activity.common.UserMatchOperateActivity" />
-        <activity android:name=".activity.manager.ManagerReportListActivity"></activity>
+        <activity android:name=".activity.manager.ManagerReportListActivity" />
+        <activity android:name=".activity.common.UserCertOperateActivity"></activity>
     </application>
 
 </manifest>

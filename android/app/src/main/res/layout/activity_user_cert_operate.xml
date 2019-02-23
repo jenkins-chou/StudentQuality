@@ -96,7 +96,7 @@
             android:layout_height="1px"/>
 
         <LinearLayout
-            android:id="@+id/select_match"
+            android:id="@+id/select_cert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp">
@@ -104,11 +104,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="选择比赛"
+                android:text="选择证书"
                 android:textColor="@color/base_font_color" />
 
             <TextView
-                android:id="@+id/match_name"
+                android:id="@+id/cert_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -132,11 +132,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="比赛成绩"
+                android:text="获取时间"
                 android:textColor="@color/base_font_color" />
 
             <EditText
-                android:id="@+id/user_match_status"
+                android:id="@+id/get_cert_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -150,33 +150,7 @@
             android:background="@color/base_line_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="对应加分"
-                android:textColor="@color/base_font_color" />
-
-            <EditText
-                android:id="@+id/user_match_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
-                android:inputType="numberDecimal"
-                android:text=""
-                android:textColor="@color/base_font_color2" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
         <LinearLayout
             android:padding="15dp"
             android:layout_width="match_parent"

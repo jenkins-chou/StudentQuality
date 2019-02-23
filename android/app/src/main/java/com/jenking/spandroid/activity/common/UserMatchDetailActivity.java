@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
@@ -11,6 +12,7 @@ import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.MatchModel;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.Map;
@@ -21,6 +23,7 @@ import butterknife.OnClick;
 public class UserMatchDetailActivity extends BaseActivity {
 
     private UserMatchDetail userMatchDetail;
+    private UserMatchPresenter userMatchPresenter;
     @BindView(R.id.match_name)
     TextView match_name;
     @BindView(R.id.match_time)
@@ -42,10 +45,11 @@ public class UserMatchDetailActivity extends BaseActivity {
     @OnClick(R.id.modify)
     void modify(){
         if (userMatchDetail!=null){
-//            Intent intent = new Intent(this, MatchOperateActivity.class);
-//            intent.putExtra("model",new Gson().toJson(userMatchDetail));
-//            startActivity(intent);
-//            finish();
+            Intent intent = new Intent(this, UserMatchOperateActivity.class);
+            intent.putExtra("user_id",userMatchDetail.getUser_id());
+            intent.putExtra("model",new Gson().toJson(userMatchDetail));
+            startActivity(intent);
+            finish();
         }
 
     }
@@ -61,11 +65,11 @@ public class UserMatchDetailActivity extends BaseActivity {
 
                     @Override
                     public void confirm() {
-//                        if (matchPresenter!=null&&matchModel!=null){
-//                            Map<String,String> params = RS.getBaseParams(MatchDetailActivity.this);
-//                            params.put("id",matchModel.getId());
-//                            matchPresenter.deleteMatch(params);
-//                        }
+                        if (userMatchPresenter!=null&&userMatchDetail!=null){
+                            Map<String,String> params = RS.getBaseParams(UserMatchDetailActivity.this);
+                            params.put("id",userMatchDetail.getId());
+                            userMatchPresenter.deleteUserMatch(params);
+                        }
                     }
                 }).show();
     }
@@ -93,5 +97,31 @@ public class UserMatchDetailActivity extends BaseActivity {
                 remark.setText(userMatchDetail.getRemark());
             }
         }
+
+        userMatchPresenter = new UserMatchPresenter(this);
+        userMatchPresenter.setOnCallBack(new UserMatchPresenter.OnCallBack() {
+            @Override
+            public void getUserMatchByUserId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addUserMatch(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateUserMatch(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUserMatch(boolean isSuccess, Object object) {
+                if (isSuccess){
+                    Toast.makeText(UserMatchDetailActivity.this, "删除成功", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+        });
     }
 }

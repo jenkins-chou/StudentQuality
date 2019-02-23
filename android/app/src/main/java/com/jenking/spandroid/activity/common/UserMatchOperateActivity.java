@@ -107,6 +107,7 @@ public class UserMatchOperateActivity extends BaseActivity {
             userMatchDetail = new Gson().fromJson(json, UserMatchDetail.class);
 
             if (userMatchDetail!=null){
+                select_match_id = userMatchDetail.getMatch_id();
                 match_name.setText(userMatchDetail.getMatch_name());
                 user_match_status.setText(userMatchDetail.getUser_match_status());
                 user_match_score.setText(userMatchDetail.getUser_match_score());
