@@ -15,13 +15,18 @@ import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.MatchListActivity;
+import com.jenking.spandroid.activity.common.UserActiDetailActivity;
+import com.jenking.spandroid.activity.common.UserActiOperateActivity;
+import com.jenking.spandroid.activity.common.UserCertDetailActivity;
 import com.jenking.spandroid.activity.common.UserCertOperateActivity;
 import com.jenking.spandroid.activity.common.UserMatchDetailActivity;
 import com.jenking.spandroid.activity.common.UserMatchOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.presenter.UserActivityPresenter;
 import com.jenking.spandroid.presenter.UserCertPresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.tools.StringUtil;
@@ -39,17 +44,22 @@ public class ManagerReportListActivity extends BaseActivity {
 
     private List<UserMatchDetail> userMatchDetails;
     private List<UserCertDetail> userCertDetails;
+    private List<UserActivityDetail> userActivityDetails;
 
     private BaseRecyclerAdapter matchAdapter;
     private BaseRecyclerAdapter certAdapter;
+    private BaseRecyclerAdapter actiAdapter;
 
     private UserMatchPresenter userMatchPresenter;
     private UserCertPresenter userCertPresenter;
+    private UserActivityPresenter userActivityPresenter;
 
     @BindView(R.id.match_rv)
     RecyclerView match_rv;
     @BindView(R.id.cert_rv)
     RecyclerView cert_rv;
+    @BindView(R.id.acti_rv)
+    RecyclerView acti_rv;
 
     @OnClick(R.id.back)
     void back(){
@@ -71,6 +81,14 @@ public class ManagerReportListActivity extends BaseActivity {
             startActivity(intent);
         }
     }
+    @OnClick(R.id.add_user_acti)
+    void add_user_acti(){
+        if (StringUtil.isNotEmpty(user_id)){
+            Intent intent = new Intent(this,UserActiOperateActivity.class);
+            intent.putExtra("user_id",user_id);
+            startActivity(intent);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +104,7 @@ public class ManagerReportListActivity extends BaseActivity {
             user_id= intent.getStringExtra("user_id");
             initUserMatch();
             initUserCert();
+            initUserActi();
         }
     }
 
@@ -101,6 +120,10 @@ public class ManagerReportListActivity extends BaseActivity {
 
         if (userCertPresenter!=null){
             userCertPresenter.getUserCertByUserId(params);
+        }
+
+        if (userActivityPresenter!=null){
+            userActivityPresenter.getUserActivityByUserId(params);
         }
     }
 
@@ -167,9 +190,9 @@ public class ManagerReportListActivity extends BaseActivity {
         certAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Intent intent = new Intent(ManagerReportListActivity.this,UserMatchDetailActivity.class);
-//                intent.putExtra("model",new Gson().toJson(userCertDetails.get(position)));
-//                startActivityForResult(intent,MatchListActivity.SelectMatchCode);
+                Intent intent = new Intent(ManagerReportListActivity.this,UserCertDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(userCertDetails.get(position)));
+                startActivity(intent);
             }
         });
         certAdapter.openLoadAnimation(false);
@@ -201,6 +224,57 @@ public class ManagerReportListActivity extends BaseActivity {
 
             @Override
             public void deleteUserCert(boolean isSuccess, Object object) {
+
+            }
+        });
+    }
+
+    private void initUserActi(){
+        userActivityDetails = new ArrayList<>();
+        actiAdapter = new BaseRecyclerAdapter<UserActivityDetail>(this,userActivityDetails,R.layout.activity_manager_report_acti_item) {
+            @Override
+            protected void convert(BaseViewHolder helper, UserActivityDetail item) {
+                helper.setText(R.id.acti_name,item.getActivity_name());
+                helper.setText(R.id.user_acti_score,"加分:"+item.getUser_activity_score()+"分");
+            }
+        };
+        actiAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ManagerReportListActivity.this,UserActiDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(userActivityDetails.get(position)));
+                startActivity(intent);
+            }
+        });
+        actiAdapter.openLoadAnimation(false);
+        acti_rv.setLayoutManager(new StaggeredGridLayoutManager(1,1));
+        acti_rv.setAdapter(actiAdapter);
+
+        userActivityPresenter = new UserActivityPresenter(this);
+        userActivityPresenter.setOnCallBack(new UserActivityPresenter.OnCallBack() {
+            @Override
+            public void getUserActivityByUserId(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        userActivityDetails = resultModel.getData()!=null?resultModel.getData():userActivityDetails;
+                        actiAdapter.setData(userActivityDetails);
+                    }
+                }
+            }
+
+            @Override
+            public void addUserActivity(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void updateUserActivity(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteUserActivity(boolean isSuccess, Object object) {
 
             }
         });

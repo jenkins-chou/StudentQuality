@@ -105,7 +105,10 @@
         <activity android:name=".activity.common.UserMatchDetailActivity" />
         <activity android:name=".activity.common.UserMatchOperateActivity" />
         <activity android:name=".activity.manager.ManagerReportListActivity" />
-        <activity android:name=".activity.common.UserCertOperateActivity"></activity>
+        <activity android:name=".activity.common.UserCertOperateActivity" />
+        <activity android:name=".activity.common.UserCertDetailActivity" />
+        <activity android:name=".activity.common.UserActiOperateActivity" />
+        <activity android:name=".activity.common.UserActiDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -12,8 +12,9 @@ import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
-import com.jenking.spandroid.models.impl.UserMatchDetail;
+import com.jenking.spandroid.presenter.UserActivityPresenter;
 import com.jenking.spandroid.presenter.UserCertPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
@@ -22,20 +23,22 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class UserCertOperateActivity extends BaseActivity {
+public class UserActiOperateActivity extends BaseActivity {
 
     private boolean isAddData = true;
-    private UserCertDetail userCertDetail;
-    private UserCertPresenter userCertPresenter;
+    private UserActivityDetail userActivityDetail;
+    private UserActivityPresenter userActivityPresenter;
 
     private String select_user_id;
-    private String select_cert_id;
-    private String select_cert_name;
-    
-    @BindView(R.id.cert_name)
-    TextView cert_name;
-    @BindView(R.id.get_cert_time)
-    EditText get_cert_time;
+    private String select_activity_id;
+    private String select_activity_name;
+
+    @BindView(R.id.activity_name)
+    TextView activity_name;
+    @BindView(R.id.user_activity_status)
+    EditText user_activity_status;
+    @BindView(R.id.user_activity_score)
+    EditText user_activity_score;
     @BindView(R.id.remark)
     EditText remark;
 
@@ -47,44 +50,44 @@ public class UserCertOperateActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick({R.id.select_cert,R.id.cert_name})
-    void select_match(){
-        Intent intent = new Intent(this,CertListActivity.class);
-        startActivityForResult(intent,CertListActivity.SelectCertCode);
+    @OnClick({R.id.select_activity,R.id.activity_name})
+    void select_activity(){
+        Intent intent = new Intent(this,ActiListActivity.class);
+        startActivityForResult(intent,ActiListActivity.SelectActiCode);
     }
 
     @OnClick(R.id.submit)
     void submit(){
-        if (!StringUtil.isNotEmpty(select_cert_id)
+        if (!StringUtil.isNotEmpty(select_activity_id)
                 ||!StringUtil.isNotEmpty(select_user_id)){
             Toast.makeText(this, "请完善信息", Toast.LENGTH_SHORT).show();
             return;
         }else{
-            if (userCertPresenter!=null){
+            if (userActivityPresenter!=null){
                 Map<String,String> params = RS.getBaseParams(this);
                 params.put("user_id",select_user_id);
-                params.put("certificate_id",select_cert_id);
-                params.put("get_certificate_time",get_cert_time.getText().toString());
-                params.put("create_time",StringUtil.getTime());
+                params.put("activity_id",select_activity_id);
+                params.put("user_activity_status",user_activity_status.getText().toString());
+                params.put("user_activity_score",user_activity_score.getText().toString());
                 params.put("remark",remark.getText().toString());
                 if (isAddData){
                     params.put("create_time",StringUtil.getTime());
-                    userCertPresenter.addUserCert(params);
+                    userActivityPresenter.addUserActivity(params);
                 }else{
-                    if (userCertDetail!=null){
-                        params.put("id",userCertDetail.getId());
-                        userCertPresenter.updateUserCert(params);
+                    if (userActivityDetail!=null){
+                        params.put("id",userActivityDetail.getId());
+                        userActivityPresenter.updateUserActivity(params);
                     }
                 }
             }
         }
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_cert_operate);
+        setContentView(R.layout.activity_user_acti_operate);
     }
+
 
     @Override
     public void initData() {
@@ -96,13 +99,14 @@ public class UserCertOperateActivity extends BaseActivity {
             isAddData = false;
 
             String json = intent.getStringExtra("model");
-            userCertDetail = new Gson().fromJson(json, UserCertDetail.class);
+            userActivityDetail = new Gson().fromJson(json, UserActivityDetail.class);
 
-            if (userCertDetail!=null){
-                select_cert_id = userCertDetail.getCertificate_id();
-                cert_name.setText(userCertDetail.getCertificate_name());
-                get_cert_time.setText(userCertDetail.getGet_certificate_time());
-                remark.setText(userCertDetail.getRemark());
+            if (userActivityDetail!=null){
+                select_activity_id = userActivityDetail.getActivity_id();
+                activity_name.setText(userActivityDetail.getActivity_name());
+                user_activity_status.setText(userActivityDetail.getUser_activity_status());
+                user_activity_score.setText(userActivityDetail.getUser_activity_score());
+                remark.setText(userActivityDetail.getRemark());
             }
         }else{
             operate_tips.setText("当前操作：新增");
@@ -113,38 +117,38 @@ public class UserCertOperateActivity extends BaseActivity {
             select_user_id= intent.getStringExtra("user_id");
         }
 
-        userCertPresenter = new UserCertPresenter(this);
-        userCertPresenter.setOnCallBack(new UserCertPresenter.OnCallBack() {
+        userActivityPresenter = new UserActivityPresenter(this);
+        userActivityPresenter.setOnCallBack(new UserActivityPresenter.OnCallBack() {
             @Override
-            public void getUserCertByUserId(boolean isSuccess, Object object) {
+            public void getUserActivityByUserId(boolean isSuccess, Object object) {
 
             }
 
             @Override
-            public void addUserCert(boolean isSuccess, Object object) {
+            public void addUserActivity(boolean isSuccess, Object object) {
                 if (isSuccess){
                     if (object!=null){
                         ResultModel resultModel = (ResultModel)object;
                         if (resultModel!=null&&StringUtil.isEquals(resultModel.getStatus(),"200")){
-                            Toast.makeText(UserCertOperateActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserActiOperateActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
                             finish();
                         }else{
-                            Toast.makeText(UserCertOperateActivity.this, "已存在", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserActiOperateActivity.this, "已存在", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
             }
 
             @Override
-            public void updateUserCert(boolean isSuccess, Object object) {
+            public void updateUserActivity(boolean isSuccess, Object object) {
                 if (isSuccess){
-                    Toast.makeText(UserCertOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UserActiOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             }
 
             @Override
-            public void deleteUserCert(boolean isSuccess, Object object) {
+            public void deleteUserActivity(boolean isSuccess, Object object) {
 
             }
         });
@@ -154,11 +158,11 @@ public class UserCertOperateActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode){
-            case CertListActivity.SelectCertCode:
+            case ActiListActivity.SelectActiCode:
                 if (data!=null){
-                    select_cert_id = data.getStringExtra("cert_id");
-                    select_cert_name = data.getStringExtra("cert_name");
-                    cert_name.setText(select_cert_name);
+                    select_activity_id = data.getStringExtra("acti_id");
+                    select_activity_name = data.getStringExtra("acti_name");
+                    activity_name.setText(select_activity_name);
                 }
                 break;
         }

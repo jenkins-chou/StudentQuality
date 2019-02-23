@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="发布/修改"
+            android:text="添加/修改"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
 
@@ -94,131 +94,31 @@
             android:background="@color/base_line_color"
             android:layout_width="match_parent"
             android:layout_height="1px"/>
+
         <LinearLayout
-            android:padding="15dp"
+            android:id="@+id/select_activity"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="15dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="证书名称"
+                android:text="选择活动"
                 android:textColor="@color/base_font_color" />
 
-            <EditText
-                android:id="@+id/certificate_name"
+            <TextView
+                android:id="@+id/activity_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
-                android:text=""
-                android:textColor="@color/base_font_color2" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="颁发单位"
-                android:textColor="@color/base_font_color" />
-
-            <EditText
-                android:id="@+id/certificate_sponsor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
-                android:text=""
-                android:textColor="@color/base_font_color2" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="证书简介"
-                android:textColor="@color/base_font_color" />
-
-            <EditText
-                android:id="@+id/certificate_abstract"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
-                android:text=""
-                android:textColor="@color/base_font_color2" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="详细介绍"
-                android:textColor="@color/base_font_color" />
-
-            <EditText
-                android:id="@+id/certificate_detail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
-                android:text=""
-                android:textColor="@color/base_font_color2" />
-
-        </LinearLayout>
-        <View
-            android:background="@color/base_line_color"
-            android:layout_width="match_parent"
-            android:layout_height="1px"/>
-        <LinearLayout
-            android:padding="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="证书加分"
-                android:textColor="@color/base_font_color" />
-
-            <EditText
-                android:id="@+id/certificate_score"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:hint="请选择"
                 android:inputType="number"
-                android:background="@drawable/common_noline_edittext"
-                android:hint="请输入"
                 android:text=""
-                android:textColor="@color/base_font_color2" />
+                android:textColor="@color/base_font_color2"
+                android:textSize="17sp" />
+
         </LinearLayout>
         <View
             android:background="@color/base_line_color"
@@ -232,11 +132,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="管理人："
+                android:text="个人表现"
                 android:textColor="@color/base_font_color" />
 
             <EditText
-                android:id="@+id/certificate_manager"
+                android:id="@+id/user_activity_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -246,6 +146,64 @@
                 android:textColor="@color/base_font_color2" />
 
         </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="对应加分"
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/user_activity_score"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入"
+                android:inputType="numberDecimal"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+        <LinearLayout
+            android:padding="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="备注"
+                android:textColor="@color/base_font_color" />
+
+            <EditText
+                android:id="@+id/remark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/common_noline_edittext"
+                android:hint="请输入"
+                android:text=""
+                android:textColor="@color/base_font_color2" />
+
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="match_parent"
+            android:layout_height="1px"/>
+
 
     </LinearLayout>
 

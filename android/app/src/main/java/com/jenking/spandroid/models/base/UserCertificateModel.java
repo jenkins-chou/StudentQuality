@@ -2,6 +2,7 @@ package com.jenking.spandroid.models.base;
 
 public class UserCertificateModel {
     public String id;
+    public String user_id;
     public String certificate_id;
     public String get_certificate_time;
     public String user_certificate_status;
@@ -15,6 +16,14 @@ public class UserCertificateModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
     public String getCertificate_id() {
@@ -69,6 +78,7 @@ public class UserCertificateModel {
     public String toString() {
         return "UserCertificateModel{" +
                 "id='" + id + '\'' +
+                ", user_id='" + user_id + '\'' +
                 ", certificate_id='" + certificate_id + '\'' +
                 ", get_certificate_time='" + get_certificate_time + '\'' +
                 ", user_certificate_status='" + user_certificate_status + '\'' +
