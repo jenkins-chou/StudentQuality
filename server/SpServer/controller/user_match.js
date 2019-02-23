@@ -12,7 +12,7 @@ var tableDelete = "del";//删除标志位
 
 //根据id获取信息
 router.post('/getUserMatchByUserId',function (req, res) {
-    var sql = "select * from matchs where id in (select match_id from user_match where user_id = '"+req.body.user_id+"' and del != 'delete')"+" and del != 'delete'";
+    var sql = "select a.*,b.* from matchs a,user_match b where a.id = b.match_id and a.del != 'delete' and b.del != 'delete' and b.user_id ='"+req.body.user_id+"'";
     connectDB.query(sql,function(result){
         console.log(result);
         return res.jsonp(result);
@@ -31,7 +31,7 @@ router.post('/addUserMatch', function (req, res) {
         req.body.remark,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where user_id = '" + req.body.user_id+"' and match_id = '"+req.body.match_id+"'  and del != 'delete'";//用于查询是否存在同名的
+    var sqlQuery = "select * from "+tableName+" where user_id = '" + req.body.user_id+"' and match_id = '"+req.body.match_id+"' and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
         console.log(result);
         if(result.data[0]!=null){

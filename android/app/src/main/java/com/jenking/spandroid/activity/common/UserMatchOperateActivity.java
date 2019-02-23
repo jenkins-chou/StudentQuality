@@ -1,6 +1,7 @@
 package com.jenking.spandroid.activity.common;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -49,6 +50,12 @@ public class UserMatchOperateActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick({R.id.select_match,R.id.match_name})
+    void select_match(){
+        Intent intent = new Intent(this,MatchListActivity.class);
+        startActivityForResult(intent,MatchListActivity.SelectMatchCode);
+    }
+
     @OnClick(R.id.submit)
     void submit(){
         String user_match_status_str = user_match_status.getText().toString();
@@ -91,7 +98,7 @@ public class UserMatchOperateActivity extends BaseActivity {
         super.initData();
 
         Intent intent = getIntent();
-        if (intent!=null&& StringUtil.isNotEmpty(intent.getStringExtra("model"))) {
+        if (intent!=null&&StringUtil.isNotEmpty(intent.getStringExtra("model"))) {
             //表明是修改
             operate_tips.setText("当前操作：修改");
             isAddData = false;
@@ -108,6 +115,10 @@ public class UserMatchOperateActivity extends BaseActivity {
         }else{
             operate_tips.setText("当前操作：新增");
             isAddData = true;
+        }
+
+        if (intent!=null&&StringUtil.isNotEmpty(intent.getStringExtra("user_id"))){
+            select_user_id= intent.getStringExtra("user_id");
         }
 
         userMatchPresenter = new UserMatchPresenter(this);
@@ -145,5 +156,19 @@ public class UserMatchOperateActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case MatchListActivity.SelectMatchCode:
+                if (data!=null){
+                    select_match_id = data.getStringExtra("match_id");
+                    select_match_name = data.getStringExtra("match_name");
+                    match_name.setText(select_match_name);
+                }
+                break;
+        }
     }
 }
