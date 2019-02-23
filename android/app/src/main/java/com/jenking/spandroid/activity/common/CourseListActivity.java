@@ -94,6 +94,7 @@ public class CourseListActivity extends BaseActivity {
                 Intent intent = new Intent();
                 intent.putExtra("course_id",datas.get(position).getId());
                 intent.putExtra("course_name",datas.get(position).getCourse_name());
+                intent.putExtra("course_type",datas.get(position).getCourse_type());
                 setResult(SelectCourseCode,intent);
                 finish();
             }

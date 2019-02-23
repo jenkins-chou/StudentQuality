@@ -18,6 +18,7 @@ import com.jenking.spandroid.activity.manager.ManagerScoreActivity;
 import com.jenking.spandroid.activity.student.MineCourseActivity;
 import com.jenking.spandroid.activity.student.MineCourseElectiveActivity;
 import com.jenking.spandroid.activity.student.MineCourseObligatoryActivity;
+import com.jenking.spandroid.activity.student.StudentSelectCourseActivity;
 import com.jenking.spandroid.activity.teacher.TeacherCourseArrangeActivity;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.tools.AccountTool;
@@ -56,6 +57,13 @@ public class MainFragment2 extends Fragment {
         Intent intent = new Intent(getContext(),MineCourseElectiveActivity.class);
         startActivity(intent);
     }
+
+    @OnClick(R.id.student_select_course)
+    void student_select_course(){
+        Intent intent = new Intent(getContext(),StudentSelectCourseActivity.class);
+        startActivity(intent);
+    }
+
 
     //-------------------------公共区域
     @OnClick(R.id.course_list_obligatory)

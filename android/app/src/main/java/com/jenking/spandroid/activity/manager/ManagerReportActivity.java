@@ -11,11 +11,13 @@ import android.widget.TextView;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
+import com.github.library.listener.OnRecyclerItemClickListener;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.ClassListActivity;
 import com.jenking.spandroid.activity.common.CollegeListActivity;
 import com.jenking.spandroid.activity.common.SchoolListActivity;
+import com.jenking.spandroid.activity.common.UserMatchOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.UserModel;
@@ -85,7 +87,14 @@ public class ManagerReportActivity extends BaseActivity {
                 }
             }
         };
-
+        baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(ManagerReportActivity.this,ManagerReportListActivity.class);
+                intent.putExtra("user_id",datas.get(position).getId());
+                startActivity(intent);
+            }
+        });
         baseRecyclerAdapter.openLoadAnimation(false);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(1,1));
         recyclerView.setAdapter(baseRecyclerAdapter);

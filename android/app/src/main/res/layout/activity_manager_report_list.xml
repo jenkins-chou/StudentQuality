@@ -36,12 +36,12 @@
         </LinearLayout>
 
         <TextView
-            android:text="课程详情"
-            android:textColor="@color/white"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/header_title_textsize"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的综合素质报告"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_title_textsize" />
 
         <View
             android:layout_alignParentBottom="true"
@@ -49,7 +49,6 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -72,13 +71,14 @@
                     <View
                         android:layout_margin="15dp"
                         android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:alpha="0.5"
                         android:layout_width="6dp"
                         android:layout_height="20dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="基本信息"
+                        android:text="文化课"
                         android:textColor="@color/base_font_color"
                         android:textSize="@dimen/fontsize_15" />
                 </LinearLayout>
@@ -87,273 +87,22 @@
                 android:background="@color/base_line_color"
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
-
             <LinearLayout
                 android:padding="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="课程名称"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:hint="请输入"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
+                    android:textColor="@color/base_font_color"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="容纳人数"
-                    android:textColor="@color/base_font_color" />
+                    android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/course_stunum"
-                    android:inputType="number"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:text="《Android开发》"
                     android:layout_marginLeft="10dp"
-                    android:hint="请输入"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="课程简介"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_abstract"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="详细介绍"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_detail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="课程类型"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
                     android:textColor="@color/base_font_color2"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="课程状态"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_status"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="课程学分"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_score"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="开课学期"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_term"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="任教老师"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/course_teacher"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2"
-                    android:textSize="17sp" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="课程备注"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/remark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
-
-            </LinearLayout>
-            <View
-                android:background="@color/base_line_color"
-                android:layout_width="match_parent"
-                android:layout_height="1px"/>
-            <LinearLayout
-                android:padding="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="学校学院"
-                    android:textColor="@color/base_font_color" />
-
-                <TextView
-                    android:id="@+id/college_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text=""
-                    android:textColor="@color/base_font_color2" />
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
             <View
@@ -361,34 +110,230 @@
                 android:layout_width="match_parent"
                 android:layout_height="1px"/>
 
-            <LinearLayout
-                android:id="@+id/manager_bar"
-                android:visibility="gone"
-                android:orientation="horizontal"
-                android:gravity="right"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
-                android:paddingLeft="10dp"
-                android:paddingBottom="30dp"
+            <RelativeLayout
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_margin="15dp"
+                        android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:alpha="0.5"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp" />
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="比赛"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
                 <TextView
-                    android:id="@+id/modify_course"
+                    android:id="@+id/add_user_match"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="添加"
                     android:layout_marginRight="10dp"
-                    android:text="修改"
-                    android:textColor="@color/main_color" />
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/main_color"
+                    android:textSize="@dimen/fontsize_15" />
+            </RelativeLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/delete_course"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="删除"
-                    android:textColor="@color/colorAccent" />
+                    android:text="比赛名称"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="比赛比赛"
+                    android:textColor="@color/base_font_color2" />
+
             </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_margin="15dp"
+                        android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:alpha="0.5"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="证书"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="证书名称"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="比赛比赛"
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_margin="15dp"
+                        android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:alpha="0.5"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="集体活动"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="证书名称"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="比赛比赛"
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+            <RelativeLayout
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <View
+                        android:layout_margin="15dp"
+                        android:background="@drawable/fragment_main_part2_roundcircle_tag"
+                        android:alpha="0.5"
+                        android:layout_width="6dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="德育考核"
+                        android:textColor="@color/base_font_color"
+                        android:textSize="@dimen/fontsize_15" />
+                </LinearLayout>
+            </RelativeLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+            <LinearLayout
+                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="证书名称"
+                    android:textColor="@color/base_font_color" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="比赛比赛"
+                    android:textColor="@color/base_font_color2" />
+
+            </LinearLayout>
+            <View
+                android:background="@color/base_line_color"
+                android:layout_width="match_parent"
+                android:layout_height="1px"/>
+
+
+
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

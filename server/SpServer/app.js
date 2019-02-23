@@ -22,7 +22,7 @@ var termController = require("./controller/term")
 var courseController = require("./controller/course")
 
 var userCourseController = require("./controller/user_course")
-
+var userMatchController = require("./controller/user_match")
 //var urlencodedParser = bodyParser.urlencoded({extended:false})
 app.use(express.static('public'));//静态文件
 app.use(express.static(path.join(__dirname, '')))
@@ -53,9 +53,9 @@ app.use('/cert',certController)
 app.use('/acti',actiController)
 app.use('/moral',moralController)
 app.use('/term',termController)
-
 app.use('/course',courseController)
-app.use('/user_course',userCourseController)
 
+app.use('/user_course',userCourseController)
+app.use('/user_match',userMatchController)
 app.listen(7777)
 console.log("数据服务器已打开, 端口: 7777");

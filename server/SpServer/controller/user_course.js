@@ -54,7 +54,6 @@ router.post('/addCourseTypeClass', function (req, res) {
 //根据用户id获取课程列表
 router.post('/getCoursesByUserId', function (req, res) {
     var sql = "select * from course where id in (select distinct course_id from user_course where del != 'delete' and user_id = '"+req.body.user_id+"') and del != 'delete'";
-    
     if(req.body.course_type!=null){
         sql += "and course_type = '"+req.body.course_type+"'";
     }

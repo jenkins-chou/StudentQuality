@@ -11,6 +11,7 @@ import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.base.SchoolModel;
 import com.jenking.spandroid.models.base.TermModel;
 import com.jenking.spandroid.models.base.UserModel;
+import com.jenking.spandroid.models.impl.UserMatchDetail;
 
 import java.util.Map;
 
@@ -243,5 +244,21 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user_course/addCourseTypeUser")
     Observable<ResultModel<CourseModel>> addCourseTypeUser(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_match/getUserMatchByUserId")
+    Observable<ResultModel<UserMatchDetail>> getUserMatchByUserId(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_match/addUserMatch")
+    Observable<ResultModel<UserMatchDetail>> addUserMatch(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_match/updateUserMatch")
+    Observable<ResultModel<UserMatchDetail>> updateUserMatch(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_match/deleteUserMatch")
+    Observable<ResultModel<UserMatchDetail>> deleteUserMatch(@FieldMap Map<String, String> body);
 
 }
