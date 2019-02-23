@@ -25,6 +25,7 @@ var userCourseController = require("./controller/user_course")
 var userMatchController = require("./controller/user_match")
 var userCertController = require("./controller/user_cert")
 var userActivityController = require("./controller/user_activity")
+var userMoralController = require("./controller/user_moral")
 
 
 
@@ -64,6 +65,7 @@ app.use('/user_course',userCourseController)
 app.use('/user_match',userMatchController)
 app.use('/user_cert',userCertController)
 app.use('/user_activity',userActivityController)
+app.use('/user_moral',userMoralController)
 
 
 app.listen(7777)
