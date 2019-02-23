@@ -99,7 +99,8 @@
         <activity android:name=".activity.manager.ManagerCourseArrangeTypePerson" />
         <activity android:name=".activity.manager.ManagerCourseArrangeTypeClassAdd" />
         <activity android:name=".activity.common.CourseListActivity" />
-        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonList"></activity>
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonList" />
+        <activity android:name=".activity.manager.ManagerCourseArrangeTypePersonAdd"></activity>
     </application>
 
 </manifest>

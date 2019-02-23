@@ -51,9 +51,11 @@ public class ManagerCourseArrangeTypePersonList extends BaseActivity {
                 &&StringUtil.isNotEmpty(select_user_realname)
                 &&StringUtil.isNotEmpty(select_class_id)){
 
-//            Intent intent = new Intent(this,ManagerCourseArrangeTypeClassAdd.class);
-//
-//            startActivity(intent);
+            Intent intent = new Intent(this,ManagerCourseArrangeTypePersonAdd.class);
+            intent.putExtra("user_id",select_user_id);
+            intent.putExtra("class_id",select_class_id);
+            intent.putExtra("user_realname",select_user_realname);
+            startActivity(intent);
         }else{
             Toast.makeText(this, "请返回重试", Toast.LENGTH_SHORT).show();
         }
@@ -141,8 +143,8 @@ public class ManagerCourseArrangeTypePersonList extends BaseActivity {
                 if (isSuccess){
                     Toast.makeText(ManagerCourseArrangeTypePersonList.this, "删除成功，正在刷新数据", Toast.LENGTH_LONG).show();
                     Map<String,String> params = RS.getBaseParams(ManagerCourseArrangeTypePersonList.this);
-                    params.put("class_id",select_class_id);
-                    userCoursePresenter.getCoursesByClassId(params);
+                    params.put("user_id",select_user_id);
+                    userCoursePresenter.getCoursesByUserId(params);
                 }
             }
 
