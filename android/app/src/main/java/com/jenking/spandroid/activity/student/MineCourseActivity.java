@@ -57,6 +57,11 @@ public class MineCourseActivity extends BaseActivity {
             protected void convert(BaseViewHolder helper, UserCourseDetail item) {
                 helper.setText(R.id.course_name,item.getCourse_name());
                 helper.setText(R.id.course_type,item.getCourse_type());
+                if (StringUtil.isNotEmpty(item.getUser_course_score())){
+                    helper.setText(R.id.user_course_score,item.getCourse_type()+"分");
+                }else{
+                    helper.setText(R.id.user_course_score,"未公布成绩");
+                }
             }
         };
         baseRecyclerAdapter.openLoadAnimation(false);

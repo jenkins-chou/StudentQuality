@@ -38,6 +38,10 @@ public class CourseDetailActivity extends BaseActivity {
     TextView course_abstract;
     @BindView(R.id.course_detail)
     TextView course_detail;
+    @BindView(R.id.course_time)
+    TextView course_time;
+    @BindView(R.id.course_address)
+    TextView course_address;
     @BindView(R.id.course_type)
     TextView course_type;
     @BindView(R.id.course_status)
@@ -109,6 +113,8 @@ public class CourseDetailActivity extends BaseActivity {
                 course_stunum.setText(courseModel.getCourse_stunum());
                 course_abstract.setText(courseModel.getCourse_abstract());
                 course_detail.setText(courseModel.getCourse_detail());
+                course_time.setText(courseModel.getCourse_time());
+                course_address.setText(courseModel.getCourse_address());
                 course_type.setText(courseModel.getCourse_type());
                 course_status.setText(courseModel.getCourse_status());
                 course_score.setText(courseModel.getCourse_score());

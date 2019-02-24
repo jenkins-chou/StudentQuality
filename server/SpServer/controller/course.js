@@ -53,7 +53,7 @@ router.post('/getCourseSelected',function (req, res) {
 
 //添加
 router.post('/addCourse', function (req, res) {
-    var sql = "insert into "+tableName+"(course_name,course_stunum,course_abstract,course_detail,course_type,course_status,course_score,school_id,college_id,term_id,teacher_id,school_name,college_name,term_name,teacher_name,remark,create_time,del) value (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    var sql = "insert into "+tableName+"(course_name,course_stunum,course_abstract,course_detail,course_type,course_status,course_score,school_id,college_id,term_id,teacher_id,school_name,college_name,term_name,teacher_name,remark,create_time,del,course_time,course_address) value (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
     var sqlparams = [
         req.body.course_name,
         req.body.course_stunum,
@@ -72,7 +72,9 @@ router.post('/addCourse', function (req, res) {
         req.body.teacher_name,
         req.body.remark,
         req.body.create_time,
-        'normal' //user_del 状态
+        'normal', //user_del 状态
+        req.body.course_time,
+        req.body.course_address
     ]
     var sqlQuery = "select * from "+tableName+" where course_name = '" + req.body.course_name+"' and school_id = '"+req.body.school_id+"' and college_id = '"+req.body.college_id+"' and del != 'delete'";//用于查询是否存在同名的
     connectDB.query(sqlQuery,function(result){
@@ -131,6 +133,8 @@ router.post('/updateCourse', function (request, response) {
                     var term_name = checkUpdateData(req.body.term_name,result.data[0].term_name);
                     var teacher_name = checkUpdateData(req.body.teacher_name,result.data[0].teacher_name);
                     var remark = checkUpdateData(req.body.remark,result.data[0].remark);
+                    var course_time = checkUpdateData(req.body.course_time,result.data[0].course_time);
+                    var course_addres = checkUpdateData(req.body.course_addres,result.data[0].course_addres);
                     var sql  =  "update "+tableName
                     +" set course_name = '"+course_name
                     +"' , course_stunum = '"+course_stunum
@@ -148,6 +152,8 @@ router.post('/updateCourse', function (request, response) {
                     +"' , term_name = '"+term_name
                     +"' , teacher_name = '"+teacher_name
                     +"' , remark = '"+remark
+                    +"' , course_time = '"+course_time
+                    +"' , course_addres = '"+course_addres
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);

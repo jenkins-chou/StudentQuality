@@ -20,6 +20,8 @@ public class CourseModel {
     public String create_time;
     public String remark;
     public String del;
+    public String course_time;
+    public String course_address;
 
     public String getId() {
         return id;
@@ -173,6 +175,22 @@ public class CourseModel {
         this.del = del;
     }
 
+    public String getCourse_time() {
+        return course_time;
+    }
+
+    public void setCourse_time(String course_time) {
+        this.course_time = course_time;
+    }
+
+    public String getCourse_address() {
+        return course_address;
+    }
+
+    public void setCourse_address(String course_address) {
+        this.course_address = course_address;
+    }
+
     @Override
     public String toString() {
         return "CourseModel{" +
@@ -195,6 +213,8 @@ public class CourseModel {
                 ", create_time='" + create_time + '\'' +
                 ", remark='" + remark + '\'' +
                 ", del='" + del + '\'' +
+                ", course_time='" + course_time + '\'' +
+                ", course_address='" + course_address + '\'' +
                 '}';
     }
 }

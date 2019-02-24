@@ -55,6 +55,10 @@ public class CourseOperateActivity extends BaseActivity {
     EditText course_abstract;
     @BindView(R.id.course_detail)
     EditText course_detail;
+    @BindView(R.id.course_time)
+    EditText course_time;
+    @BindView(R.id.course_address)
+    EditText course_address;
     @BindView(R.id.course_type)
     TextView course_type;
     @BindView(R.id.course_status)
@@ -120,9 +124,13 @@ public class CourseOperateActivity extends BaseActivity {
         String course_name_str = course_name.getText().toString();
         String course_type_str = course_type.getText().toString();
         String course_status_str = course_status.getText().toString();
+        String course_time_str = course_time.getText().toString();
+        String course_address_str = course_address.getText().toString();
         if (!StringUtil.isNotEmpty(course_name_str)
                 ||!StringUtil.isNotEmpty(course_type_str)
                 ||!StringUtil.isNotEmpty(course_status_str)
+                ||!StringUtil.isNotEmpty(course_time_str)
+                ||!StringUtil.isNotEmpty(course_address_str)
                 ||!StringUtil.isNotEmpty(select_term_id)
                 ||!StringUtil.isNotEmpty(select_teacher_id)
                 ||!StringUtil.isNotEmpty(select_college_id)
@@ -148,6 +156,8 @@ public class CourseOperateActivity extends BaseActivity {
                 params.put("term_name",select_term_name);
                 params.put("teacher_name",select_teacher_name);
                 params.put("remark",remark.getText().toString());
+                params.put("course_time",course_time.getText().toString());
+                params.put("course_address",remark.getText().toString());
                 if (isAddData){
                     params.put("create_time",StringUtil.getTime());
                     coursePresenter.addCourse(params);
@@ -196,6 +206,8 @@ public class CourseOperateActivity extends BaseActivity {
                 course_stunum.setText(courseModel.getCourse_stunum());
                 course_abstract.setText(courseModel.getCourse_abstract());
                 course_detail.setText(courseModel.getCourse_detail());
+                course_time.setText(courseModel.getCourse_time());
+                course_address.setText(courseModel.getCourse_address());
                 course_type.setText(courseModel.getCourse_type());
                 course_status.setText(courseModel.getCourse_status());
                 course_score.setText(courseModel.getCourse_score());

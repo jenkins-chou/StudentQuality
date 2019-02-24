@@ -18,6 +18,8 @@ public class UserCourseDetail extends UserCourseModel {
     public String college_name;
     public String term_name;
     public String teacher_name;
+    public String course_time;
+    public String course_address;
 
     public String getCourse_name() {
         return course_name;
@@ -139,6 +141,22 @@ public class UserCourseDetail extends UserCourseModel {
         this.teacher_name = teacher_name;
     }
 
+    public String getCourse_time() {
+        return course_time;
+    }
+
+    public void setCourse_time(String course_time) {
+        this.course_time = course_time;
+    }
+
+    public String getCourse_address() {
+        return course_address;
+    }
+
+    public void setCourse_address(String course_address) {
+        this.course_address = course_address;
+    }
+
     @Override
     public String toString() {
         return "UserCourseDetail{" +
@@ -157,6 +175,8 @@ public class UserCourseDetail extends UserCourseModel {
                 ", college_name='" + college_name + '\'' +
                 ", term_name='" + term_name + '\'' +
                 ", teacher_name='" + teacher_name + '\'' +
+                ", course_time='" + course_time + '\'' +
+                ", course_address='" + course_address + '\'' +
                 '}';
     }
 }

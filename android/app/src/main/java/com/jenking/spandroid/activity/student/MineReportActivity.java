@@ -15,6 +15,7 @@ import com.github.library.listener.OnRecyclerItemClickListener;
 import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.BaseActivity;
+import com.jenking.spandroid.activity.common.CourseDetailActivity;
 import com.jenking.spandroid.activity.common.UserActiDetailActivity;
 import com.jenking.spandroid.activity.common.UserCertDetailActivity;
 import com.jenking.spandroid.activity.common.UserMatchDetailActivity;
@@ -24,10 +25,12 @@ import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
+import com.jenking.spandroid.models.impl.UserCourseDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
 import com.jenking.spandroid.models.impl.UserMoralDetail;
 import com.jenking.spandroid.presenter.UserActivityPresenter;
 import com.jenking.spandroid.presenter.UserCertPresenter;
+import com.jenking.spandroid.presenter.UserCoursePresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.presenter.UserMoralPresenter;
 import com.jenking.spandroid.tools.AccountTool;
@@ -44,21 +47,26 @@ public class MineReportActivity extends BaseActivity {
 
     private String user_id;
 
+    private List<UserCourseDetail> userCourseDetails;
     private List<UserMatchDetail> userMatchDetails;
     private List<UserCertDetail> userCertDetails;
     private List<UserActivityDetail> userActivityDetails;
     private List<UserMoralDetail> userMoralDetails;
 
+    private BaseRecyclerAdapter courseAdapter;
     private BaseRecyclerAdapter matchAdapter;
     private BaseRecyclerAdapter certAdapter;
     private BaseRecyclerAdapter actiAdapter;
     private BaseRecyclerAdapter moralAdapter;
 
+    private UserCoursePresenter userCoursePresenter;
     private UserMatchPresenter userMatchPresenter;
     private UserCertPresenter userCertPresenter;
     private UserActivityPresenter userActivityPresenter;
     private UserMoralPresenter userMoralPresenter;
 
+    @BindView(R.id.course_rv)
+    RecyclerView course_rv;
     @BindView(R.id.match_rv)
     RecyclerView match_rv;
     @BindView(R.id.cert_rv)
@@ -85,6 +93,7 @@ public class MineReportActivity extends BaseActivity {
         super.initData();
         if (AccountTool.isLogin(this)&&AccountTool.getLoginUser(this)!=null){
             user_id = AccountTool.getLoginUser(this).getId();
+            initUserCourse();
             initUserMatch();
             initUserCert();
             initUserActi();
@@ -92,6 +101,11 @@ public class MineReportActivity extends BaseActivity {
 
             Map<String,String> params = RS.getBaseParams(this);
             params.put("user_id",user_id);
+
+            if (userCoursePresenter!=null){
+                userCoursePresenter.getCoursesByUserId(params);
+            }
+
             if (userMatchPresenter!=null){
                 userMatchPresenter.getUserMatchByUserId(params);
             }
@@ -110,6 +124,71 @@ public class MineReportActivity extends BaseActivity {
         }else{
             Log.e("what?","????");
         }
+    }
+
+    private void initUserCourse(){
+        userCourseDetails = new ArrayList<>();
+        courseAdapter = new BaseRecyclerAdapter<UserCourseDetail>(this,userCourseDetails,R.layout.activity_manager_report_course_item) {
+            @Override
+            protected void convert(BaseViewHolder helper, UserCourseDetail item) {
+                helper.setText(R.id.course_name,item.getCourse_name());
+                if (StringUtil.isNotEmpty(item.getUser_course_score())){
+                    helper.setText(R.id.user_course_score,"成绩:"+item.getUser_course_score()+"分");
+                }else{
+                    helper.setText(R.id.user_course_score,"成绩:未公布");
+                }
+            }
+        };
+        courseAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(MineReportActivity.this,CourseDetailActivity.class);
+                intent.putExtra("model",new Gson().toJson(userCourseDetails.get(position)));
+                startActivity(intent);
+            }
+        });
+        courseAdapter.openLoadAnimation(false);
+        course_rv.setLayoutManager(new StaggeredGridLayoutManager(1,1));
+        course_rv.setAdapter(courseAdapter);
+
+        userCoursePresenter = new UserCoursePresenter(this);
+        userCoursePresenter.setOnCallBack(new UserCoursePresenter.OnCallBack() {
+            @Override
+            public void getCoursesByClassId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void deleteByClassIdAndCourseId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addCourseTypeClass(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getCoursesByUserId(boolean isSuccess, Object object) {
+                if (isSuccess&&object!=null){
+                    ResultModel resultModel = (ResultModel)object;
+                    if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
+                        userCourseDetails = resultModel.getData()!=null?resultModel.getData():userCourseDetails;
+                        courseAdapter.setData(userCourseDetails);
+                    }
+                }
+            }
+
+            @Override
+            public void deleteByUserIdAndCourseId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void addCourseTypeUser(boolean isSuccess, Object object) {
+
+            }
+        });
     }
 
     private void initUserMatch(){
