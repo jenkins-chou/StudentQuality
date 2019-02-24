@@ -18,6 +18,7 @@ import com.jenking.spandroid.activity.common.CourseDetailActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.impl.UserCourseDetail;
 import com.jenking.spandroid.presenter.UserCoursePresenter;
 import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
@@ -37,7 +38,7 @@ public class MineCourseElectiveActivity extends BaseActivity {
         finish();
     }
 
-    private List<CourseModel> datas;
+    private List<UserCourseDetail> datas;
     private BaseRecyclerAdapter baseRecyclerAdapter;
     private UserCoursePresenter userCoursePresenter;
 
@@ -53,9 +54,9 @@ public class MineCourseElectiveActivity extends BaseActivity {
     public void initData() {
         super.initData();
         datas = new ArrayList<>();
-        baseRecyclerAdapter = new BaseRecyclerAdapter<CourseModel>(this,datas,R.layout.activity_mine_course_item) {
+        baseRecyclerAdapter = new BaseRecyclerAdapter<UserCourseDetail>(this,datas,R.layout.activity_mine_course_item) {
             @Override
-            protected void convert(BaseViewHolder helper, CourseModel item) {
+            protected void convert(BaseViewHolder helper, UserCourseDetail item) {
                 helper.setText(R.id.course_name,item.getCourse_name());
                 helper.setText(R.id.course_type,item.getCourse_type());
             }

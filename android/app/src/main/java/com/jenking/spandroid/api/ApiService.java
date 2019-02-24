@@ -13,6 +13,7 @@ import com.jenking.spandroid.models.base.TermModel;
 import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
+import com.jenking.spandroid.models.impl.UserCourseDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
 import com.jenking.spandroid.models.impl.UserMoralDetail;
 
@@ -238,15 +239,15 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("user_course/getCoursesByUserId")
-    Observable<ResultModel<CourseModel>> getCoursesByUserId(@FieldMap Map<String, String> body);
+    Observable<ResultModel<UserCourseDetail>> getCoursesByUserId(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user_course/deleteByUserIdAndCourseId")
-    Observable<ResultModel<CourseModel>> deleteByUserIdAndCourseId(@FieldMap Map<String, String> body);
+    Observable<ResultModel<UserCourseDetail>> deleteByUserIdAndCourseId(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user_course/addCourseTypeUser")
-    Observable<ResultModel<CourseModel>> addCourseTypeUser(@FieldMap Map<String, String> body);
+    Observable<ResultModel<UserCourseDetail>> addCourseTypeUser(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user_match/getUserMatchByUserId")
