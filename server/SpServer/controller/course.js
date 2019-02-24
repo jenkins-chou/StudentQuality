@@ -134,7 +134,7 @@ router.post('/updateCourse', function (request, response) {
                     var teacher_name = checkUpdateData(req.body.teacher_name,result.data[0].teacher_name);
                     var remark = checkUpdateData(req.body.remark,result.data[0].remark);
                     var course_time = checkUpdateData(req.body.course_time,result.data[0].course_time);
-                    var course_addres = checkUpdateData(req.body.course_addres,result.data[0].course_addres);
+                    var course_address = checkUpdateData(req.body.course_address,result.data[0].course_address);
                     var sql  =  "update "+tableName
                     +" set course_name = '"+course_name
                     +"' , course_stunum = '"+course_stunum
@@ -153,7 +153,7 @@ router.post('/updateCourse', function (request, response) {
                     +"' , teacher_name = '"+teacher_name
                     +"' , remark = '"+remark
                     +"' , course_time = '"+course_time
-                    +"' , course_addres = '"+course_addres
+                    +"' , course_address = '"+course_address
                     +"' where "+tableKey+" = "+id;
                 connectDB.update(sql,function(result){
                     console.log(result);
