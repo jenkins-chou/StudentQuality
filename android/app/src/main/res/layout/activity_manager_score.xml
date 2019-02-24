@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activity.student.MineActivityActivity">
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -48,4 +49,74 @@
             android:layout_width="match_parent"
             android:layout_height="1px"/>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/select_college"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/common_button_selected"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="15dp"
+                android:src="@mipmap/fragment_main_part1_collage" />
+
+            <TextView
+                android:id="@+id/college_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择学校/学院"
+                android:textColor="@color/base_font_color"
+                android:textSize="@dimen/fontsize_15" />
+        </LinearLayout>
+        <View
+            android:background="@color/base_line_color"
+            android:layout_width="1px"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:id="@+id/select_term"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/common_button_selected"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_margin="17dp"
+                android:src="@mipmap/fragment_main_part1_term" />
+
+            <TextView
+                android:id="@+id/term_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择学期"
+                android:textColor="@color/base_font_color"
+                android:textSize="@dimen/fontsize_15" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/recyclerView"
+        android:layout_below="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+
+
 </LinearLayout>

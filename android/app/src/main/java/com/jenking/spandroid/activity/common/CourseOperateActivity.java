@@ -157,7 +157,7 @@ public class CourseOperateActivity extends BaseActivity {
                 params.put("teacher_name",select_teacher_name);
                 params.put("remark",remark.getText().toString());
                 params.put("course_time",course_time.getText().toString());
-                params.put("course_address",remark.getText().toString());
+                params.put("course_address",course_address.getText().toString());
                 if (isAddData){
                     params.put("create_time",StringUtil.getTime());
                     coursePresenter.addCourse(params);

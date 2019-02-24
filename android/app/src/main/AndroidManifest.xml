@@ -110,7 +110,8 @@
         <activity android:name=".activity.common.UserActiOperateActivity" />
         <activity android:name=".activity.common.UserActiDetailActivity" />
         <activity android:name=".activity.common.UserMoralDetailActivity" />
-        <activity android:name=".activity.common.UserMoralOperateActivity"></activity>
+        <activity android:name=".activity.common.UserMoralOperateActivity" />
+        <activity android:name=".activity.manager.ManagerScoreListActivity"></activity>
     </application>
 
 </manifest>
