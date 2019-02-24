@@ -164,7 +164,7 @@ public class ManagerReportListActivity extends BaseActivity {
             public void onItemClick(View view, int position) {
                 Intent intent = new Intent(ManagerReportListActivity.this,UserMatchDetailActivity.class);
                 intent.putExtra("model",new Gson().toJson(userMatchDetails.get(position)));
-                startActivityForResult(intent,MatchListActivity.SelectMatchCode);
+                startActivity(intent);
             }
         });
         matchAdapter.openLoadAnimation(false);

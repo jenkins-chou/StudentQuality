@@ -28,31 +28,9 @@ router.post('/addUserMoral', function (req, res) {
         req.body.remark,
         'normal' //user_del 状态
     ]
-    var sqlQuery = "select * from "+tableName+" where user_id = '" + req.body.user_id+"' and moral_id = '"+req.body.moral_id+"' and del != 'delete'";//用于查询是否存在同名的
-    connectDB.query(sqlQuery,function(result){
-        console.log(result);
-        if(result.data[0]!=null){
-            console.log("已经存在");
-            var resultexist = {
-                    "status": "201",
-                    "message": "已经存在",
-                    "data":[]
-                }
-            return res.jsonp(resultexist);
-        }else{
-            console.log("可注册");
-            connectDB.add(sql,sqlparams,function(result){
+    connectDB.add(sql,sqlparams,function(result){
                 console.log(result);
-                if (result.status=="200") {
-                    var sqlQueryAgain = "select * from "+tableName+" where user_id = '" + req.body.user_id+"' and moral_id = '"+req.body.moral_id+"' and del != 'delete'";
-                    connectDB.query(sqlQueryAgain,function(resultAgain){
-                        return res.jsonp(resultAgain);
-                    })
-                }else{
-                    return res.jsonp(result);
-                }
-            })
-        }
+                return res.jsonp(result);
     })
 
 });

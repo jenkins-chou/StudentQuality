@@ -3,7 +3,9 @@ package com.jenking.spandroid.activity.common;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +18,7 @@ import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserMatchDetail;
 import com.jenking.spandroid.presenter.UserCertPresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
+import com.jenking.spandroid.tools.AccountTool;
 import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.Map;
@@ -36,6 +39,9 @@ public class UserCertDetailActivity extends BaseActivity {
     TextView get_cert_time;
     @BindView(R.id.remark)
     TextView remark;
+
+    @BindView(R.id.manager_bar)
+    LinearLayout manager_bar;
 
     @OnClick(R.id.back)
     void back(){
@@ -125,6 +131,14 @@ public class UserCertDetailActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void initView() {
+        super.initView();
+        if (AccountTool.isLogin(this)&&StringUtil.isEquals(AccountTool.getUserType(this),AccountTool.usertype_manager)){
+            manager_bar.setVisibility(View.VISIBLE);
+        }
     }
 
 }

@@ -211,11 +211,12 @@
 
         <LinearLayout
             android:id="@+id/manager_bar"
-            android:orientation="horizontal"
-            android:gravity="right"
-            android:padding="15dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            android:visibility="gone">
 
             <TextView
                 android:id="@+id/modify"
