@@ -22,6 +22,7 @@ import com.jenking.spandroid.activity.common.UserMatchDetailActivity;
 import com.jenking.spandroid.activity.common.UserMoralDetailActivity;
 import com.jenking.spandroid.activity.manager.ManagerReportListActivity;
 import com.jenking.spandroid.api.RS;
+import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.ResultModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
@@ -46,6 +47,12 @@ import butterknife.OnClick;
 public class MineReportActivity extends BaseActivity {
 
     private String user_id;
+
+    private boolean isLoadCourse = false;
+    private boolean isLoadMatch = false;
+    private boolean isLoadCert = false;
+    private boolean isLoadActivity = false;
+    private boolean isLoadMoral = false;
 
     private List<UserCourseDetail> userCourseDetails;
     private List<UserMatchDetail> userMatchDetails;
@@ -134,6 +141,15 @@ public class MineReportActivity extends BaseActivity {
                 helper.setText(R.id.course_name,item.getCourse_name());
                 if (StringUtil.isNotEmpty(item.getUser_course_score())){
                     helper.setText(R.id.user_course_score,"成绩:"+item.getUser_course_score()+"分");
+                    if (StringUtil.isNumber(item.getUser_course_score())){
+                        Integer score = Integer.parseInt(item.getUser_course_score());
+                        if (score<60){
+                            helper.setText(R.id.achievement_point,"绩点 0 ");
+                            helper.setText(R.id.user_course_score_status,"不及格");
+                        }else{
+                            helper.setText(R.id.achievement_point,"绩点 "+(float)(score-50)/10);
+                        }
+                    }
                 }else{
                     helper.setText(R.id.user_course_score,"成绩:未公布");
                 }
@@ -175,8 +191,10 @@ public class MineReportActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userCourseDetails = resultModel.getData()!=null?resultModel.getData():userCourseDetails;
                         courseAdapter.setData(userCourseDetails);
+                        isLoadCourse = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -231,8 +249,10 @@ public class MineReportActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userMatchDetails = resultModel.getData()!=null?resultModel.getData():userMatchDetails;
                         matchAdapter.setData(userMatchDetails);
+                        isLoadMatch = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -282,8 +302,10 @@ public class MineReportActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userCertDetails = resultModel.getData()!=null?resultModel.getData():userMatchDetails;
                         certAdapter.setData(userCertDetails);
+                        isLoadCert = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -333,8 +355,10 @@ public class MineReportActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userActivityDetails = resultModel.getData()!=null?resultModel.getData():userActivityDetails;
                         actiAdapter.setData(userActivityDetails);
+                        isLoadActivity = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -395,8 +419,10 @@ public class MineReportActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userMoralDetails = resultModel.getData()!=null?resultModel.getData():userMoralDetails;
                         moralAdapter.setData(userMoralDetails);
+                        isLoadMoral = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -414,6 +440,12 @@ public class MineReportActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private void statistics(){
+        if (isLoadCourse&&isLoadMatch&&isLoadCert&&isLoadActivity&&isLoadMoral){
+//            CommonTipsDialog.showTip(this,"温馨提示","加载完毕",false);
+    }
     }
 
 }
