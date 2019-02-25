@@ -25,6 +25,14 @@ router.post('/deleteByClassIdAndCourseId', function (req, res) {
     })
 });
 
+//根据课程id获取参加课程的学生
+router.post('/getUserByCourseId', function (req, res) {
+    var sql = "select a.*,b.* from user_course a,user b where a.user_id = b.id and a.course_id = '"+req.body.course_id+"' and del != 'delete'";
+    connectDB.delete(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
 //已班级为单位添加课程安排
 router.post('/addCourseTypeClass', function (req, res) {
     var class_id = req.body.class_id;
