@@ -258,6 +258,10 @@ public interface ApiService {
     Observable<ResultModel<UserCourseDetail>> getUserByCourseId(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
+    @POST("user_course/excute")
+    Observable<ResultModel<UserCourseDetail>> excute(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
     @POST("user_match/getUserMatchByUserId")
     Observable<ResultModel<UserMatchDetail>> getUserMatchByUserId(@FieldMap Map<String, String> body);
 

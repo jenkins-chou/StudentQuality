@@ -101,8 +101,16 @@ router.post('/addCourseTypeUser', function (req, res) {
                     return res.jsonp(result);
                 })
             }
-        })    
+        })  
 });
+
+router.post('/excute', function (req, res) {
+    var sql = req.body.sql;
+     connectDB.excute(sql,function(result){
+            console.log(result);
+            return res.jsonp(result);
+     }
+}
 
 
 //更新时，用于校验是否是否有更新字段值

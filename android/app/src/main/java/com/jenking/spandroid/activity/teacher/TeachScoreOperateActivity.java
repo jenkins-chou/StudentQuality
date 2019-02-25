@@ -30,6 +30,7 @@ import com.jenking.spandroid.tools.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -45,16 +46,34 @@ public class TeachScoreOperateActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick(R.id.submit)
-    void submit(){
-        Toast.makeText(this, scoreMap.toString()+"111", Toast.LENGTH_LONG).show();
-        Log.e("map",scoreMap.toString()+"111");
-    }
+
 
     private Map<String,String> scoreMap;
     private List<UserCourseDetail> userCourseDetails;
     private UserCoursePresenter userCoursePresenter;
     private BaseRecyclerAdapter baseRecyclerAdapter;
+
+    @OnClick(R.id.submit)    void submit(){
+        String sql = "UPDATE user_course SET user_course_score = CASE id";
+        String sqlFooter = " END WHERE id IN (";
+        Iterator it = scoreMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry e = (Map.Entry) it.next();
+            System.out.println("Key: " + e.getKey() + "--Value: "
+                    + e.getValue());
+            sql += " WHEN "+ e.getKey() + " THEN " + e.getValue();
+            sqlFooter += e.getKey()+",";
+        }
+        sqlFooter = sqlFooter.substring(0,sqlFooter.length()-1);
+        sql += sqlFooter;
+        sql += ")";
+        Log.e("sql",sql);
+
+        Map<String,String> params = RS.getBaseParams(this);
+        params.put("sql",sql);
+        userCoursePresenter.excute(params);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,6 +90,8 @@ public class TeachScoreOperateActivity extends BaseActivity {
             protected void convert(BaseViewHolder helper, final UserCourseDetail item) {
                 helper.setText(R.id.realname,item.getRealname());
                 helper.setText(R.id.class_name,item.getClass_name());
+                helper.setText(R.id.edittext,item.getUser_course_score());
+                scoreMap.put(item.getId(),item.getUser_course_score());
                 EditText editText = helper.getView(R.id.edittext);
                 editText.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -134,6 +155,14 @@ public class TeachScoreOperateActivity extends BaseActivity {
                         userCourseDetails = resultModel.getData()!=null?resultModel.getData():userCourseDetails;
                         baseRecyclerAdapter.setData(userCourseDetails);
                     }
+                }
+            }
+
+            @Override
+            public void excute(boolean isSuccess, Object object) {
+                if (isSuccess){
+                    Toast.makeText(TeachScoreOperateActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    finish();
                 }
             }
         });
