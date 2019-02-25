@@ -160,6 +160,11 @@ public class ManagerCourseArrangeTypeClass extends BaseActivity {
             public void addCourseTypeUser(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void getUserByCourseId(boolean isSuccess, Object object) {
+
+            }
         });
     }
 

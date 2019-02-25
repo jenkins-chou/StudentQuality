@@ -158,6 +158,11 @@ public class ManagerCourseActivity extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getCoursesByTeacher(boolean isSuccess, Object object) {
+
+            }
         });
     }
 

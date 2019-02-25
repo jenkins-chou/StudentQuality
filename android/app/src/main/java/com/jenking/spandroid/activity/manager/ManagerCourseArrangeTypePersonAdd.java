@@ -128,6 +128,11 @@ public class ManagerCourseArrangeTypePersonAdd extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getUserByCourseId(boolean isSuccess, Object object) {
+
+            }
         });
     }
 

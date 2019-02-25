@@ -226,6 +226,10 @@ public interface ApiService {
     Observable<ResultModel<CourseModel>> getCourseSelected(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
+    @POST("course/getCoursesByTeacher")
+    Observable<ResultModel<CourseModel>> getCoursesByTeacher(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
     @POST("user_course/getCoursesByClassId")
     Observable<ResultModel<CourseModel>> getCoursesByClassId(@FieldMap Map<String, String> body);
 
@@ -248,6 +252,10 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("user_course/addCourseTypeUser")
     Observable<ResultModel<UserCourseDetail>> addCourseTypeUser(@FieldMap Map<String, String> body);
+
+    @FormUrlEncoded
+    @POST("user_course/getUserByCourseId")
+    Observable<ResultModel<UserCourseDetail>> getUserByCourseId(@FieldMap Map<String, String> body);
 
     @FormUrlEncoded
     @POST("user_match/getUserMatchByUserId")

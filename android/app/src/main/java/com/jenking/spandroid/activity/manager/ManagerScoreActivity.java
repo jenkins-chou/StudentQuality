@@ -146,6 +146,11 @@ public class ManagerScoreActivity extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getCoursesByTeacher(boolean isSuccess, Object object) {
+
+            }
         });
     }
     @Override

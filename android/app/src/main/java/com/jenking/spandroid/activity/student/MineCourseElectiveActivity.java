@@ -115,6 +115,11 @@ public class MineCourseElectiveActivity extends BaseActivity {
             public void addCourseTypeUser(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void getUserByCourseId(boolean isSuccess, Object object) {
+
+            }
         });
 
         if (AccountTool.isLogin(this)){
