@@ -486,11 +486,14 @@ public class MineReportActivity extends BaseActivity {
                         }
                     }
                 }
-                courseAverageScore = courseScoreSum/courseScoreCount;
-                course_average.setText(courseAverageScore+"");
-
-                coursePointScore = coursePointSum/coursePointCount;
-                course_point.setText(coursePointScore+"");
+                if (courseScoreCount>0){
+                    courseAverageScore = courseScoreSum/courseScoreCount;
+                    course_average.setText(courseAverageScore+"");
+                }
+                if (coursePointCount>0){
+                    coursePointScore = coursePointSum/coursePointCount;
+                    course_point.setText(coursePointScore+"");
+                }
             }
 
             if (userMatchDetails!=null){
