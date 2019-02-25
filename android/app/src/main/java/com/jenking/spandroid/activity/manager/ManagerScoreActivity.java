@@ -19,6 +19,7 @@ import com.jenking.spandroid.activity.common.BaseActivity;
 import com.jenking.spandroid.activity.common.CollegeListActivity;
 import com.jenking.spandroid.activity.common.CourseDetailActivity;
 import com.jenking.spandroid.activity.common.TermListActivity;
+import com.jenking.spandroid.activity.teacher.TeachScoreOperateActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.models.base.CourseModel;
 import com.jenking.spandroid.models.base.ResultModel;
@@ -79,7 +80,6 @@ public class ManagerScoreActivity extends BaseActivity {
     @Override
     public void initData() {
         super.initData();
-
         datas = new ArrayList<>();
         baseRecyclerAdapter = new BaseRecyclerAdapter<CourseModel>(this,datas,R.layout.activity_manager_course_item) {
             @Override
@@ -93,9 +93,9 @@ public class ManagerScoreActivity extends BaseActivity {
         baseRecyclerAdapter.setOnRecyclerItemClickListener(new OnRecyclerItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-//                Intent intent = new Intent(ManagerScoreActivity.this,CourseDetailActivity.class);
-//                intent.putExtra("model",new Gson().toJson(datas.get(position)));
-//                startActivity(intent);
+                Intent intent = new Intent(ManagerScoreActivity.this,TeachScoreOperateActivity.class);
+                intent.putExtra("course_id",datas.get(position).getId());
+                startActivity(intent);
             }
         });
 

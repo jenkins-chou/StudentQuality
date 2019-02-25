@@ -193,6 +193,11 @@ public class MineReportActivity extends BaseActivity {
             public void getUserByCourseId(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void excute(boolean isSuccess, Object object) {
+
+            }
         });
     }
 
