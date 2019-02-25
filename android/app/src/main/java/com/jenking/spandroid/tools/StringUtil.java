@@ -65,7 +65,7 @@ public class StringUtil {
      * @return
      */
     public static boolean isNumber(String number){
-        return Pattern.matches(REGEX_NUMBER,number);
+        return number!=null&&!number.equals("")&&Pattern.matches(REGEX_NUMBER,number);
     }
     /**
      * 校验手机号
