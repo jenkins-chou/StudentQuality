@@ -27,7 +27,7 @@ router.post('/deleteByClassIdAndCourseId', function (req, res) {
 
 //根据课程id获取参加课程的学生
 router.post('/getUserByCourseId', function (req, res) {
-    var sql = "select a.*,b.* from user_course a,user b where a.user_id = b.id and a.course_id = '"+req.body.course_id+"' and b.realname != null and b.class_id !=null and a.del != 'delete' and b.del != 'delete'";
+    var sql = "select a.*,b.* from user_course a,user b where a.user_id = b.id and a.course_id = '"+req.body.course_id+"' and b.realname != '' and b.class_id != '' and a.del != 'delete' and b.del != 'delete'";
     connectDB.query(sql,function(result){
         return res.jsonp(result);
     })
