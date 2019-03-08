@@ -40,6 +40,7 @@ import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.presenter.UserMoralPresenter;
 import com.jenking.spandroid.tools.StringUtil;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -68,6 +69,40 @@ public class ManagerReportListActivity extends BaseActivity {
     private UserCertPresenter userCertPresenter;
     private UserActivityPresenter userActivityPresenter;
     private UserMoralPresenter userMoralPresenter;
+
+    private boolean isLoadCourse = false;
+    private boolean isLoadMatch = false;
+    private boolean isLoadCert = false;
+    private boolean isLoadActivity = false;
+    private boolean isLoadMoral = false;
+
+    private int courseScoreSum = 0;
+    private int courseScoreCount = 0;
+    private int courseAverageScore = 0;
+
+    private float coursePointSum = 0;
+    private int coursePointCount = 0;
+    private float coursePointScore = 0;
+
+    private int matchFraction = 0;
+    private int certFraction = 0;
+    private int actiFraction = 0;
+    private int moralFraction = 0;
+
+    @BindView(R.id.course_average)
+    TextView course_average;
+    @BindView(R.id.course_point)
+    TextView course_point;
+    @BindView(R.id.match_score)
+    TextView match_score;
+    @BindView(R.id.cert_score)
+    TextView cert_score;
+    @BindView(R.id.acti_score)
+    TextView acti_score;
+    @BindView(R.id.moral_score)
+    TextView moral_score;
+    @BindView(R.id.all_score)
+    TextView all_score;
 
     @BindView(R.id.course_rv)
     RecyclerView course_rv;
@@ -214,8 +249,10 @@ public class ManagerReportListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userCourseDetails = resultModel.getData()!=null?resultModel.getData():userCourseDetails;
                         courseAdapter.setData(userCourseDetails);
+                        isLoadCourse = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -225,6 +262,16 @@ public class ManagerReportListActivity extends BaseActivity {
 
             @Override
             public void addCourseTypeUser(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void getUserByCourseId(boolean isSuccess, Object object) {
+
+            }
+
+            @Override
+            public void excute(boolean isSuccess, Object object) {
 
             }
         });
@@ -260,8 +307,10 @@ public class ManagerReportListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userMatchDetails = resultModel.getData()!=null?resultModel.getData():userMatchDetails;
                         matchAdapter.setData(userMatchDetails);
+                        isLoadMatch = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -311,8 +360,10 @@ public class ManagerReportListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userCertDetails = resultModel.getData()!=null?resultModel.getData():userMatchDetails;
                         certAdapter.setData(userCertDetails);
+                        isLoadCert = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -362,8 +413,10 @@ public class ManagerReportListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userActivityDetails = resultModel.getData()!=null?resultModel.getData():userActivityDetails;
                         actiAdapter.setData(userActivityDetails);
+                        isLoadActivity = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -424,8 +477,10 @@ public class ManagerReportListActivity extends BaseActivity {
                     if (resultModel!=null&& StringUtil.isEquals(resultModel.getStatus(),"200")){
                         userMoralDetails = resultModel.getData()!=null?resultModel.getData():userMoralDetails;
                         moralAdapter.setData(userMoralDetails);
+                        isLoadMoral = true;
                     }
                 }
+                statistics();
             }
 
             @Override
@@ -443,5 +498,90 @@ public class ManagerReportListActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private void statistics(){
+        if (isLoadCourse&&isLoadMatch&&isLoadCert&&isLoadActivity&&isLoadMoral){
+            if (userCourseDetails!=null){
+                for (UserCourseDetail userCourseDetail:userCourseDetails){
+                    String user_course_score = userCourseDetail.getUser_course_score();
+                    if (StringUtil.isNotEmpty(user_course_score)&&StringUtil.isNumber(user_course_score)){
+                        int score =  Integer.parseInt(user_course_score);
+                        courseScoreSum +=score;
+                        courseScoreCount++;
+
+                        if (score>60){
+                            coursePointCount++;
+                            coursePointSum+=(float)(score-50)/10;
+                        }
+                    }
+                }
+                if (courseScoreCount>0){
+                    courseAverageScore = courseScoreSum/courseScoreCount;
+                    course_average.setText(courseAverageScore+"");
+                }
+                if (coursePointCount>0){
+                    coursePointScore = coursePointSum/coursePointCount;
+                    course_point.setText(coursePointScore+"");
+                }
+            }
+
+            if (userMatchDetails!=null){
+                for (UserMatchDetail userMatchDetail:userMatchDetails){
+                    String user_match_score = userMatchDetail.getUser_match_score();
+                    if (StringUtil.isNumber(user_match_score)){
+                        Integer score = Integer.parseInt(user_match_score);
+                        matchFraction+=score;
+                    }
+                }
+                match_score.setText(matchFraction+"");
+            }
+
+            if (userCertDetails!=null){
+                for (UserCertDetail userCertDetail:userCertDetails){
+                    String user_cert_score = userCertDetail.getCertificate_score();
+                    if (StringUtil.isNumber(user_cert_score)){
+                        Integer score = Integer.parseInt(user_cert_score);
+                        certFraction+=score;
+                    }
+                }
+                cert_score.setText(certFraction+"");
+            }
+
+            if (userActivityDetails!=null){
+                for (UserActivityDetail userActivityDetail:userActivityDetails){
+                    String user_activity_score = userActivityDetail.getUser_activity_score();
+                    if (StringUtil.isNumber(user_activity_score)){
+                        Integer score = Integer.parseInt(user_activity_score);
+                        actiFraction+=score;
+                    }
+                }
+                acti_score.setText(actiFraction+"");
+            }
+
+            if (userMoralDetails!=null){
+                for (UserMoralDetail userMoralDetail:userMoralDetails){
+                    String user_moral_score = userMoralDetail.getMoral_score();
+                    if (StringUtil.isNumber(user_moral_score)){
+                        Integer score = Integer.parseInt(user_moral_score);
+                        if (StringUtil.isEquals(userMoralDetail.getMoral_type(),"加分")){
+                            moralFraction+=score;
+                        }else if (StringUtil.isEquals(userMoralDetail.getMoral_type(),"减分")){
+                            moralFraction-=score;
+                        }
+                    }
+                }
+                moral_score.setText(moralFraction+"");
+            }
+
+            float all_score_f = courseAverageScore * (float)0.7 + (float)(matchFraction+certFraction+actiFraction+moralFraction)*0.3f;
+            int  scale  =  2;//设置位数
+            int  roundingMode  =  4;//表示四舍五入，可以选择其他舍值方式，例如去尾，等等.
+            BigDecimal bd  =  new  BigDecimal((double)all_score_f);
+            bd  =  bd.setScale(scale,roundingMode);
+            all_score_f  =  bd.floatValue();
+
+            all_score.setText(all_score_f+"");
+        }
     }
 }
