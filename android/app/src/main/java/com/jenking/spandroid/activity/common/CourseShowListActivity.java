@@ -156,6 +156,11 @@ public class CourseShowListActivity extends BaseActivity {
                     }
                 }
             }
+
+            @Override
+            public void getCoursesByTeacher(boolean isSuccess, Object object) {
+
+            }
         });
     }
 

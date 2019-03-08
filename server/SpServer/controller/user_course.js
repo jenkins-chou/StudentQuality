@@ -25,6 +25,14 @@ router.post('/deleteByClassIdAndCourseId', function (req, res) {
     })
 });
 
+//根据课程id获取参加课程的学生
+router.post('/getUserByCourseId', function (req, res) {
+    var sql = "select a.*,b.realname,b.class_name from user_course a,user b where a.user_id = b.id and a.course_id = '"+req.body.course_id+"' and b.realname != '' and b.class_id != '' and a.del != 'delete' and b.del != 'delete'";
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
 //已班级为单位添加课程安排
 router.post('/addCourseTypeClass', function (req, res) {
     var class_id = req.body.class_id;
@@ -93,7 +101,15 @@ router.post('/addCourseTypeUser', function (req, res) {
                     return res.jsonp(result);
                 })
             }
-        })    
+        })  
+});
+
+router.post('/excute', function (req, res) {
+    var sql = req.body.sql;
+     connectDB.excute(sql,function(result){
+            console.log(result);
+            return res.jsonp(result);
+     })
 });
 
 

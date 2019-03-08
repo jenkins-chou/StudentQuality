@@ -26,6 +26,28 @@
             android:text=""
             android:textColor="@color/white"
             android:textSize="11sp" />
+        <TextView
+            android:id="@+id/achievement_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.5"
+            android:background="@color/main_color"
+            android:maxLength="14"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="11sp" />
+        <TextView
+            android:id="@+id/user_course_score_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:alpha="0.5"
+            android:background="@color/colorAccent"
+            android:maxLength="14"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="11sp" />
 
     </LinearLayout>
     <TextView

@@ -17,6 +17,13 @@ router.post('/getAllCourses', function (req, res) {
     })
 });
 
+router.post('/getCoursesByTeacher', function (req, res) {
+    var sql = "select * from "+tableName+" where teacher_id = '"+req.body.teacher_id+"' and "+tableDelete+" != 'delete'";
+    connectDB.query(sql,function(result){
+        return res.jsonp(result);
+    })
+});
+
 //根据id获取信息
 router.post('/getCourse',function (req, res) {
     var sql = "select * from "+tableName+" where "+tableKey+" = "+req.body.id +" and "+tableDelete+" != 'delete'";
@@ -175,6 +182,7 @@ router.post('/updateCourse', function (request, response) {
         }
     })
 });
+
 router.post('/deleteCourse', function (req, res) {
     var id = req.body.id;
     if (id==null) {

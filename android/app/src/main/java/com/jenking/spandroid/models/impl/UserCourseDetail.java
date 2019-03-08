@@ -3,6 +3,9 @@ package com.jenking.spandroid.models.impl;
 import com.jenking.spandroid.models.base.UserCourseModel;
 
 public class UserCourseDetail extends UserCourseModel {
+    public String name;
+    public String realname;
+    public String class_name;
     public String course_name;
     public String course_stunum;
     public String course_abstract;
@@ -20,6 +23,30 @@ public class UserCourseDetail extends UserCourseModel {
     public String teacher_name;
     public String course_time;
     public String course_address;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getClass_name() {
+        return class_name;
+    }
+
+    public void setClass_name(String class_name) {
+        this.class_name = class_name;
+    }
 
     public String getCourse_name() {
         return course_name;
@@ -160,7 +187,10 @@ public class UserCourseDetail extends UserCourseModel {
     @Override
     public String toString() {
         return "UserCourseDetail{" +
-                "course_name='" + course_name + '\'' +
+                "name='" + name + '\'' +
+                ", realname='" + realname + '\'' +
+                ", class_name='" + class_name + '\'' +
+                ", course_name='" + course_name + '\'' +
                 ", course_stunum='" + course_stunum + '\'' +
                 ", course_abstract='" + course_abstract + '\'' +
                 ", course_detail='" + course_detail + '\'' +

@@ -261,6 +261,11 @@ public class CourseOperateActivity extends BaseActivity {
             public void getCourseSelected(boolean isSuccess, Object object) {
 
             }
+
+            @Override
+            public void getCoursesByTeacher(boolean isSuccess, Object object) {
+
+            }
         });
     }
 
