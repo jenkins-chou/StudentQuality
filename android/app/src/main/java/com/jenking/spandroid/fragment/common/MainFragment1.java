@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.jenking.spandroid.R;
 import com.jenking.spandroid.activity.common.ComprehensiveReportIsWhatActivity;
 import com.jenking.spandroid.activity.common.LoginActivity;
@@ -92,6 +93,7 @@ public class MainFragment1 extends Fragment {
     void mine_report(){
         if (checkUserinfo()){
             Intent intent = new Intent(getContext(),MineReportActivity.class);
+            intent.putExtra("model",new Gson().toJson(AccountTool.getLoginUser(getContext())));
             startActivity(intent);
         }
     }

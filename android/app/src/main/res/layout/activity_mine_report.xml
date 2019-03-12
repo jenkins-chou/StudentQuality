@@ -42,6 +42,16 @@
             android:text="我的综合素质报告"
             android:textColor="@color/white"
             android:textSize="@dimen/header_title_textsize" />
+        <TextView
+            android:id="@+id/print_report"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:text="打印"
+            android:textColor="@color/white"
+            android:textSize="@dimen/header_title_textsize" />
 
         <View
             android:layout_alignParentBottom="true"

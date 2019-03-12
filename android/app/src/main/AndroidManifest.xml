@@ -41,8 +41,9 @@
         <activity android:name=".activity.student.MineReportActivity" />
         <activity android:name=".activity.student.MineMoralActivity" />
         <activity android:name=".activity.student.MineCourseActivity" />
-        <activity android:name=".activity.teacher.TeachScoreOperateActivity"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".activity.teacher.TeachScoreOperateActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.manager.ManagerActiActivity" />
         <activity android:name=".activity.manager.ManagerCertActivity" />
         <activity android:name=".activity.manager.ManagerCourseActivity" />
@@ -112,7 +113,10 @@
         <activity android:name=".activity.common.UserActiDetailActivity" />
         <activity android:name=".activity.common.UserMoralDetailActivity" />
         <activity android:name=".activity.common.UserMoralOperateActivity" />
-        <activity android:name=".activity.manager.ManagerScoreListActivity"></activity>
+        <activity android:name=".activity.manager.ManagerScoreListActivity" />
+        <activity android:name=".activity.common.TestActivity">
+
+        </activity>
     </application>
 
 </manifest>

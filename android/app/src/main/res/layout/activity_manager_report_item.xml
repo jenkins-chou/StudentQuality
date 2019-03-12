@@ -18,7 +18,7 @@
                 android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="陈宇"
+                android:text=""
                 android:textColor="@color/base_font_color" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:id="@+id/class_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="班级"
+                android:text=""
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/main_color"
                 android:textSize="10sp" />
