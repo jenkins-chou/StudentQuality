@@ -5,6 +5,7 @@ package com.jenking.spandroid.api;
  */
 
 public class BaseAPI {
-    public static String base_url = "http://104.194.85.83:7777/";//
-    public static String base_upload_url = "http://104.194.85.83:7777/upload/uploadImg";//
+//    public static String base_url = "http://39.108.64.227:7777/";//
+    public static String base_url = "http://39.108.64.227:7777/";//
+    public static String base_upload_url = "http://39.108.64.227:7777/upload/uploadImg";//
 }

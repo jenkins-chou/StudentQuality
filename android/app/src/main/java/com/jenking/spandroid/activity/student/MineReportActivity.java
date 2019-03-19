@@ -1,6 +1,10 @@
 package com.jenking.spandroid.activity.student;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -8,6 +12,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.library.BaseRecyclerAdapter;
 import com.github.library.BaseViewHolder;
@@ -24,6 +29,7 @@ import com.jenking.spandroid.activity.manager.ManagerReportListActivity;
 import com.jenking.spandroid.api.RS;
 import com.jenking.spandroid.dialog.CommonTipsDialog;
 import com.jenking.spandroid.models.base.ResultModel;
+import com.jenking.spandroid.models.base.UserModel;
 import com.jenking.spandroid.models.impl.UserActivityDetail;
 import com.jenking.spandroid.models.impl.UserCertDetail;
 import com.jenking.spandroid.models.impl.UserCourseDetail;
@@ -35,10 +41,12 @@ import com.jenking.spandroid.presenter.UserCoursePresenter;
 import com.jenking.spandroid.presenter.UserMatchPresenter;
 import com.jenking.spandroid.presenter.UserMoralPresenter;
 import com.jenking.spandroid.tools.AccountTool;
+import com.jenking.spandroid.tools.DocUtils;
 import com.jenking.spandroid.tools.StringUtil;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -46,6 +54,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MineReportActivity extends BaseActivity {
+
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     private String user_id;
 
@@ -90,6 +102,7 @@ public class MineReportActivity extends BaseActivity {
     TextView course_average;
     @BindView(R.id.course_point)
     TextView course_point;
+
     @BindView(R.id.match_score)
     TextView match_score;
     @BindView(R.id.cert_score)
@@ -117,6 +130,50 @@ public class MineReportActivity extends BaseActivity {
         finish();
     }
 
+    @OnClick(R.id.print_report)
+    void print_report(){
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, 10001);
+            }else{
+                saveReport();
+            }
+        }else {
+            saveReport();
+        }
+    }
+
+    void saveReport(){
+        if (isLoadActivity
+                &&isLoadCert
+                &&isLoadCourse
+                &&isLoadMatch
+                &&isLoadMoral){
+
+
+            String json = getIntent().getStringExtra("model");
+            UserModel userModel = new Gson().fromJson(json,UserModel.class);
+            Map<String,String> map = new HashMap<>();
+            map.put("$Name$",userModel.getRealname());
+            map.put("$College$",userModel.getCollege_name());
+            map.put("$School$",userModel.getSchool_name());
+            map.put("$Class$",userModel.getClass_name());
+            map.put("$Sex$",userModel.getSex());
+
+            map.put("$FinalScore$",all_score.getText().toString());
+            map.put("$AverageScore$",course_average.getText().toString());
+            map.put("$AveragePoint$",course_point.getText().toString());
+            map.put("$MatchScore$",match_score.getText().toString());
+            map.put("$CertScore$",cert_score.getText().toString());
+            map.put("$ActivityScore$",acti_score.getText().toString());
+            map.put("$MoralScore$",moral_score.getText().toString());
+            map.put("$Date$",StringUtil.getStrTime(StringUtil.getTime()));
+
+            DocUtils.save(this,map,userModel.getRealname());
+
+            Toast.makeText(this, "文件已保存至 【文件管理根目录/学生综合素质管理系统/学生报告.doc】", Toast.LENGTH_LONG).show();
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

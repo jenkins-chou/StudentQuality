@@ -399,7 +399,7 @@ public class StringUtil {
      * @return
      */
     public static boolean isNotEmpty(String value){
-        return value!=null&&!value.equals("");
+        return value!=null&&!value.equals("")&&!value.equals("null")&&!value.equals("NULL");
     }
 
 
